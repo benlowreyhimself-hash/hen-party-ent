@@ -130,6 +130,121 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Photo Gallery Section */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold mb-6 text-center">Photo Gallery</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/11/BA76C206-80F2-421E-9E80-8C8F097EB5D3_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2020/04/Life-Drawing-Best-9-of-98-scaled.jpg?w=1080&ssl=1"
+                  alt="Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2020/04/84101C19-5C36-45B8-94AB-BF1A10F610D3_1_105_c.jpg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/11/FAAF3DB4-EF12-4CBE-93FC-8FD1B370CAC2_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/11/87949746-ADB1-4F80-AFD0-CB87E0FA3C43_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/04/889ECDED-497A-4DD6-ADAD-94CBD586BE38_1_201_a.jpeg?resize=768%2C432&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2018/05/09DAEC5B-3577-4FE9-B3D6-505A41109D06_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/04/0C8D2E1F-D9CF-424C-8ED7-75C1B0620F25_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2020/04/C6378496-36A9-456D-A09E-3FCB984617A4-scaled.jpg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/04/4F717ECF-E6BA-4EDB-838B-78AAB830FB96_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2018/08/CF76E7FD-4AFB-44AF-BD1B-59AA5DB8871C_1_201_a.jpeg?w=1080&ssl=1"
+                  alt="Hen Party Life Drawing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative h-[300px] rounded-lg overflow-hidden">
+                <Image
+                  src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/04/CCF9FF36-C49D-4AE9-9C90-77F46E85CBEE_1_201_a.jpeg?resize=768%2C432&ssl=1"
+                  alt="Hen Party Life Drawing Session"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Google Reviews Section */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-6 text-center">Google Reviews</h2>
