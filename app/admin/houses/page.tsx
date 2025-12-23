@@ -8,12 +8,20 @@ export default async function AdminHousesPage() {
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-3xl font-bold">Manage Houses</h2>
-        <Link
-          href="/admin/houses/new"
-          className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
-        >
-          Add New House
-        </Link>
+        <div className="flex gap-4">
+          <Link
+            href="/admin/houses/enrich-all"
+            className="bg-primary/20 text-primary px-6 py-3 rounded-md hover:bg-primary/30 transition-colors"
+          >
+            Batch Enrich
+          </Link>
+          <Link
+            href="/admin/houses/new"
+            className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+          >
+            Add New House
+          </Link>
+        </div>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden">
@@ -80,6 +88,12 @@ export default async function AdminHousesPage() {
                       className="text-primary hover:text-primary/80 mr-4"
                     >
                       Edit
+                    </Link>
+                    <Link
+                      href={`/admin/houses/${house.id}/enrich`}
+                      className="text-primary hover:text-primary/80 mr-4"
+                    >
+                      Enrich
                     </Link>
                     <Link
                       href={`/accommodations/${house.slug}`}
