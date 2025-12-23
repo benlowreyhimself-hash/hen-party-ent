@@ -129,3 +129,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .prose {
+    @apply text-foreground;
+  }
+  .prose h2 {
+    @apply text-2xl font-semibold mt-8 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold mt-6 mb-3;
+  }
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-4 space-y-2;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+}
