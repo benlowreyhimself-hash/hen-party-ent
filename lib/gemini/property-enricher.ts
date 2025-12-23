@@ -127,7 +127,10 @@ export async function enrichProperties(
       await new Promise(resolve => setTimeout(resolve, 1000));
     } catch (error: any) {
       console.error(`Error enriching ${property.name}:`, error);
-      results.push(property.existingData || {});
+      results.push(property.existingData || {
+        title: property.name,
+        location: property.location || '',
+      });
     }
   }
 
