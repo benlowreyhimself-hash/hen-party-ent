@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Facebook, Instagram, Search, Menu, X } from "lucide-react";
+import { trackPhoneClick, trackEmailClick } from "@/lib/gtm";
 
 export default function Header() {
   const [isLocationsOpen, setIsLocationsOpen] = useState(false);
@@ -31,10 +32,18 @@ export default function Header() {
       <div className="bg-primary text-primary-foreground py-2 px-4">
         <div className="container mx-auto flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
-            <a href="tel:07747571426" className="hover:opacity-80 transition-opacity">
+            <a 
+              href="tel:07747571426" 
+              className="hover:opacity-80 transition-opacity"
+              onClick={() => trackPhoneClick("07747571426")}
+            >
               07747571426
             </a>
-            <a href="mailto:ben@henpartyentertainment.co.uk" className="hover:opacity-80 transition-opacity">
+            <a 
+              href="mailto:ben@henpartyentertainment.co.uk" 
+              className="hover:opacity-80 transition-opacity"
+              onClick={() => trackEmailClick("ben@henpartyentertainment.co.uk")}
+            >
               ben@henpartyentertainment.co.uk
             </a>
           </div>

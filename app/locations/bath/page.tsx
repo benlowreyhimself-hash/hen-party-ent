@@ -1,3 +1,7 @@
+"use client";
+
+import ContactLink from "@/components/ContactLink";
+
 export default function BathLocationPage() {
   return (
     <div className="container mx-auto px-4 py-16">
@@ -51,15 +55,15 @@ export default function BathLocationPage() {
             <div className="space-y-2">
               <p>
                 <span className="font-semibold">Phone:</span>{" "}
-                <a href="tel:07747571426" className="text-primary hover:underline">
+                <ContactLink type="phone" value="07747571426" className="text-primary hover:underline">
                   07747571426
-                </a>
+                </ContactLink>
               </p>
               <p>
                 <span className="font-semibold">Email:</span>{" "}
-                <a href="mailto:ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
+                <ContactLink type="email" value="ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
                   ben@henpartyentertainment.co.uk
-                </a>
+                </ContactLink>
               </p>
             </div>
             <a

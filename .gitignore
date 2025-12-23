@@ -32,6 +32,13 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.local.example
+
+# WordPress backups
+old-wordpress-backup/
+download*.log
+download*.py
+test_*.py
 
 # vercel
 .vercel

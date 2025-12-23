@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ContactLink from "@/components/ContactLink";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -35,15 +36,15 @@ export default function ContactPage() {
             <div className="space-y-4">
               <div>
                 <p className="font-semibold mb-1">Phone</p>
-                <a href="tel:07747571426" className="text-primary hover:underline">
+                <ContactLink type="phone" value="07747571426" className="text-primary hover:underline">
                   07747571426
-                </a>
+                </ContactLink>
               </div>
               <div>
                 <p className="font-semibold mb-1">Email</p>
-                <a href="mailto:ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
+                <ContactLink type="email" value="ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
                   ben@henpartyentertainment.co.uk
-                </a>
+                </ContactLink>
               </div>
             </div>
           </div>

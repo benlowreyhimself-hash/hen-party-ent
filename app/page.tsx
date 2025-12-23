@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import ContactButtons from "@/components/ContactButtons";
 
 export default function Home() {
   return (
@@ -55,7 +56,7 @@ export default function Home() {
           {/* Main Image */}
           <div className="mb-12">
             <div className="relative h-[500px] rounded-lg overflow-hidden">
-              <Image
+            <Image
                 src="https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2017/07/C3CD1C3E-99D3-4572-BB39-06D19DA36311_1_201_a-1.jpeg"
                 alt="Hen Party Life Drawing Session"
                 fill
@@ -303,26 +304,7 @@ export default function Home() {
             <p className="text-lg text-foreground mb-6">
               Feel welcome to call, text, or email.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:07747571426"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
-              >
-                Call: 07747571426
-          </a>
-          <a
-                href="mailto:ben@henpartyentertainment.co.uk"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
-              >
-                Email Us
-              </a>
-              <Link
-                href="/contact"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
-              >
-                Contact Form
-              </Link>
-            </div>
+            <ContactButtons />
           </div>
         </div>
       </section>

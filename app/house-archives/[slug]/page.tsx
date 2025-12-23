@@ -3,6 +3,7 @@ import { getHouseBySlug, getAllHouseSlugs, type House } from "@/data/houses";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import ContactLink from "@/components/ContactLink";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -124,15 +125,15 @@ export default async function HousePage({ params }: PageProps) {
             <div className="space-y-2 mb-4">
               <p>
                 <strong>Phone:</strong>{" "}
-                <a href="tel:07747571426" className="text-primary hover:underline">
+                <ContactLink type="phone" value="07747571426" className="text-primary hover:underline">
                   07747571426
-                </a>
+                </ContactLink>
               </p>
               <p>
                 <strong>Email:</strong>{" "}
-                <a href="mailto:ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
+                <ContactLink type="email" value="ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
                   ben@henpartyentertainment.co.uk
-                </a>
+                </ContactLink>
               </p>
             </div>
             <Link
