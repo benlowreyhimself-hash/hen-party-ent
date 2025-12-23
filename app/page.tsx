@@ -1,6 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { houses } from "@/data/houses";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Home() {
   return (
@@ -8,14 +14,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <Image
+        <Image
             src="https://henpartyentertainment.co.uk/wp-content/uploads/2014/11/1F93FF7F-70CA-4EF1-9584-D0F5C7BE91A8_1_201_a.jpeg"
             alt="Hen Party Life Drawing Hero"
             fill
             sizes="100vw"
             className="object-cover"
-            priority
-          />
+          priority
+        />
           <div className="absolute inset-0 bg-primary/60"></div>
         </div>
         <div className="relative z-10 text-center text-white px-4">
@@ -81,8 +87,8 @@ export default function Home() {
                 You can view my genuine 5 star reviews on google by clicking{" "}
                 <a 
                   href="https://g.page/henpartyent" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+            target="_blank"
+            rel="noopener noreferrer"
                   className="text-primary hover:underline"
                 >
                   here
@@ -167,26 +173,38 @@ export default function Home() {
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-6 text-center">Prices</h2>
             <div className="prose prose-lg max-w-none mb-8">
-              <p className="text-lg text-foreground mb-4">
+              <p className="text-lg text-foreground mb-4 text-center">
                 I understand it takes a lot of work to organise a large group of people. You can confirm the booking with a deposit, then settle the final amount nearer the time.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-card border border-border rounded-lg p-6 text-center">
-                <h3 className="text-2xl font-semibold mb-4">Classic</h3>
-                <Link href="/prices" className="text-primary hover:underline">View Details</Link>
+              <div className="bg-white border-2 border-primary rounded-lg overflow-hidden">
+                <div className="bg-primary text-primary-foreground p-4 text-center">
+                  <h3 className="text-xl font-bold">Classic</h3>
+                  <p className="text-sm opacity-90">60 minutes (per person)</p>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-4xl font-bold text-primary mb-4">£20</div>
+                </div>
               </div>
-              <div className="bg-card border border-border rounded-lg p-6 text-center">
-                <h3 className="text-2xl font-semibold mb-4">Special</h3>
-                <Link href="/prices" className="text-primary hover:underline">View Details</Link>
+              <div className="bg-white border-2 border-primary rounded-lg overflow-hidden">
+                <div className="bg-primary text-primary-foreground p-4 text-center">
+                  <h3 className="text-xl font-bold">Special</h3>
+                  <p className="text-sm opacity-90">75 minutes (per person)</p>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-4xl font-bold text-primary mb-4">£22</div>
+                </div>
               </div>
-              <div className="bg-card border border-border rounded-lg p-6 text-center">
-                <h3 className="text-2xl font-semibold mb-4">Ultimate</h3>
-                <Link href="/prices" className="text-primary hover:underline">View Details</Link>
+              <div className="bg-white border-2 border-primary rounded-lg overflow-hidden">
+                <div className="bg-primary text-primary-foreground p-4 text-center">
+                  <h3 className="text-xl font-bold">Ultimate</h3>
+                  <p className="text-sm opacity-90">90 minutes (per person)</p>
+                </div>
+                <div className="p-6 text-center">
+                  <div className="text-4xl font-bold text-primary mb-4">£25</div>
+                </div>
               </div>
-            </div>
-            <div className="mt-6 text-center">
-              <p className="text-lg font-semibold text-primary">Special Offer</p>
             </div>
           </div>
 
@@ -221,63 +239,63 @@ export default function Home() {
           {/* FAQ Section */}
           <div className="max-w-4xl mx-auto mb-16">
             <h2 className="text-3xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
-            <div className="space-y-6">
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Does Ben come to us?</h3>
-                <p className="text-foreground">
-                  Yes. If you are staying in a House I will come to the house where you are staying.
-                  If you're staying in a Hotel or just doing a day trip then let me know, a function room can be arranged.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Can I book with a deposit?</h3>
-                <p className="text-foreground">
-                  Yes. You can book with a deposit, then confirm the final numbers nearer the time.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Do I need any art experience?</h3>
-                <p className="text-foreground">
-                  You don't need any art experience. Fun drawing exercises will be explained and everybody will be included.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Do I need to bring anything?</h3>
-                <p className="text-foreground">
-                  Yes. I will bring plenty of sketch pads and charcoal. You only need bring the drinks!
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">What do I need to prepare?</h3>
-                <p className="text-foreground">
-                  You only need to prepare the space. Make sure everybody has somewhere to sit and a drink!
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Will Ben guide the session?</h3>
-                <p className="text-foreground">
-                  Yes, I will guide the whole session. I have a series of fun drawing exercises which everybody will enjoy.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Can I take photos?</h3>
-                <p className="text-foreground">
-                  Yes, but ask me before you take a photo. I will hold a balloon in front.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">Is it professional?</h3>
-                <p className="text-foreground">
-                  Yes, the activity is conducted in a professional manner.
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-3">When do I pay?</h3>
-                <p className="text-foreground">
-                  Yes. You can confirm the booking with a deposit and then pay the final amount two weeks prior to the event.
-                </p>
-              </div>
-            </div>
+            <Accordion type="single" collapsible className="w-full" defaultValue="item-0">
+              <AccordionItem value="item-0">
+                <AccordionTrigger className="text-left">Does Ben come to us?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground mb-2">Yes. If you are staying in a House I will come to the house where you are staying.</p>
+                  <p className="text-foreground">If you're staying in a Hotel or just doing a day trip then let me know, a function room can be arranged.</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-left">I'm not sure how many people there will be. Can I confirm it later?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes. You can book with a deposit, then confirm the final numbers nearer the time.</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger className="text-left">Do we need to be able to draw?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">You don't need any art experience. Fun drawing exercises will be explained and everybody will be included.</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger className="text-left">Are the Drawing Materials provided?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes. I will bring plenty of sketch pads and charcoal. You only need bring the drinks!</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4">
+                <AccordionTrigger className="text-left">Do we need to prepare anything?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">You only need to prepare the space. Make sure everybody has somewhere to sit and a drink!</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5">
+                <AccordionTrigger className="text-left">Will the model tell us what to do?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes, I will guide the whole session. I have a series of fun drawing exercises which everybody will enjoy.</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-6">
+                <AccordionTrigger className="text-left">Can we take photos?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes, but ask me before you take a photo. I will hold a baloon in front</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-7">
+                <AccordionTrigger className="text-left">Will the model act professionally?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes, the activity is coducted in a professional manner.</p>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-8">
+                <AccordionTrigger className="text-left">Do we pay a deposit?</AccordionTrigger>
+                <AccordionContent>
+                  <p className="text-foreground">Yes. You can confirm the booking with a depoist and then pay the the final amount two weeks prior to the event</p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
 
           {/* Contact CTA */}
@@ -291,8 +309,8 @@ export default function Home() {
                 className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
               >
                 Call: 07747571426
-              </a>
-              <a
+          </a>
+          <a
                 href="mailto:ben@henpartyentertainment.co.uk"
                 className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
               >
