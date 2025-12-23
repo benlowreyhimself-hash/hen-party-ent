@@ -104,15 +104,15 @@ export async function PUT(request: Request) {
       location: house.location,
       existingData: {
         title: house.title,
-        description: house.description,
+        description: house.description || undefined,
         location: house.location,
-        address: house.address,
-        postcode: house.postcode,
-        features: house.features,
-        content: house.content,
-        meta_description: house.meta_description,
-        booking_url: house.booking_url,
-        google_maps_url: house.google_maps_url,
+        address: house.address || undefined,
+        postcode: house.postcode || undefined,
+        features: house.features || undefined,
+        content: house.content || undefined,
+        meta_description: house.meta_description || undefined,
+        booking_url: house.booking_url || undefined,
+        google_maps_url: house.google_maps_url || undefined,
       },
     }));
 
