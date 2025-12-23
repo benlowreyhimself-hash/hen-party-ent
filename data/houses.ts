@@ -182,6 +182,41 @@ export const houses: House[] = [
     ],
     seoTitle: "Hen Party Life Drawing at Bodkin House Hotel, Petite France",
     seoDescription: "Professional life drawing entertainment for hen parties at Bodkin House Hotel in Petite France. Elegant venue with function rooms perfect for activities."
+  },
+  {
+    slug: "church-farm-barns-stratford",
+    title: "Church Farm Barns, Church Lane, Shottery, Stratford-upon-Avon CV37 9HQ",
+    location: "Stratford-upon-Avon",
+    address: "Church Farm Barns, Church Lane, Shottery, Stratford-upon-Avon CV37 9HQ",
+    description: "Beautiful converted barns in Stratford-upon-Avon perfect for hen party celebrations with life drawing entertainment.",
+    content: `
+      <p>Church Farm Barns in Shottery, Stratford-upon-Avon, is a stunning venue offering beautiful converted barns perfect for hen party celebrations. Located just minutes from Shakespeare's birthplace, this venue provides a unique and memorable setting for life drawing sessions.</p>
+      
+      <p>The venue features:</p>
+      
+      <ul>
+        <li>Beautifully converted barns with character</li>
+        <li>Spacious accommodation for groups</li>
+        <li>Perfect setting for activities and entertainment</li>
+        <li>Close to Stratford-upon-Avon attractions</li>
+        <li>Private and exclusive use available</li>
+      </ul>
+      
+      <p>We've provided life drawing entertainment at Church Farm Barns for numerous hen parties, creating unforgettable experiences in this historic location. The venue's rustic charm and spacious accommodation make it ideal for our life drawing sessions.</p>
+      
+      <p>Our life drawing sessions at Church Farm Barns are tailored to your group, ensuring everyone feels comfortable and has a fantastic time. We provide all materials and can work around your schedule to fit with other activities you have planned during your stay.</p>
+      
+      <p>If you're planning a hen party at Church Farm Barns in Stratford-upon-Avon and would like to include life drawing entertainment, please contact us to discuss your requirements and check availability.</p>
+    `,
+    features: [
+      "Converted barns with character",
+      "Spacious accommodation",
+      "Perfect for group activities",
+      "Close to Stratford-upon-Avon",
+      "Private use available"
+    ],
+    seoTitle: "Hen Party Life Drawing at Church Farm Barns, Stratford-upon-Avon CV37 9HQ",
+    seoDescription: "Professional life drawing entertainment for hen parties at Church Farm Barns in Shottery, Stratford-upon-Avon. Beautiful converted barns perfect for celebrations."
   }
 ];
 
