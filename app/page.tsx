@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { houses } from "@/data/houses";
 import {
   Accordion,
   AccordionContent,
@@ -8,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import ContactButtons from "@/components/ContactButtons";
+import VenuesList from "@/components/VenuesList";
 
 export default function Home() {
   return (
@@ -324,30 +324,16 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Popular Venues */}
+          {/* Popular Venues - Now from Supabase */}
           <div className="mb-16">
             <h3 className="text-3xl font-bold mb-6 text-center">Popular Hen Party Venues</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {houses.map((house) => (
-                <Link
-                  key={house.slug}
-                  href={`/house-archives/${house.slug}`}
-                  className="bg-card border border-border rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <h4 className="text-xl font-semibold mb-2 text-primary hover:underline">
-                    {house.title}
-                  </h4>
-                  <p className="text-muted-foreground text-sm mb-3">{house.location}</p>
-                  <p className="text-foreground text-sm line-clamp-3">{house.description}</p>
-                </Link>
-              ))}
-            </div>
+            <VenuesList />
             <div className="text-center mt-8">
               <Link
-                href="/house-archives"
+                href="/accommodations"
                 className="inline-block bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
               >
-                View All Venues
+                View All Accommodations
               </Link>
             </div>
           </div>

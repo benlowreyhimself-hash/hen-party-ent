@@ -121,8 +121,11 @@ export default function Header() {
               <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
                 Contact
               </Link>
-              <Link href="/house-archives" className="text-foreground hover:text-primary transition-colors">
-                House archives
+              <Link href="/accommodations" className="text-foreground hover:text-primary transition-colors">
+                Accommodations
+              </Link>
+              <Link href="/admin/houses" className="text-foreground hover:text-primary transition-colors">
+                Admin
               </Link>
             </div>
 

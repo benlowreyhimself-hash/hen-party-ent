@@ -10,6 +10,8 @@ const isPublicRoute = createRouteMatcher([
   '/contact',
   '/locations(.*)',
   '/house-archives(.*)',
+  '/accommodations(.*)', // Public accommodation pages for SEO
+  '/regions(.*)', // Public region pages
   '/api/webhooks(.*)',
 ]);
 
