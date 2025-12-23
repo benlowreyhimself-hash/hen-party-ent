@@ -3,49 +3,31 @@
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { Facebook, Instagram, Search, Menu, X } from "lucide-react";
-import { trackPhoneClick, trackEmailClick } from "@/lib/gtm";
+import ContactLink from "@/components/ContactLink";
 
 export default function Header() {
-  const [isLocationsOpen, setIsLocationsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsLocationsOpen(false);
-      }
-    };
-
-    if (isLocationsOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isLocationsOpen]);
 
   return (
-    <header className="w-full">
+    <header className="w-full sticky top-0 z-50">
       {/* Top Contact Bar */}
       <div className="bg-primary text-primary-foreground py-2 px-4">
         <div className="container mx-auto flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
-            <a 
-              href="tel:07747571426" 
+            <ContactLink 
+              type="phone" 
+              value="07747571426"
               className="hover:opacity-80 transition-opacity"
-              onClick={() => trackPhoneClick("07747571426")}
             >
               07747571426
-            </a>
-            <a 
-              href="mailto:ben@henpartyentertainment.co.uk" 
+            </ContactLink>
+            <ContactLink 
+              type="email" 
+              value="ben@henpartyentertainment.co.uk"
               className="hover:opacity-80 transition-opacity"
-              onClick={() => trackEmailClick("ben@henpartyentertainment.co.uk")}
             >
               ben@henpartyentertainment.co.uk
-            </a>
+            </ContactLink>
           </div>
           <div className="flex items-center gap-4">
             <a
@@ -66,6 +48,18 @@ export default function Header() {
             >
               <Instagram className="w-5 h-5" />
             </a>
+            {/* Clerk Login Button */}
+            {typeof window !== 'undefined' && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && (
+              <div className="ml-2">
+                <a
+                  href="/sign-in"
+                  className="text-xs hover:opacity-80 transition-opacity"
+                  aria-label="Sign In"
+                >
+                  Sign In
+                </a>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -98,26 +92,6 @@ export default function Header() {
               <Link href="/about-ben" className="text-foreground hover:text-primary transition-colors">
                 About Ben
               </Link>
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setIsLocationsOpen(!isLocationsOpen)}
-                  className="text-foreground hover:text-primary transition-colors flex items-center gap-1"
-                >
-                  Locations
-                  <span className="text-xs">▼</span>
-                </button>
-                {isLocationsOpen && (
-                  <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 min-w-[150px] z-50">
-                    <Link
-                      href="/locations/bath"
-                      className="block px-4 py-2 hover:bg-primary hover:text-primary-foreground transition-colors"
-                      onClick={() => setIsLocationsOpen(false)}
-                    >
-                      Bath
-                    </Link>
-                  </div>
-                )}
-              </div>
               <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
                 Contact
               </Link>
@@ -184,13 +158,6 @@ export default function Header() {
                   About Ben
                 </Link>
                 <Link
-                  href="/locations/bath"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Locations - Bath
-                </Link>
-                <Link
                   href="/contact"
                   className="text-foreground hover:text-primary transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -198,11 +165,11 @@ export default function Header() {
                   Contact
                 </Link>
                 <Link
-                  href="/house-archives"
+                  href="/accommodations"
                   className="text-foreground hover:text-primary transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  House archives
+                  Accommodations
                 </Link>
               </div>
             </div>

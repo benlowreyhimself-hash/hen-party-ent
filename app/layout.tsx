@@ -5,6 +5,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GTM from "@/components/GTM";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -22,7 +23,10 @@ export const metadata: Metadata = {
   title: "Hen Party Entertainment | Naked Life Drawing",
   description: "Hen Party Life Drawing entertainment services across Bristol, Bath, Cardiff, Gloucester, Cotswolds, Somerset, Oxford, Swindon, London and Nationwide",
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.ico', type: 'image/x-icon' },
+    ],
     shortcut: '/favicon.ico',
     apple: '/favicon.ico',
   },
@@ -39,6 +43,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <GTM />
+        <GoogleAnalytics />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

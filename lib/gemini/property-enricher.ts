@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GEMINI_MODELS, tryWithFallback } from './models';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -15,158 +16,125 @@ interface PropertyInfo {
   google_maps_url?: string;
 }
 
+interface EnrichmentResult {
+  description: string;
+  features: string[];
+  content: string;
+  meta_description: string;
+  sleeps?: string | null;
+}
+
 /**
- * Enrich property information using Gemini 3
+ * Enrich property information using Gemini AI
  */
 export async function enrichProperty(
   propertyName: string,
-  location?: string,
+  location?: string | null,
+  address?: string | null,
   existingData?: Partial<PropertyInfo>
-): Promise<PropertyInfo> {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+): Promise<EnrichmentResult> {
+  return tryWithFallback(
+    GEMINI_MODELS.PROPERTY_ENRICHMENT,
+    GEMINI_MODELS.PROPERTY_ENRICHMENT_FALLBACK,
+    async (modelName) => {
+      const model = genAI.getGenerativeModel({ model: modelName });
+      
+      const prompt = `
+You are an expert in hen party accommodations and life drawing entertainment.
+Your task is to generate detailed, SEO-friendly content for a hen party accommodation.
 
-  const prompt = `You are a property information assistant. I need you to research and provide detailed information about a property/accommodation for a hen party entertainment business.
+Property Name: ${propertyName || 'Property'}
+${location ? `Location: ${location}` : ''}
+${address ? `Address: ${address}` : ''}
+${existingData?.description ? `Existing Description: ${existingData.description}` : ''}
 
-Property Name: ${propertyName}
-Location: ${location || 'Not specified'}
-${existingData?.postcode ? `Postcode: ${existingData.postcode}` : ''}
+Please provide the following in a JSON format:
 
-Please provide comprehensive information about this property including:
+1.  **description**: A concise, 2-3 sentence description of the property, highlighting its suitability for hen parties.
+2.  **features**: An array of 5-8 key features of the accommodation that are appealing to hen groups (e.g., "Hot tub", "Large communal spaces", "Beautiful garden", "Close to amenities", "Private chef available").
+3.  **content**: A 200-300 word sales piece about why this specific property is perfect for a hen party life drawing event. Emphasize the fun, tasteful, and memorable experience of life drawing, and how it complements the accommodation's features. Include phrases like "professional male model", "all drawing materials provided", "no experience necessary", "fun and laughter guaranteed".
+4.  **meta_description**: A short, SEO-optimized meta description (150-160 characters) for the property's webpage.
+5.  **sleeps**: The number of people the property sleeps (e.g., "8", "10-12", "12+"). Extract this from booking pages or property descriptions if available. If not found, use null.
 
-1. **Description**: A compelling 2-3 sentence description of the property, highlighting what makes it special for hen parties (e.g., large spaces, beautiful gardens, hot tubs, etc.)
+Ensure all generated content is unique, engaging, and tailored for hen party organizers.
+  `;
 
-2. **Features**: A list of key features that would appeal to hen party groups (e.g., "Large living room perfect for activities", "Hot tub", "Beautiful garden", "Parking for multiple cars", "Fully equipped kitchen", etc.)
+      try {
+        const result = await model.generateContent(prompt);
+        const response = result.response;
+        const text = response.text();
 
-3. **Location Details**: If you can find it, provide:
-   - Full address (if available)
-   - Postcode (if not already provided)
-   - Nearby attractions or amenities
+        console.log(`[Gemini Property Enrichment] Raw response length: ${text.length}`);
 
-4. **Sales Content**: Write a compelling sales piece (200-300 words) about why this property is perfect for hen party life drawing entertainment. Include:
-   - The atmosphere and setting
-   - Why it's ideal for hen party celebrations
-   - How the space works for life drawing sessions
-   - Any unique selling points
+        if (!text) {
+          throw new Error('Gemini returned empty response');
+        }
 
-5. **SEO Meta Description**: A 150-160 character meta description for search engines
+        // Attempt to parse JSON, handle potential markdown code blocks
+        let jsonString = text.trim();
+        // Remove markdown code blocks if present (```json ... ``` or ``` ... ```)
+        jsonString = jsonString.replace(/^```json\s*/, '').replace(/^```\s*/, '').replace(/\s*```$/, '');
 
-6. **Booking Information**: If you can find it, provide:
-   - Booking URL (Airbnb, booking.com, etc.) if available
-   - Google Maps URL
+        try {
+          const parsedData: EnrichmentResult = JSON.parse(jsonString);
 
-Please format your response as JSON with the following structure:
-{
-  "description": "...",
-  "features": ["feature1", "feature2", ...],
-  "address": "...",
-  "postcode": "...",
-  "content": "...",
-  "meta_description": "...",
-  "booking_url": "...",
-  "google_maps_url": "..."
+          // Ensure features is an array of strings
+          if (!Array.isArray(parsedData.features)) {
+            parsedData.features = [];
+          }
+
+          return parsedData;
+        } catch (e: any) {
+          console.error(`[Gemini Property Enrichment] JSON Parse Error. Raw Text:`, text);
+          throw new Error(`Failed to parse Gemini JSON: ${e.message}`);
+        }
+      } catch (error: any) {
+        console.error(`Error calling Gemini API with ${modelName}:`, error);
+        throw new Error(`Gemini API call failed: ${error.message}`);
+      }
+    }
+  );
 }
 
-If you cannot find specific information, use your knowledge to create realistic and appealing content based on the property name and location. Focus on making it attractive for hen party groups looking for life drawing entertainment.`;
-
-  try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
-
-    // Extract JSON from the response (might have markdown code blocks)
-    let jsonText = text.trim();
-    
-    // Remove markdown code blocks if present
-    if (jsonText.startsWith('```json')) {
-      jsonText = jsonText.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
-    } else if (jsonText.startsWith('```')) {
-      jsonText = jsonText.replace(/```\n?/g, '').trim();
-    }
-
-    // Parse JSON
-    const enrichedData: PropertyInfo = JSON.parse(jsonText);
-
-    // Merge with existing data (existing data takes precedence)
-    return {
-      ...enrichedData,
-      ...existingData,
-      // Only update fields that were enriched
-      description: enrichedData.description || existingData?.description,
-      features: enrichedData.features || existingData?.features,
-      content: enrichedData.content || existingData?.content,
-      meta_description: enrichedData.meta_description || existingData?.meta_description,
-      address: enrichedData.address || existingData?.address,
-      postcode: enrichedData.postcode || existingData?.postcode,
-      booking_url: enrichedData.booking_url || existingData?.booking_url,
-      google_maps_url: enrichedData.google_maps_url || existingData?.google_maps_url,
-    };
-  } catch (error: any) {
-    console.error('Error enriching property:', error);
-    throw new Error(`Failed to enrich property: ${error.message}`);
-  }
+interface EnrichmentRequest {
+  name: string;
+  location?: string | null;
+  existingData?: Partial<PropertyInfo>;
 }
 
 /**
  * Batch enrich multiple properties
  */
 export async function enrichProperties(
-  properties: Array<{ name: string; location?: string; existingData?: Partial<PropertyInfo> }>
-): Promise<PropertyInfo[]> {
-  const results: PropertyInfo[] = [];
-
-  for (const property of properties) {
+  requests: EnrichmentRequest[]
+): Promise<EnrichmentResult[]> {
+  const results: EnrichmentResult[] = [];
+  
+  // Process sequentially to avoid rate limits
+  for (const request of requests) {
     try {
       const enriched = await enrichProperty(
-        property.name,
-        property.location,
-        property.existingData
+        request.name,
+        request.location,
+        request.existingData?.address,
+        request.existingData
       );
       results.push(enriched);
       
-      // Add a small delay to avoid rate limiting
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Small delay to avoid rate limiting
+      await new Promise(resolve => setTimeout(resolve, 500));
     } catch (error: any) {
-      console.error(`Error enriching ${property.name}:`, error);
-      results.push(property.existingData || {
-        title: property.name,
-        location: property.location || '',
+      console.error(`Error enriching ${request.name}:`, error.message);
+      // Return empty result on error
+      results.push({
+        description: '',
+        features: [],
+        content: '',
+        meta_description: '',
+        sleeps: null,
       });
     }
   }
-
+  
   return results;
 }
-
-/**
- * Generate sales content for a property
- */
-export async function generateSalesContent(
-  propertyName: string,
-  location: string,
-  features?: string[]
-): Promise<string> {
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
-
-  const prompt = `Write a compelling 250-300 word sales piece about why ${propertyName} in ${location} is perfect for hen party life drawing entertainment.
-
-Key points to include:
-- The property's atmosphere and setting
-- Why it's ideal for hen party celebrations
-- How the space works for life drawing sessions
-- The experience guests will have
-- Any unique selling points
-
-${features && features.length > 0 ? `Property features: ${features.join(', ')}` : ''}
-
-Make it engaging, professional, and focused on the hen party experience. Write in second person ("you", "your group").`;
-
-  try {
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    return response.text().trim();
-  } catch (error: any) {
-    console.error('Error generating sales content:', error);
-    throw new Error(`Failed to generate sales content: ${error.message}`);
-  }
-}
-

@@ -34,6 +34,13 @@ yarn-error.log*
 .env*
 !.env.local.example
 
+# sensitive credentials
+.twilio-recovery-code.txt
+*.recovery-code.txt
+.resend-api-key.txt
+.sendgrid-api-key.txt
+*.api-key.txt
+
 # WordPress backups
 old-wordpress-backup/
 download*.log

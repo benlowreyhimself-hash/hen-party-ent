@@ -9,6 +9,9 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Force dynamic rendering - prevent static generation
+export const dynamic = 'force-dynamic';
+
 export async function generateStaticParams() {
   const slugs = getAllHouseSlugs();
   return slugs.map((slug) => ({

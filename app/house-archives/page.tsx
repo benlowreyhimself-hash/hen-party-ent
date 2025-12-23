@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+// Force dynamic rendering to prevent prerendering issues
+export const dynamic = 'force-dynamic';
+
 export default function HouseArchivesPage() {
   const archives = [
     {

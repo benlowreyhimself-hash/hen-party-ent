@@ -41,3 +41,33 @@ export const trackButtonClick = (buttonName: string, location?: string) => {
   });
 };
 
+export const trackCallOptionClick = () => {
+  trackGTMEvent("contact_call_option_clicked", {
+    event_category: "Contact",
+    event_label: "Call Option Clicked",
+  });
+};
+
+export const trackEmailOptionClick = () => {
+  trackGTMEvent("contact_email_option_clicked", {
+    event_category: "Contact",
+    event_label: "Email Option Clicked",
+  });
+};
+
+export const trackTemplateRequest = (method: 'sms' | 'email' | 'whatsapp') => {
+  trackGTMEvent("template_request", {
+    method: method,
+    event_category: "Contact",
+    event_label: `Template Request - ${method.toUpperCase()}`,
+  });
+};
+
+export const trackFormSubmission = (formData?: Record<string, any>) => {
+  trackGTMEvent("form_submission", {
+    ...formData,
+    event_category: "Contact",
+    event_label: "Contact Form Submitted",
+  });
+};
+

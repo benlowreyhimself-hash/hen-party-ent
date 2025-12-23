@@ -2,6 +2,7 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
 const isPublicRoute = createRouteMatcher([
+  // Public pages
   '/',
   '/reviews',
   '/photos',
@@ -12,7 +13,14 @@ const isPublicRoute = createRouteMatcher([
   '/house-archives(.*)',
   '/accommodations(.*)', // Public accommodation pages for SEO
   '/regions(.*)', // Public region pages
+  // Authentication pages (must be public)
+  '/sign-in(.*)',
+  '/sign-up(.*)',
+  // Public API routes
   '/api/webhooks(.*)',
+  '/api/contact(.*)', // Contact form API (public)
+  '/api/test(.*)', // Test endpoints (public)
+  '/api/test-supabase(.*)', // Supabase test endpoint (public)
 ]);
 
 // Only use Clerk middleware if keys are configured

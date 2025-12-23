@@ -1,0 +1,5075 @@
+
+> hen-party-ent@0.1.0 accommodations:import
+> tsx scripts/import-accommodations.ts
+
+[dotenv@17.2.3] injecting env (18) from .env.local -- tip: ⚙️  enable debug logging with { debug: true }
+[dotenv@17.2.3] injecting env (0) from .env.local -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+[dotenv@17.2.3] injecting env (0) from .env.local -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+📊 Starting accommodation import from Google Sheets...
+
+Processing 8 sheets:
+
+  📄 Reading "2019 (Event Dates)"...
+    ✅ Found 13 unique addresses (13 total so far)
+
+  📄 Reading "2021 (Event Dates)"...
+    ✅ Found 9 unique addresses (22 total so far)
+
+  📄 Reading "2020 (Event Dates)"...
+    ✅ Found 9 unique addresses (22 total so far)
+
+  📄 Reading "Master"...
+    ✅ Found 8 unique addresses (30 total so far)
+
+  📄 Reading "2025 (Event Date)"...
+    ✅ Found 96 unique addresses (124 total so far)
+
+  📄 Reading "2024 (Event Date)"...
+    ✅ Found 117 unique addresses (241 total so far)
+
+  📄 Reading "2022 (Event dates)"...
+    ✅ Found 277 unique addresses (509 total so far)
+
+  📄 Reading "2023 (Event Dates)"...
+    ✅ Found 211 unique addresses (696 total so far)
+
+
+📊 Total unique accommodations found: 696
+
+🔄 Importing to database...
+
+Error creating house: 5 Bedford Dr {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 5 Bedford Dr (5 Bedford Dr)
+Error creating house: The Coach House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The Coach House (The Coach House)
+Error creating house: Pebbles Beach House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Pebbles Beach House (Pebbles Beach House)
+Error creating house: One Great George St {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: One Great George St (One Great George St)
+Error creating house: 4a Peckingham St. {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 4a Peckingham St. (4a Peckingham St.)
+Error creating house: The Comb {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The Comb (The Comb)
+Error creating house: 1483 Stratford Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 1483 Stratford Road (1483 Stratford Road)
+Error creating house: Longworth Villa {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Longworth Villa (Longworth Villa)
+Error creating house: PE10 0ST {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: PE10 0ST (PE10 0ST)
+Error creating house: 17 Heritage drive {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 17 Heritage drive (17 Heritage drive)
+Error creating house: 12 brynawelon road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 12 brynawelon road (12 brynawelon road)
+Error creating house: Soho Bar {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Soho Bar (Soho Bar)
+Error creating house: 7 Langley St {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 7 Langley St (7 Langley St)
+Error creating house: The Manor House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The Manor House (The Manor House)
+Error creating house: Mill Meadow {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Mill Meadow (Mill Meadow)
+Error creating house: 8-9 Margarets Building {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 8-9 Margarets Building (8-9 Margarets Building)
+Error creating house: Woodend Farm Ross Road Huntley Gloucester GL19 3EX {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Woodend Farm Ross Road Huntley Gloucester GL19 3EX (Woodend Farm Ross Road Huntley Gloucester GL19 3EX)
+Error creating house: 150 Miskin Street {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 150 Miskin Street (150 Miskin Street)
+Error creating house: tragegenna house {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: tragegenna house (tragegenna house)
+Error creating house: Hotel {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hotel (Hotel)
+Error creating house: Sibford Ferris in Oxfordshire {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Sibford Ferris in Oxfordshire (Sibford Ferris in Oxfordshire)
+Error creating house: 559 Bath Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 559 Bath Road (559 Bath Road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Fossecombe House
+The Shoe
+Nr Marshfield
+SN14 8SQ {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Fossecombe House
+The Shoe
+Nr Marshfield
+SN14 8SQ (Fossecombe House
+The Shoe
+Nr Marshfield
+SN14 8SQ)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Colliers Lane {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Colliers Lane (Colliers Lane)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 5 belfry avenue BS5 7PL {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 5 belfry avenue BS5 7PL (5 belfry avenue BS5 7PL)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Hunter's Moon {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hunter's Moon (Hunter's Moon)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 14 Calton Walk {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 14 Calton Walk (14 Calton Walk)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Victoria Villa {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Victoria Villa (Victoria Villa)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 4 barns close {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 4 barns close (4 barns close)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 9 Margaret's Buildings {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 9 Margaret's Buildings (9 Margaret's Buildings)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Wildmoorway Lane {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Wildmoorway Lane (Wildmoorway Lane)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 15 Redcatch Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 15 Redcatch Road (15 Redcatch Road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: 39 Manor Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 39 Manor Road (39 Manor Road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 9 Pierrepont St 9 Pierrepont St {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 9 Pierrepont St 9 Pierrepont St (9 Pierrepont St 9 Pierrepont St)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: BS40 7TU {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: BS40 7TU (BS40 7TU)
+Error creating house: 4 bath road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 4 bath road (4 bath road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Hesdin Estate {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hesdin Estate (Hesdin Estate)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Blenheim Barn {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Blenheim Barn (Blenheim Barn)
+Error creating house: Walnut Tree Cottage Llanthomas Ln {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Walnut Tree Cottage Llanthomas Ln (Walnut Tree Cottage Llanthomas Ln)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Beau Nash House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Beau Nash House (Beau Nash House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 21 Minster Way {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 21 Minster Way (21 Minster Way)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Goshill {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Goshill (Goshill)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Bridge Farmhouse {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Bridge Farmhouse (Bridge Farmhouse)
+Error creating house: Twerton Cemetery Lodge {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Twerton Cemetery Lodge (Twerton Cemetery Lodge)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Charlotte Street {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Charlotte Street (Charlotte Street)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Castle West {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Castle West (Castle West)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Hill House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hill House (Hill House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: HR20QE PontyPinna Vowchurch {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: HR20QE PontyPinna Vowchurch (HR20QE PontyPinna Vowchurch)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Broad Lane Broad Ln {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Broad Lane Broad Ln (Broad Lane Broad Ln)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: West farleigh Dutch barn 
+Cadeleigh {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: West farleigh Dutch barn 
+Cadeleigh (West farleigh Dutch barn 
+Cadeleigh)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 6 Pierrepont Pl 6 Pierrepont Pl {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 6 Pierrepont Pl 6 Pierrepont Pl (6 Pierrepont Pl 6 Pierrepont Pl)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 44 Quarry Barton {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 44 Quarry Barton (44 Quarry Barton)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: Lilac Cottage {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Lilac Cottage (Lilac Cottage)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Picket Farm
+Llandow
+Cowbridge
+Vale of Glamorgan
+CF71 7PX {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Picket Farm
+Llandow
+Cowbridge
+Vale of Glamorgan
+CF71 7PX (Picket Farm
+Llandow
+Cowbridge
+Vale of Glamorgan
+CF71 7PX)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: Blackers Hill Farmhouse {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Blackers Hill Farmhouse (Blackers Hill Farmhouse)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Patchway {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Patchway (Patchway)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 3 Gloucester Street {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 3 Gloucester Street (3 Gloucester Street)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Lower Hedge Farm in Shepton Mallet {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Lower Hedge Farm in Shepton Mallet (Lower Hedge Farm in Shepton Mallet)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Clayhill Farm {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Clayhill Farm (Clayhill Farm)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Pentre Court {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Pentre Court (Pentre Court)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Lady Margarets Townhouse {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Lady Margarets Townhouse (Lady Margarets Townhouse)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: 95 Pentrebane Street {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 95 Pentrebane Street (95 Pentrebane Street)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: 13 John Street {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 13 John Street (13 John Street)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: The school rooms estate 
+The hermitage 
+Bath Road
+Box
+Corsham
+Wiltshire
+SN13 8DT {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The school rooms estate 
+The hermitage 
+Bath Road
+Box
+Corsham
+Wiltshire
+SN13 8DT (The school rooms estate 
+The hermitage 
+Bath Road
+Box
+Corsham
+Wiltshire
+SN13 8DT)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Newleaf Farm 
+Holiday cottages
+Mill Lane 
+Bath Hampton
+Bath
+Ba2 6ts {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Newleaf Farm 
+Holiday cottages
+Mill Lane 
+Bath Hampton
+Bath
+Ba2 6ts (Newleaf Farm 
+Holiday cottages
+Mill Lane 
+Bath Hampton
+Bath
+Ba2 6ts)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Central Chambers {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Central Chambers (Central Chambers)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: The Old Priory {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The Old Priory (The Old Priory)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Lavender Cottage {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Lavender Cottage (Lavender Cottage)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: The address is 7 rectory lane
+CF643AX {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The address is 7 rectory lane
+CF643AX (The address is 7 rectory lane
+CF643AX)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: The long barn
+Pontispool farm
+Taunton
+TA4 1BG {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The long barn
+Pontispool farm
+Taunton
+TA4 1BG (The long barn
+Pontispool farm
+Taunton
+TA4 1BG)
+Error creating house: Orchard Cottage Claverton Bath {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Orchard Cottage Claverton Bath (Orchard Cottage Claverton Bath)
+Error creating house: Austen House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Austen House (Austen House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: South Parade Mansions {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: South Parade Mansions (South Parade Mansions)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Hoeseason (Holiday Chalet Park) {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hoeseason (Holiday Chalet Park) (Hoeseason (Holiday Chalet Park))
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Stourton View House 
+Stourton View
+Claverton Down Road
+Claverton Down
+Bath
+BA2 7AE {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Stourton View House 
+Stourton View
+Claverton Down Road
+Claverton Down
+Bath
+BA2 7AE (Stourton View House 
+Stourton View
+Claverton Down Road
+Claverton Down
+Bath
+BA2 7AE)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Corfe Mullen {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Corfe Mullen (Corfe Mullen)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Webbington Farm {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Webbington Farm (Webbington Farm)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 9 Saint John's Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 9 Saint John's Road (9 Saint John's Road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Washingpool Farm
+Easter Compton
+Bristol
+BS35 5RE {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Washingpool Farm
+Easter Compton
+Bristol
+BS35 5RE (Washingpool Farm
+Easter Compton
+Bristol
+BS35 5RE)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Ashbourne {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Ashbourne (Ashbourne)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 31 west gate street BA1 1EL {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 31 west gate street BA1 1EL (31 west gate street BA1 1EL)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Pitcombe Barn
+Bruton
+BA10 0PF {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Pitcombe Barn
+Bruton
+BA10 0PF (Pitcombe Barn
+Bruton
+BA10 0PF)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 72 Adelaide Rd {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 72 Adelaide Rd (72 Adelaide Rd)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 33 Crescent Gardens
+
+Kingsmead
+
+Bath
+
+BA1 2NB
+
+England {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 33 Crescent Gardens
+
+Kingsmead
+
+Bath
+
+BA1 2NB
+
+England (33 Crescent Gardens
+
+Kingsmead
+
+Bath
+
+BA1 2NB
+
+England)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Old common {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Old common (Old common)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Old Crescent Bakery {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Old Crescent Bakery (Old Crescent Bakery)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Great Pulteney Elegance {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Great Pulteney Elegance (Great Pulteney Elegance)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: The Green Compton Green Farm {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: The Green Compton Green Farm (The Green Compton Green Farm)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Tadcaster {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Tadcaster (Tadcaster)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: CF72 9JZ {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: CF72 9JZ (CF72 9JZ)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Old Down House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Old Down House (Old Down House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Mounton Brook Lodge
+Pwllmeryic 
+Chepstow
+Monmouthshire
+NP16 6LF {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Mounton Brook Lodge
+Pwllmeryic 
+Chepstow
+Monmouthshire
+NP16 6LF (Mounton Brook Lodge
+Pwllmeryic 
+Chepstow
+Monmouthshire
+NP16 6LF)
+Error creating house: New Inn hotel {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: New Inn hotel (New Inn hotel)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 26 Clyde Avenue {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 26 Clyde Avenue (26 Clyde Avenue)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Roseneath House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Roseneath House (Roseneath House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Clifton {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Clifton (Clifton)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Founders House - BA1 1JX {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Founders House - BA1 1JX (Founders House - BA1 1JX)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Triscombe Barns {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Triscombe Barns (Triscombe Barns)
+Error creating house: 72 great Pulteney street BA2 4DL {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 72 great Pulteney street BA2 4DL (72 great Pulteney street BA2 4DL)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Gloucesterhsire {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Gloucesterhsire (Gloucesterhsire)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Hope and Anchor {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Hope and Anchor (Hope and Anchor)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 11 New England St {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 11 New England St (11 New England St)
+Error creating house: TA3 5AU {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: TA3 5AU (TA3 5AU)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 24D Hardenhuish Ln {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 24D Hardenhuish Ln (24D Hardenhuish Ln)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Wick Cottage {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Wick Cottage (Wick Cottage)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: THE MOORINGS {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: THE MOORINGS (THE MOORINGS)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 17 Grove Street Bath BA2 6PJ {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 17 Grove Street Bath BA2 6PJ (17 Grove Street Bath BA2 6PJ)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 2 Prospect {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 2 Prospect (2 Prospect)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Midford Mill 
+2 Midford Hill {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Midford Mill 
+2 Midford Hill (Midford Mill 
+2 Midford Hill)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 3 Cleveland Bridge Bathwick Bath BA1 5DH {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 3 Cleveland Bridge Bathwick Bath BA1 5DH (3 Cleveland Bridge Bathwick Bath BA1 5DH)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 19 Crescent Gardens {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 19 Crescent Gardens (19 Crescent Gardens)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 19 New street 
+Morfa
+Llanelli
+SA15 2BS {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 19 New street 
+Morfa
+Llanelli
+SA15 2BS (19 New street 
+Morfa
+Llanelli
+SA15 2BS)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Enchanted house. Lower Bristol Road {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Enchanted house. Lower Bristol Road (Enchanted house. Lower Bristol Road)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 22 Belgrave Crescent {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 22 Belgrave Crescent (22 Belgrave Crescent)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - Needed {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - Needed (Function Room - Needed)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Dutch Barton Dental Practice 
+16 Church Street
+Bradford on Avon
+BA15 1LN {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Dutch Barton Dental Practice 
+16 Church Street
+Bradford on Avon
+BA15 1LN (Dutch Barton Dental Practice 
+16 Church Street
+Bradford on Avon
+BA15 1LN)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: 97 Sylvan Way {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: 97 Sylvan Way (97 Sylvan Way)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Primrose Cottage Primrose Cottage {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Primrose Cottage Primrose Cottage (Primrose Cottage Primrose Cottage)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: AirBnB {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: AirBnB (AirBnB)
+Error creating house: Function Room - they've arranged {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Function Room - they've arranged (Function Room - they've arranged)
+Error creating house: Own House {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'raw_address' column of 'houses' in the schema cache"
+}
+  ✅ Imported: Own House (Own House)
+
+✅ Import complete!
+   Imported: 696
+   Skipped: 0
+   Errors: 0
+   Total: 696
+

@@ -12,6 +12,11 @@ CREATE TABLE IF NOT EXISTS houses (
   location TEXT NOT NULL, -- e.g., "Bath", "Cotswolds", "Stratford-upon-Avon"
   address TEXT,
   
+  -- Raw & Verified Address Data
+  raw_address TEXT, -- Original address from Google Sheets
+  verified_address TEXT, -- Google-verified official address
+  google_place_id TEXT, -- Google Places API ID
+  
   -- Description & Content
   description TEXT,
   content TEXT, -- Full sales content about hen party services
@@ -23,6 +28,13 @@ CREATE TABLE IF NOT EXISTS houses (
   photo_2_url TEXT,
   photo_3_url TEXT,
   
+  -- Booking Links
+  website_url TEXT, -- Official property website
+  airbnb_url TEXT,
+  booking_com_url TEXT,
+  vrbo_url TEXT,
+  other_booking_url TEXT, -- JSON array of other booking platforms
+  
   -- SEO
   meta_title TEXT,
   meta_description TEXT,
@@ -31,8 +43,14 @@ CREATE TABLE IF NOT EXISTS houses (
   is_published BOOLEAN DEFAULT true,
   is_featured BOOLEAN DEFAULT false,
   
+  -- Enrichment Status
+  address_verified BOOLEAN DEFAULT false,
+  booking_links_found BOOLEAN DEFAULT false,
+  photos_extracted BOOLEAN DEFAULT false,
+  content_generated BOOLEAN DEFAULT false,
+  enrichment_complete BOOLEAN DEFAULT false,
+  
   -- Links
-  booking_url TEXT, -- Link to Airbnb/booking site
   google_maps_url TEXT
 );
 
@@ -41,6 +59,7 @@ CREATE INDEX IF NOT EXISTS idx_houses_slug ON houses(slug);
 CREATE INDEX IF NOT EXISTS idx_houses_postcode ON houses(postcode);
 CREATE INDEX IF NOT EXISTS idx_houses_region ON houses(region);
 CREATE INDEX IF NOT EXISTS idx_houses_published ON houses(is_published);
+CREATE INDEX IF NOT EXISTS idx_houses_enrichment ON houses(enrichment_complete);
 
 -- Create function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
@@ -88,4 +107,3 @@ CREATE POLICY "Admins can delete houses"
   FOR DELETE
   TO authenticated
   USING (true);
-

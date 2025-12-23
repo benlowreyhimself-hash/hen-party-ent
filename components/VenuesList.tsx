@@ -1,11 +1,12 @@
-import { getPublishedHouses } from '@/lib/supabase/houses';
+import { getFeaturedHouses } from '@/lib/supabase/houses';
 import Link from 'next/link';
 import Image from 'next/image';
 
 export default async function VenuesList() {
-  const houses = await getPublishedHouses();
+  // Optimized: Only fetch 6 houses needed for homepage (not all 871)
+  const houses = await getFeaturedHouses(6);
   
-  // Show featured houses first, then others, limit to 6
+  // Show featured houses first, then others
   const featuredHouses = houses.filter(h => h.is_featured).slice(0, 3);
   const otherHouses = houses.filter(h => !h.is_featured).slice(0, 3);
   const displayHouses = [...featuredHouses, ...otherHouses].slice(0, 6);
@@ -22,13 +23,20 @@ export default async function VenuesList() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {displayHouses.map((house) => (
-        <Link
-          key={house.id}
-          href={`/accommodations/${house.slug}`}
-          className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-        >
+    <>
+      <div className="mb-6 bg-blue-50 border-2 border-blue-200 rounded-lg p-4 max-w-4xl mx-auto">
+        <p className="text-sm text-blue-800">
+          <strong>Note:</strong> These venues are places where Ben has provided life drawing services in the past. 
+          Ben travels to your location - you book your own accommodation and Ben comes to you.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {displayHouses.map((house) => (
+          <Link
+            key={house.id}
+            href={`/accommodations/${house.slug}`}
+            className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+          >
           {house.image_url && (
             <div className="relative h-48">
               <Image
@@ -52,6 +60,7 @@ export default async function VenuesList() {
         </Link>
       ))}
     </div>
+    </>
   );
 }
 

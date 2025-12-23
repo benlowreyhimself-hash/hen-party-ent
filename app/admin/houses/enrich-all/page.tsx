@@ -10,6 +10,7 @@ export default function EnrichAllHousesPage() {
   const [selectedHouses, setSelectedHouses] = useState<Set<string>>(new Set());
   const [results, setResults] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [progress, setProgress] = useState<{ current: number; total: number } | null>(null);
 
   useEffect(() => {
     // Fetch all houses
@@ -52,28 +53,76 @@ export default function EnrichAllHousesPage() {
     setLoading(true);
     setError(null);
     setResults([]);
+    setProgress({ current: 0, total: selectedHouses.size });
 
-    try {
-      const response = await fetch('/api/admin/enrich', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          houseIds: Array.from(selectedHouses),
-        }),
-      });
+    const houseIdsToEnrich = Array.from(selectedHouses);
+    const newResults: any[] = [];
 
-      const data = await response.json();
+    for (let i = 0; i < houseIdsToEnrich.length; i++) {
+      const houseId = houseIdsToEnrich[i];
+      const currentHouse = houses.find(h => h.id === houseId);
+      const title = currentHouse?.title || 'Unknown';
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to enrich properties');
+      try {
+        const response = await fetch('/api/admin/enrich', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ houseId }),
+        });
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          // If response is not JSON (e.g., HTML error page from Vercel timeout/crash)
+          const text = await response.text();
+          console.error('Non-JSON response:', text);
+          throw new Error(`Server returned non-JSON response: ${response.status} ${response.statusText}`);
+        }
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to enrich property');
+        }
+
+        const data = await response.json();
+        newResults.push({
+          houseId,
+          title,
+          success: true,
+          updated: data.updated,
+          addressVerified: data.addressVerification?.is_public_property || false,
+          progress: {
+            current: i + 1,
+            total: houseIdsToEnrich.length,
+            percentage: Math.round(((i + 1) / houseIdsToEnrich.length) * 100),
+          },
+        });
+
+      } catch (err: any) {
+        newResults.push({
+          houseId,
+          title,
+          success: false,
+          error: err.message,
+          progress: {
+            current: i + 1,
+            total: houseIdsToEnrich.length,
+            percentage: Math.round(((i + 1) / houseIdsToEnrich.length) * 100),
+          },
+        });
+      } finally {
+        setResults([...newResults]); // Update results after each item
+        setProgress({
+          current: i + 1,
+          total: houseIdsToEnrich.length,
+          percentage: Math.round(((i + 1) / houseIdsToEnrich.length) * 100),
+        });
+        // Add a small delay to prevent overwhelming the API or UI
+        await new Promise(resolve => setTimeout(resolve, 500));
       }
-
-      setResults(data.results || []);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
     }
+
+    setLoading(false);
+    setProgress(null);
   };
 
   return (
@@ -128,6 +177,25 @@ export default function EnrichAllHousesPage() {
           ))}
         </div>
 
+        {progress && (
+          <div className="mt-4 mb-4">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sm text-gray-600">
+                Progress: {progress.current} of {progress.total}
+              </span>
+              <span className="text-sm text-gray-600">
+                {Math.round((progress.current / progress.total) * 100)}%
+              </span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div
+                className="bg-primary h-2 rounded-full transition-all duration-300"
+                style={{ width: `${(progress.current / progress.total) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+
         <button
           onClick={handleEnrichAll}
           disabled={loading || selectedHouses.size === 0}
@@ -146,10 +214,15 @@ export default function EnrichAllHousesPage() {
       {results.length > 0 && (
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="text-xl font-bold mb-4">Enrichment Results</h3>
-          <div className="space-y-2">
-            {results.map((result) => (
+          <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              <strong>Summary:</strong> {results.filter(r => r.success).length} successful, {results.filter(r => !r.success).length} failed out of {results.length} total
+            </p>
+          </div>
+          <div className="space-y-2 max-h-96 overflow-y-auto">
+            {results.map((result, index) => (
               <div
-                key={result.houseId}
+                key={result.houseId || index}
                 className={`p-3 rounded ${
                   result.success
                     ? 'bg-green-50 border border-green-200'
@@ -160,7 +233,12 @@ export default function EnrichAllHousesPage() {
                 {result.success ? (
                   <div className="text-sm text-green-800">✓ Successfully enriched</div>
                 ) : (
-                  <div className="text-sm text-red-800">✗ Error: {result.error}</div>
+                  <div className="text-sm text-red-800">✗ Error: {result.error || 'Unknown error'}</div>
+                )}
+                {result.progress && (
+                  <div className="text-xs text-gray-500 mt-1">
+                    Progress: {result.progress.current}/{result.progress.total} ({result.progress.percentage}%)
+                  </div>
                 )}
               </div>
             ))}
