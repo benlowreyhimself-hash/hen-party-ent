@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Hen Party Entertainment | Naked Life Drawing",
   description: "Hen Party Life Drawing entertainment services across Bristol, Bath, Cardiff, Gloucester, Cotswolds, Somerset, Oxford, Swindon, London and Nationwide",
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
