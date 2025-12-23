@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     // If houseId provided, fetch existing data
-    let existingData = {};
+    let existingData: any = {};
     if (houseId) {
       const house = await getHouseById(houseId);
       if (house) {
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
 
     // Enrich the property
     const enrichedData = await enrichProperty(
-      propertyName || existingData.title || 'Property',
-      location || existingData.location,
+      propertyName || existingData?.title || 'Property',
+      location || existingData?.location,
       existingData
     );
 
