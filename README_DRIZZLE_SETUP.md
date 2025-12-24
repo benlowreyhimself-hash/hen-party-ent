@@ -23,7 +23,7 @@ Add this line to your `.env.local`:
 
 ```bash
 # Connection Pooling (Recommended - more secure and reliable)
-DATABASE_POOLER_URL=postgresql://postgres.xirtgqglzsghphhihrcr:VGms5gPefJbDjT@aws-0-eu-west-2.pooler.supabase.com:6543/postgres?sslmode=require
+DATABASE_POOLER_URL=postgresql://postgres.xirtgqglzsghphhihrcr:[REDACTED]@aws-0-eu-west-2.pooler.supabase.com:6543/postgres?sslmode=require
 ```
 
 **Note**: Replace with your actual connection pooling URL from Step 1.

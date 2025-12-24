@@ -16,7 +16,7 @@ const PHOTO_BASE_URL = "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/obje
 
 const allPhotos: Photo[] = [
   {
-    src: `${PHOTO_BASE_URL}/hen-party-cozy-cottage-hen-party-c40t.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-drawing-ladies-9y7r.jpeg`,
     alt: "Cozy Cottage Hen Party Life Drawing",
     title: "Relaxed Cottage Atmosphere",
     description: "Perfect for a cozy night in. We bring the entertainment to your cottage or home."
@@ -33,27 +33,27 @@ const allPhotos: Photo[] = [
     title: "Proud of the Results",
   },
   {
-    src: `${PHOTO_BASE_URL}/hen-party-drawing-group-photo-fun-w03k.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-group-photo-hctz.jpg`,
     alt: "Hen Party Life Drawing Group Fun",
     title: "Group Fun",
   },
   {
-    src: `${PHOTO_BASE_URL}/hen-party-group-photo-drawing-session-v275.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-group-photo-mkbl.jpg`,
     alt: "Hen Party Life Drawing Group Session",
     title: "Memorable Group Photos",
   },
   {
-    src: `${PHOTO_BASE_URL}/hen-party-drawing-session-close-up-v69m.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-life-drawing-7bp5.jpeg`,
     alt: "Life Drawing Sketching",
     title: "Guided Sketching",
   },
   {
-    src: `${PHOTO_BASE_URL}/hen-party-drawing-session-group-photo-l5z1.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-drawing-reveal-ejmw.jpeg`,
     alt: "Hen Party Group Pose",
     title: "All Together Now",
   },
   {
-    src: `${PHOTO_BASE_URL}/hen-party-group-photo-life-drawing-v0s9.jpeg`,
+    src: `${PHOTO_BASE_URL}/hen-party-hen-party-life-drawing-kj1u.jpg`,
     alt: "Group Life Drawing Activity",
     title: "Fun for Everyone",
   },

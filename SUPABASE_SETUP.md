@@ -1,7 +1,7 @@
 # Supabase Setup for Hen Party Entertainment
 
 ## Database Password
-**Password**: `VGms5gPefJbDjT`
+**Password**: `[REDACTED]`
 
 ⚠️ **Important**: This password is used when creating the Supabase project. Once the project is created, you'll use API keys (not this password) in your `.env.local` file.
 
@@ -11,7 +11,7 @@
 2. Click "New Project"
 3. Fill in:
    - **Name**: `hen-party-ent`
-   - **Database Password**: `VGms5gPefJbDjT` (use the password above)
+   - **Database Password**: `[REDACTED]` (use the password above)
    - **Region**: Choose closest to your users
 4. Click "Create new project"
 5. Wait 1-2 minutes for project to initialize

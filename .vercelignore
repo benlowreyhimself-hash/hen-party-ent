@@ -1,0 +1,7 @@
+node_modules
+.next
+.git
+old-wordpress-backup
+legacy-wordpress-backup
+*.log
+.DS_Store
