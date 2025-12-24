@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-background.jpeg"
+            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-group-photo-hctz.jpg"
             alt="Hen Party Life Drawing Hero"
             fill
             sizes="100vw"
@@ -64,7 +64,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-[400px] md:h-auto">
                 <Image
-                  src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-1.jpeg"
+                  src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-drawing-ladies-9y7r.jpeg"
                   alt="Hen Party Life Drawing Session"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -104,7 +104,7 @@ export default function Home() {
               <div className="w-48 h-48 md:w-64 md:h-64 relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full border-4 border-white shadow-lg overflow-hidden">
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/hen-party-media/originals/ben-bride-glasses.jpg`}
+                    src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/ben-bride-glasses.jpg"
                     alt="Ben - Professional Life Drawing Model"
                     fill
                     sizes="(max-width: 768px) 200px, 256px"
@@ -161,10 +161,10 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {[
-                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-1.jpeg",
-                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-2.jpeg",
-                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-3.jpeg",
-                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-4.jpeg"
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-life-drawing-kj1u.jpg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-life-drawing-t2dy.jpeg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-life-drawing-hen-party-6g84.jpeg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-life-drawing-7bp5.jpeg"
               ].map((src, i) => (
                 <div key={i} className="relative h-48 md:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <Image
