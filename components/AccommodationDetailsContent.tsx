@@ -8,6 +8,8 @@ import StructuredData from '@/components/StructuredData';
 import AccommodationTracking from '@/components/AccommodationTracking';
 import OutboundLink from '@/components/OutboundLink';
 import { BookingLinkType, getAllBookingLinks } from '@/lib/utils/booking-links';
+import EnquiryModal from '@/components/EnquiryModal';
+import { Button } from '@/components/ui/button';
 
 interface AccommodationDetailsContentProps {
   house: {
@@ -60,6 +62,12 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
     house.photo_2_url,
     house.photo_3_url,
   ].filter(Boolean) as string[];
+
+  const [isEnquiryModalOpen, setIsEnquiryModalOpen] = useState(false);
+
+  // Affiliate link precedence: explicit affiliate link > generic booking link
+  const primaryBookingLink = house.affiliate_link || (bookingLinks.length > 0 ? bookingLinks[0].url : null);
+
 
   return (
     <>
@@ -238,27 +246,31 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
               )}
 
               {/* Contact for Entertainment */}
-              <div className="bg-primary/10 border border-primary rounded-lg p-6 mb-8">
-                <h2 className="text-2xl font-bold mb-4">Book Your Hen Party Entertainment</h2>
+              <div className="bg-primary/10 border border-primary rounded-lg p-6 mb-8 text-center">
+                <h2 className="text-2xl font-bold mb-4">Check Availability</h2>
                 <p className="text-foreground mb-4">
                   Interested in booking life drawing entertainment for your hen party at {house.title}?
-                  Contact us to discuss your requirements and check availability.
+                  Send an enquiry directly to check availability.
                 </p>
-                <div className="space-y-2">
-                  <p>
-                    <strong>Phone:</strong>{" "}
-                    <ContactLink type="phone" value="07747571426" className="text-primary hover:underline">
-                      07747571426
-                    </ContactLink>
-                  </p>
-                  <p>
-                    <strong>Email:</strong>{" "}
-                    <ContactLink type="email" value="ben@henpartyentertainment.co.uk" className="text-primary hover:underline">
-                      ben@henpartyentertainment.co.uk
-                    </ContactLink>
-                  </p>
+                <Button
+                  size="lg"
+                  onClick={() => setIsEnquiryModalOpen(true)}
+                  className="bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-full text-lg shadow-lg transform transition hover:scale-105"
+                >
+                  Send Enquiry to Venue & Ben
+                </Button>
+                <div className="mt-4 text-sm text-muted-foreground">
+                  Or email: <a href="mailto:ben@henpartyentertainment.co.uk" className="underline">ben@henpartyentertainment.co.uk</a>
                 </div>
               </div>
+
+              <EnquiryModal
+                isOpen={isEnquiryModalOpen}
+                onClose={() => setIsEnquiryModalOpen(false)}
+                houseId={house.id}
+                houseTitle={house.title}
+                venueEmail={house.owner_contact_info} // Pass this if available for context, though API handles it
+              />
 
               {/* Google Maps */}
               {house.google_maps_url && (

@@ -21,10 +21,12 @@ export async function saveFormSubmission(data: {
   source?: string;
   method?: string;
   enquiryDate?: string;
+  houseId?: string;
+  trackingId?: string;
 }): Promise<string | null> {
   try {
     const supabase = createAdminClient();
-    
+
     const submission: NewFormSubmission = {
       name: data.name,
       email: data.email,
@@ -42,6 +44,8 @@ export async function saveFormSubmission(data: {
       source: data.source || 'form',
       method: data.method || 'form_submission',
       enquiry_date: data.enquiryDate || new Date().toISOString().split('T')[0],
+      house_id: data.houseId || null,
+      tracking_id: data.trackingId || null,
     };
 
     const { data: result, error } = await supabase
@@ -72,7 +76,7 @@ export async function saveTemplateRequest(data: {
 }): Promise<string | null> {
   try {
     const supabase = createAdminClient();
-    
+
     const submission: NewFormSubmission = {
       name: 'Template Request',
       email: data.email || data.phone || 'unknown',
@@ -106,7 +110,7 @@ export async function saveTemplateRequest(data: {
 export async function getAllFormSubmissions() {
   try {
     const supabase = createAdminClient();
-    
+
     const { data, error } = await supabase
       .from('form_submissions')
       .select('*')

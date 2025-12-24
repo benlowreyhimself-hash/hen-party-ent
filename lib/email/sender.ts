@@ -125,7 +125,117 @@ Method: ${formData.method || 'form'}
   console.log(`Subject: ${emailSubject}`);
   console.log(`\n${emailBody}\n`);
   console.log('========================\n');
+
 }
+
+/**
+ * Send enquiry email to venue (Dual Notification)
+ */
+export async function sendVenueEnquiryEmail(formData: BookingFormData, venueEmail: string) {
+  const emailSubject = `Enquiry from Hen Party Entertainment - ${formData.eventDate || 'Date TBC'}`;
+
+  const emailBody = `
+Hello,
+
+You have received a new enquiry via Hen Party Entertainment.
+
+ENQUIRY DETAILS:
+Name: ${formData.name}
+Event Date: ${formData.eventDate || 'TBC'}
+Group Size: ${formData.groupSize || 'TBC'}
+Message: ${formData.message || 'No message provided'}
+
+This enquiry was generated from our website listing for your venue.
+Please reply directly to ${formData.email} to discuss availability.
+
+Best regards,
+Ben Lowrey
+Hen Party Entertainment
+  `.trim();
+
+  // HTML Version
+  const htmlBody = `
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .header { background-color: #c87cc4; color: white; padding: 20px; }
+    .content { padding: 20px; border: 1px solid #ddd; }
+    .field { margin-bottom: 10px; }
+    .label { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>New Enquiry via Hen Party Entertainment</h2>
+  </div>
+  <div class="content">
+    <p>Hello,</p>
+    <p>You have received a new enquiry via Hen Party Entertainment.</p>
+    
+    <h3>Enquiry Details:</h3>
+    <div class="field"><span class="label">Name:</span> ${formData.name}</div>
+    <div class="field"><span class="label">Event Date:</span> ${formData.eventDate || 'TBC'}</div>
+    <div class="field"><span class="label">Group Size:</span> ${formData.groupSize || 'TBC'}</div>
+    <div class="field"><span class="label">Client Email:</span> ${formData.email}</div>
+    
+    ${formData.message ? `<h3>Message:</h3><p>${formData.message}</p>` : ''}
+    
+    <p><strong>This enquiry came from our listing for your venue.</strong></p>
+    <p>Please reply directly to <strong>${formData.email}</strong> to discuss booking availability.</p>
+    
+    <hr>
+    <p>Best regards,<br>Ben Lowrey<br>Hen Party Entertainment</p>
+  </div>
+</body>
+</html>
+  `;
+
+  // Prefer Resend
+  if (RESEND_API_KEY) {
+    try {
+      const resend = new Resend(RESEND_API_KEY);
+      await resend.emails.send({
+        from: 'Ben <ben@henpartyentertainment.co.uk>',
+        to: venueEmail,
+        bcc: TO_EMAIL, // Copy Ben
+        replyTo: formData.email, // Reply goes to client
+        subject: emailSubject,
+        text: emailBody,
+        html: htmlBody,
+      });
+      console.log('✅ Venue email sent via Resend');
+      return;
+    } catch (error) {
+      console.error('Venue email Resend error:', error);
+    }
+  }
+
+  // Fallback SendGrid
+  if (SENDGRID_API_KEY) {
+    try {
+      await sgMail.send({
+        from: 'Ben <ben@henpartyentertainment.co.uk>',
+        to: venueEmail,
+        bcc: TO_EMAIL,
+        replyTo: formData.email,
+        subject: emailSubject,
+        text: emailBody,
+        html: htmlBody,
+      });
+      console.log('✅ Venue email sent via SendGrid');
+      return;
+    } catch (error) {
+      console.error('Venue email SendGrid error:', error);
+    }
+  }
+
+  console.log('⚠️ Email service not configured. Logging venue email:');
+  console.log(`To: ${venueEmail}`);
+  console.log(`Subject: ${emailSubject}`);
+}
+
 
 /**
  * Send template email

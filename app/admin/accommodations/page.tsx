@@ -3,6 +3,10 @@
 import { useState, useEffect } from 'react';
 import { CheckCircle, XCircle, Eye, EyeOff, Search, MapPin } from 'lucide-react';
 import Image from 'next/image';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 interface Accommodation {
     id: string;
@@ -12,6 +16,8 @@ interface Accommodation {
     address_verified: boolean;
     image_url: string | null;
     location: string;
+    affiliate_link: string | null;
+    contact_email: string | null;
 }
 
 export default function AdminAccommodationsPage() {
@@ -19,6 +25,8 @@ export default function AdminAccommodationsPage() {
     const [loading, setLoading] = useState(true);
     const [filter, setFilter] = useState<'all' | 'verified' | 'unverified'>('all');
     const [search, setSearch] = useState('');
+    const [editingHouse, setEditingHouse] = useState<Accommodation | null>(null);
+    const [editForm, setEditForm] = useState({ affiliate_link: '', contact_email: '' });
 
     useEffect(() => {
         fetchAccommodations();
@@ -52,6 +60,41 @@ export default function AdminAccommodationsPage() {
             // Revert on error
             console.error('Update failed', error);
             fetchAccommodations();
+        }
+    };
+
+    const openEdit = (house: Accommodation) => {
+        setEditingHouse(house);
+        setEditForm({
+            affiliate_link: house.affiliate_link || '',
+            contact_email: house.contact_email || ''
+        });
+    };
+
+    const handleSaveEdit = async () => {
+        if (!editingHouse) return;
+
+        try {
+            await fetch('/api/admin/accommodations', {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: editingHouse.id,
+                    affiliate_link: editForm.affiliate_link,
+                    contact_email: editForm.contact_email
+                })
+            });
+
+            // Optimistic update
+            setAccommodations(prev => prev.map(acc =>
+                acc.id === editingHouse.id
+                    ? { ...acc, affiliate_link: editForm.affiliate_link, contact_email: editForm.contact_email }
+                    : acc
+            ));
+
+            setEditingHouse(null);
+        } catch (error) {
+            console.error('Failed to save', error);
         }
     };
 
@@ -131,8 +174,8 @@ export default function AdminAccommodationsPage() {
                                         <button
                                             onClick={() => toggleStatus(acc.id, 'address_verified', acc.address_verified)}
                                             className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${acc.address_verified
-                                                    ? 'bg-green-100 text-green-800'
-                                                    : 'bg-yellow-100 text-yellow-800'
+                                                ? 'bg-green-100 text-green-800'
+                                                : 'bg-yellow-100 text-yellow-800'
                                                 }`}
                                         >
                                             {acc.address_verified ? (
@@ -146,8 +189,8 @@ export default function AdminAccommodationsPage() {
                                         <button
                                             onClick={() => toggleStatus(acc.id, 'is_published', acc.is_published)}
                                             className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${acc.is_published
-                                                    ? 'bg-blue-100 text-blue-800'
-                                                    : 'bg-gray-100 text-gray-600'
+                                                ? 'bg-blue-100 text-blue-800'
+                                                : 'bg-gray-100 text-gray-600'
                                                 }`}
                                         >
                                             {acc.is_published ? (
@@ -158,7 +201,12 @@ export default function AdminAccommodationsPage() {
                                         </button>
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-500">
-                                        <button className="text-primary hover:underline">Edit</button>
+                                        <button
+                                            onClick={() => openEdit(acc)}
+                                            className="text-primary hover:underline font-medium"
+                                        >
+                                            Edit Links
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
@@ -172,6 +220,42 @@ export default function AdminAccommodationsPage() {
                     )}
                 </div>
             )}
+
+            {/* Edit Modal */}
+            <Dialog open={!!editingHouse} onOpenChange={(open) => !open && setEditingHouse(null)}>
+                <DialogContent>
+                    <DialogHeader>
+                        <DialogTitle>Edit {editingHouse?.title}</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 py-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="affiliate">Affiliate Link</Label>
+                            <Input
+                                id="affiliate"
+                                placeholder="https://..."
+                                value={editForm.affiliate_link}
+                                onChange={e => setEditForm({ ...editForm, affiliate_link: e.target.value })}
+                            />
+                            <p className="text-xs text-gray-500">Overrides standard booking links efficiently.</p>
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="contact">Venue Contact Email</Label>
+                            <Input
+                                id="contact"
+                                type="email"
+                                placeholder="venue@example.com"
+                                value={editForm.contact_email}
+                                onChange={e => setEditForm({ ...editForm, contact_email: e.target.value })}
+                            />
+                            <p className="text-xs text-gray-500">Used for direct booking enquiries.</p>
+                        </div>
+                    </div>
+                    <DialogFooter>
+                        <Button variant="outline" onClick={() => setEditingHouse(null)}>Cancel</Button>
+                        <Button onClick={handleSaveEdit}>Save Changes</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }

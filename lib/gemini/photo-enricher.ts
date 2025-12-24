@@ -1,10 +1,14 @@
 /**
  * Photo Enrichment Service using Gemini AI
  * Generates alt text, titles, and descriptions for photos
+ * Also handles discovery and storage of new photos
  */
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GEMINI_MODELS } from './models';
+import { PhotoDiscoverer } from './photo-discoverer';
+import { ImageProcessor } from '@/lib/utils/image-processor';
+import { updateHouse, getHouseBySlug } from '@/lib/supabase/houses';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
@@ -15,7 +19,88 @@ export interface PhotoMetadata {
 }
 
 /**
+ * Orchestrates the discovery, processing, and enrichment of photos for a house
+ */
+export async function discoverAndEnrichPhotos(slug: string, bookingUrls: string[]) {
+  try {
+    console.log(`[PhotoEnrichment] Starting for ${slug} with ${bookingUrls.length} sources`);
+
+    const discoverer = new PhotoDiscoverer();
+    const processor = new ImageProcessor();
+
+    // 1. Discover photos from all sources
+    const allCandidates = [];
+    for (const url of bookingUrls) {
+      if (!url) continue;
+      const photos = await discoverer.findPhotos(url);
+      allCandidates.push(...photos);
+
+      // Don't hammer remote servers
+      await new Promise(r => setTimeout(r, 1000));
+    }
+
+    // Sort by score and deduplicate by URL
+    const uniqueCandidates = Array.from(
+      new Map(allCandidates.map(p => [p.url, p])).values()
+    ).sort((a, b) => b.score - a.score);
+
+    console.log(`[PhotoEnrichment] Found ${uniqueCandidates.length} unique candidates`);
+
+    if (uniqueCandidates.length === 0) {
+      return { success: false, message: 'No photos found' };
+    }
+
+    // 2. Select top 3-4 photos
+    const topPhotos = uniqueCandidates.slice(0, 4);
+    const uploadedUrls: string[] = [];
+
+    // 3. Process and Upload
+    for (const [index, photo] of topPhotos.entries()) {
+      // Use 1-based index for file naming/slots
+      const publicUrl = await processor.processAndStoreImage(photo.url, slug, index + 1);
+
+      if (publicUrl) {
+        uploadedUrls.push(publicUrl);
+      }
+    }
+
+    if (uploadedUrls.length === 0) {
+      return { success: false, message: 'Failed to upload any photos' };
+    }
+
+    // 4. Update House Record
+    const updateData: any = {
+      photos_extracted: true,
+      photos_stored_in_blob: true,
+    };
+
+    // Map to specific fields (smart assignment)
+    if (uploadedUrls[0]) updateData.image_url = uploadedUrls[0];
+    if (uploadedUrls[1]) updateData.photo_1_url = uploadedUrls[1];
+    if (uploadedUrls[2]) updateData.photo_2_url = uploadedUrls[2];
+    if (uploadedUrls[3]) updateData.photo_3_url = uploadedUrls[3];
+
+    // Get existing house to merge if needed, but updateHouse handles partials
+    const house = await getHouseBySlug(slug);
+    if (house) {
+      await updateHouse(house.id, updateData);
+      console.log(`[PhotoEnrichment] Updated house ${slug} with ${uploadedUrls.length} photos`);
+      return { success: true, count: uploadedUrls.length };
+    } else {
+      console.error(`[PhotoEnrichment] House ${slug} not found for update`);
+      return { success: false, message: 'House not found' };
+    }
+
+  } catch (error) {
+    console.error(`[PhotoEnrichment] Error:`, error);
+    return { success: false, error };
+  }
+}
+
+
+/**
  * Enrich a photo with AI-generated metadata
+ * (Legacy/Metadata function)
  */
 export async function enrichPhoto(
   photoUrl: string,
@@ -89,7 +174,7 @@ Return ONLY valid JSON, no markdown formatting.
 }
 
 /**
- * Batch enrich multiple photos
+ * Batch enrich multiple photos (Metadata only)
  */
 export async function enrichPhotos(
   photos: Array<{ url: string; alt?: string }>

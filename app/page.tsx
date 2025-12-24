@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-group-photo-hctz.jpg"
+            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-background-group-photo.jpg"
             alt="Hen Party Life Drawing Hero"
             fill
             sizes="100vw"
