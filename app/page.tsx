@@ -104,7 +104,7 @@ export default function Home() {
               <div className="w-48 h-48 md:w-64 md:h-64 relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full border-4 border-white shadow-lg overflow-hidden">
                   <Image
-                    src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/ben-profile.png"
+                    src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/hen-party-media/originals/ben-bride-glasses.jpg`}
                     alt="Ben - Professional Life Drawing Model"
                     fill
                     sizes="(max-width: 768px) 200px, 256px"

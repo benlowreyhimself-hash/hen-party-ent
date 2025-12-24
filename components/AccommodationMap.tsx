@@ -54,7 +54,7 @@ export default function AccommodationMap({ accommodations: propAccommodations, h
 
     const geocodeAccommodations = async () => {
       const needsGeocoding = accommodations.filter(acc => !acc.latitude || !acc.longitude);
-      
+
       if (needsGeocoding.length === 0) {
         // All have coordinates, render map
         return;
@@ -63,7 +63,7 @@ export default function AccommodationMap({ accommodations: propAccommodations, h
       // For now, we'll use a simple approach: try to extract coordinates from Google Maps URLs
       // or use postcode-based geocoding
       // In production, you'd want to use Google Geocoding API or store coordinates in database
-      
+
       // Placeholder: We'll render the map with available coordinates
       // and show a message for accommodations without coordinates
     };
@@ -89,7 +89,7 @@ export default function AccommodationMap({ accommodations: propAccommodations, h
 
   // Filter accommodations with valid coordinates or Google Maps URLs
   const mappableAccommodations = accommodations.filter(
-    acc => (acc.latitude && acc.longitude) || (acc.google_maps_url && acc.google_maps_url.length > 0)
+    acc => (acc.latitude && acc.longitude) || (acc.google_maps_url && (acc.google_maps_url?.length ?? 0) > 0)
   );
 
   if (mappableAccommodations.length === 0) {

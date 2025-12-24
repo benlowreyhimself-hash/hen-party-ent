@@ -28,7 +28,7 @@ conn.on('ready', () => {
 
     conn.exec(dumpCmd, (err, stream) => {
         if (err) throw err;
-        stream.on('close', (code, signal) => {
+        stream.on('close', (code: any, signal: any) => {
             console.log('Database dump finished with code: ' + code);
             if (code === 0) downloadDatabase();
             else {
@@ -36,9 +36,9 @@ conn.on('ready', () => {
                 // downloadDatabase(); // Fail soft?
                 conn.end();
             }
-        }).on('data', (data) => {
+        }).on('data', (data: any) => {
             console.log('STDOUT: ' + data);
-        }).stderr.on('data', (data) => {
+        }).stderr.on('data', (data: any) => {
             console.log('STDERR: ' + data);
         });
     });
@@ -74,7 +74,7 @@ function tarAndDownloadImages(sftp: any) {
 
     conn.exec(tarCmd, (err, stream) => {
         if (err) throw err;
-        stream.on('close', (code, signal) => {
+        stream.on('close', (code: any, signal: any) => {
             console.log('Compression finished with code: ' + code);
             if (code === 0) {
                 const remoteTar = 'uploads_archive.tar.gz';
@@ -82,7 +82,7 @@ function tarAndDownloadImages(sftp: any) {
 
                 console.log('Downloading images archive (large file)...');
                 sftp.fastGet(remoteTar, localTar, {
-                    step: (total_transferred, chunk, total) => {
+                    step: (total_transferred: any, chunk: any, total: any) => {
                         if (total_transferred % (1024 * 1024 * 10) === 0) {
                             console.log(`Transferred ${Math.round(total_transferred / 1024 / 1024)} MB`);
                         }

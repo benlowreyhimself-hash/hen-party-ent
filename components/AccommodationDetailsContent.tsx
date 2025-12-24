@@ -63,7 +63,7 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
 
   return (
     <>
-      <StructuredData house={house} />
+      <StructuredData house={house as any} />
       <AccommodationTracking accommodationName={house.title} slug={house.slug} />
       <div className="w-full">
         {/* Hero Section */}
@@ -118,7 +118,7 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
                   <strong>Ben travels to your location</strong> - this is a mobile service. Ben does not organize or book venues.
                 </p>
                 <p className="text-blue-800">
-                  This venue is a place where Ben has provided life drawing services in the past. 
+                  This venue is a place where Ben has provided life drawing services in the past.
                   You book your own accommodation, and Ben travels to you to provide the entertainment.
                 </p>
               </div>
@@ -241,7 +241,7 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
               <div className="bg-primary/10 border border-primary rounded-lg p-6 mb-8">
                 <h2 className="text-2xl font-bold mb-4">Book Your Hen Party Entertainment</h2>
                 <p className="text-foreground mb-4">
-                  Interested in booking life drawing entertainment for your hen party at {house.title}? 
+                  Interested in booking life drawing entertainment for your hen party at {house.title}?
                   Contact us to discuss your requirements and check availability.
                 </p>
                 <div className="space-y-2">

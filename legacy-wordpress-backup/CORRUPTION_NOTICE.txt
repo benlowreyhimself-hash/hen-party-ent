@@ -1,9 +1,0 @@
-CRITICAL NOTICE: BACKUP CORRUPTION DETECTED
-
-All files in this backup appear to be corrupted.
-Each file checked is exactly 710 bytes and contains a cPanel error message:
-"Failed to load module “FileManager”: The system failed to load the module..."
-
-This suggests the backup was not downloaded correctly from the server or the cPanel file manager was broken during the download process.
-
-It is highly likely that NO usable data (images, database, code) can be recovered from this specific backup set.

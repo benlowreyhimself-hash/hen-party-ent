@@ -11,16 +11,19 @@ const isPublicRoute = createRouteMatcher([
   '/contact',
   '/locations(.*)',
   '/house-archives(.*)',
-  '/accommodations(.*)', // Public accommodation pages for SEO
-  '/regions(.*)', // Public region pages
+  '/accommodations', // Public accommodations index
+  '/accommodations/(.*)', // Public accommodation details
+  '/regions', // Public regions index
+  '/regions/(.*)', // Public region pages
   // Authentication pages (must be public)
   '/sign-in(.*)',
   '/sign-up(.*)',
-  // Public API routes
   '/api/webhooks(.*)',
   '/api/contact(.*)', // Contact form API (public)
   '/api/test(.*)', // Test endpoints (public)
   '/api/test-supabase(.*)', // Supabase test endpoint (public)
+  '/api/accommodations', // Public accommodations API
+  '/api/accommodations/(.*)', // Public accommodations API subroutes
 ]);
 
 // Only use Clerk middleware if keys are configured
@@ -28,11 +31,11 @@ const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 export default clerkPublishableKey
   ? clerkMiddleware(async (auth, request) => {
-      // Handle Clerk authentication
-      if (!isPublicRoute(request)) {
-        await auth.protect();
-      }
-    })
+    // Handle Clerk authentication
+    if (!isPublicRoute(request)) {
+      await auth.protect();
+    }
+  })
   : () => NextResponse.next();
 
 export const config = {

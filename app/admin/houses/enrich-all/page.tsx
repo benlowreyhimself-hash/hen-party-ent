@@ -114,7 +114,6 @@ export default function EnrichAllHousesPage() {
         setProgress({
           current: i + 1,
           total: houseIdsToEnrich.length,
-          percentage: Math.round(((i + 1) / houseIdsToEnrich.length) * 100),
         });
         // Add a small delay to prevent overwhelming the API or UI
         await new Promise(resolve => setTimeout(resolve, 500));
@@ -223,11 +222,10 @@ export default function EnrichAllHousesPage() {
             {results.map((result, index) => (
               <div
                 key={result.houseId || index}
-                className={`p-3 rounded ${
-                  result.success
+                className={`p-3 rounded ${result.success
                     ? 'bg-green-50 border border-green-200'
                     : 'bg-red-50 border border-red-200'
-                }`}
+                  }`}
               >
                 <div className="font-medium">{result.title}</div>
                 {result.success ? (

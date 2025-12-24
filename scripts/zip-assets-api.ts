@@ -47,7 +47,7 @@ async function run() {
             // It might fail if file exists, let's assume it might exist or continue
         }
     } catch (e) {
-        console.error("Zip error:", e.message);
+        console.error("Zip error:", (e as any).message);
     }
 
     console.log("2. Downloading ZIP via HTTP fallback...");

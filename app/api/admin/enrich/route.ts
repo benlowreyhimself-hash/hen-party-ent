@@ -90,7 +90,7 @@ export async function POST(request: Request) {
       updateData.other_booking_url = addressVerification.other_booking_urls?.[0] || null;
       updateData.location = addressVerification.location || updateData.location;
       updateData.postcode = addressVerification.postcode || updateData.postcode;
-      
+
       // Set address_verified based on is_public_property
       updateData.address_verified = addressVerification.is_public_property === true;
       updateData.booking_links_found = !!(
@@ -100,7 +100,7 @@ export async function POST(request: Request) {
         addressVerification.vrbo_url ||
         (addressVerification.other_booking_urls && addressVerification.other_booking_urls.length > 0)
       );
-      
+
       // Extract and save photos (hybrid storage - URLs initially)
       if (addressVerification.photos && Array.isArray(addressVerification.photos) && addressVerification.photos.length > 0) {
         const photos = addressVerification.photos.filter((url: string) => url && url.startsWith('http'));
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
       updated: updated,
     });
   } catch (error: any) {
-    console.error(`[Enrich API] Top-level error enriching property for houseId: ${houseId || 'N/A'}:`, error);
+    console.error(`[Enrich API] Top-level error enriching property:`, error);
     return NextResponse.json(
       { error: error.message || 'Failed to enrich property' },
       { status: 500 }

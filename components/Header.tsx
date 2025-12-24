@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { Facebook, Instagram, Search, Menu, X } from "lucide-react";
 import ContactLink from "@/components/ContactLink";
@@ -75,8 +76,13 @@ export default function Header() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-primary-foreground text-2xl font-bold">H</span>
+              <div className="relative w-12 h-12">
+                <Image
+                  src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-pink-letter-h-umt2.png"
+                  alt="Hen Party Entertainment"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </Link>
 

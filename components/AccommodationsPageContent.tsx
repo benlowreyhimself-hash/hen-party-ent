@@ -28,19 +28,27 @@ export default function AccommodationsPageContent() {
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadData() {
       try {
-        const [housesData, regionsData] = await Promise.all([
-          fetch('/api/accommodations').then(r => r.json()),
-          fetch('/api/accommodations/regions').then(r => r.json()),
+        const [housesRes, regionsRes] = await Promise.all([
+          fetch('/api/accommodations'),
+          fetch('/api/accommodations/regions'),
         ]);
-        
+
+        if (!housesRes.ok) throw new Error(`Accommodations API Error: ${housesRes.status}`);
+        if (!regionsRes.ok) throw new Error(`Regions API Error: ${regionsRes.status}`);
+
+        const housesData = await housesRes.json();
+        const regionsData = await regionsRes.json();
+
         setHouses(housesData.houses || []);
         setRegions(regionsData.regions || []);
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error loading accommodations:', error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -55,10 +63,10 @@ export default function AccommodationsPageContent() {
   const formatDate = (dateString: string) => {
     try {
       const date = new Date(dateString);
-      return date.toLocaleDateString('en-GB', { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
+      return date.toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
       });
     } catch {
       return dateString;
@@ -82,6 +90,26 @@ export default function AccommodationsPageContent() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-md px-4">
+          <div className="text-red-500 text-4xl mb-4">⚠️</div>
+          <h2 className="text-xl font-bold mb-2">Something went wrong</h2>
+          <p className="text-muted-foreground mb-4">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="bg-primary text-primary-foreground px-4 py-2 rounded hover:bg-primary/90 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -94,7 +122,7 @@ export default function AccommodationsPageContent() {
             Life Drawing Entertainment at Beautiful Locations Across the UK
           </p>
           <p className="text-lg opacity-90">
-            These are past locations where Ben has provided life drawing services. 
+            These are past locations where Ben has provided life drawing services.
             Ben travels to your location - this is a mobile service.
           </p>
         </div>
@@ -112,11 +140,10 @@ export default function AccommodationsPageContent() {
                   setSelectedRegion(null);
                   trackAccommodationFilter('region', 'all');
                 }}
-                className={`px-4 py-2 rounded-md transition-colors ${
-                  selectedRegion === null
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`px-4 py-2 rounded-md transition-colors ${selectedRegion === null
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 All Regions ({houses.length})
               </button>
@@ -127,11 +154,10 @@ export default function AccommodationsPageContent() {
                     setSelectedRegion(region);
                     trackAccommodationFilter('region', region);
                   }}
-                  className={`px-4 py-2 rounded-md transition-colors ${
-                    selectedRegion === region
-                      ? 'bg-primary text-primary-foreground'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                  className={`px-4 py-2 rounded-md transition-colors ${selectedRegion === region
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
                 >
                   {region} ({count})
                 </button>
@@ -145,11 +171,10 @@ export default function AccommodationsPageContent() {
                   setViewMode('grid');
                   trackAccommodationFilter('view_mode', 'grid');
                 }}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === 'grid'
-                    ? 'bg-white text-primary shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
+                className={`p-2 rounded transition-colors ${viewMode === 'grid'
+                  ? 'bg-white text-primary shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+                  }`}
                 aria-label="Grid view"
               >
                 <Grid3x3 className="w-5 h-5" />
@@ -159,11 +184,10 @@ export default function AccommodationsPageContent() {
                   setViewMode('list');
                   trackAccommodationFilter('view_mode', 'list');
                 }}
-                className={`p-2 rounded transition-colors ${
-                  viewMode === 'list'
-                    ? 'bg-white text-primary shadow-sm'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
+                className={`p-2 rounded transition-colors ${viewMode === 'list'
+                  ? 'bg-white text-primary shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+                  }`}
                 aria-label="List view"
               >
                 <List className="w-5 h-5" />
@@ -179,7 +203,7 @@ export default function AccommodationsPageContent() {
           {filteredHouses.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-lg text-gray-500">
-                {selectedRegion 
+                {selectedRegion
                   ? `No accommodations found in ${selectedRegion}.`
                   : 'No accommodations available at the moment.'}
               </p>
@@ -230,7 +254,7 @@ export default function AccommodationsPageContent() {
                           </div>
                         )}
                       </div>
-                      
+
                       {/* Secondary Info: Address/House Name */}
                       <div className="mb-3">
                         <h3 className="text-lg font-medium text-foreground mb-1">
@@ -242,7 +266,7 @@ export default function AccommodationsPageContent() {
                           </p>
                         )}
                       </div>
-                      
+
                       {/* Owner Approval Badge */}
                       {house.owner_approved && (
                         <div className="flex items-center gap-1 mb-2">
@@ -310,7 +334,7 @@ export default function AccommodationsPageContent() {
                           </div>
                         )}
                       </div>
-                      
+
                       {/* Secondary Info: Address/House Name */}
                       <div className="mb-3">
                         <h3 className="text-lg font-medium text-foreground mb-1">
@@ -322,7 +346,7 @@ export default function AccommodationsPageContent() {
                           </p>
                         )}
                       </div>
-                      
+
                       {/* Badges */}
                       <div className="flex items-center gap-2 mb-3">
                         {house.has_affiliate_relationship && (
@@ -337,7 +361,7 @@ export default function AccommodationsPageContent() {
                           </div>
                         )}
                       </div>
-                      
+
                       <div className="flex items-center gap-4 text-muted-foreground text-sm mb-3">
                         {latestVisit && (
                           <div className="flex items-center gap-1 text-primary">

@@ -25,7 +25,7 @@ async function testConnection() {
 
         // Let's list tables to confirm
         const [rows] = await connection.execute('SHOW TABLES');
-        console.log(`Found ${rows.length} tables.`);
+        console.log(`Found ${(rows as any[]).length} tables.`);
 
         await connection.end();
     } catch (e: any) {

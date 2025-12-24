@@ -24,11 +24,10 @@ export const metadata: Metadata = {
   description: "Hen Party Life Drawing entertainment services across Bristol, Bath, Cardiff, Gloucester, Cotswolds, Somerset, Oxford, Swindon, London and Nationwide",
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: 'https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-pink-letter-h-umt2.png', sizes: 'any' },
     ],
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    shortcut: 'https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-pink-letter-h-umt2.png',
+    apple: 'https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-pink-letter-h-umt2.png',
   },
 };
 

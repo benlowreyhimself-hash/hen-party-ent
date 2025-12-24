@@ -63,7 +63,7 @@ async function run() {
         }
 
     } catch (e) {
-        console.error("Execution failed:", e.message);
+        console.error("Execution failed:", (e as any).message);
     }
 }
 
