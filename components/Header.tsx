@@ -7,6 +7,11 @@ import ContactLink from "@/components/ContactLink";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="w-full sticky top-0 z-50">
@@ -14,15 +19,15 @@ export default function Header() {
       <div className="bg-primary text-primary-foreground py-2 px-4">
         <div className="container mx-auto flex items-center justify-between text-sm">
           <div className="flex items-center gap-6">
-            <ContactLink 
-              type="phone" 
+            <ContactLink
+              type="phone"
               value="07747571426"
               className="hover:opacity-80 transition-opacity"
             >
               07747571426
             </ContactLink>
-            <ContactLink 
-              type="email" 
+            <ContactLink
+              type="email"
               value="ben@henpartyentertainment.co.uk"
               className="hover:opacity-80 transition-opacity"
             >
@@ -49,7 +54,7 @@ export default function Header() {
               <Instagram className="w-5 h-5" />
             </a>
             {/* Clerk Login Button */}
-            {typeof window !== 'undefined' && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && (
+            {mounted && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && (
               <div className="ml-2">
                 <a
                   href="/sign-in"

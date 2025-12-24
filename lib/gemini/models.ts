@@ -12,19 +12,20 @@ export const GEMINI_MODELS = {
   // gemini-3.0-pro: Latest flagship model, best reasoning and quality
   // gemini-3.0-flash: Extremely fast and capable
   // gemini-1.5-pro: Reliable fallback
-  PROPERTY_ENRICHMENT: 'gemini-3.0-pro', // Best quality for property descriptions and content
-  PROPERTY_ENRICHMENT_FALLBACK: 'gemini-1.5-pro',
-  
+  // Verified working model
+  PROPERTY_ENRICHMENT: 'gemini-2.0-flash-exp',
+  PROPERTY_ENRICHMENT_FALLBACK: 'gemini-2.0-flash-exp',
+
   // Best for structured data extraction and verification
-  ADDRESS_VERIFICATION: 'gemini-3.0-pro', // Needs accuracy for address verification
-  ADDRESS_VERIFICATION_FALLBACK: 'gemini-1.5-pro',
-  
+  ADDRESS_VERIFICATION: 'gemini-2.0-flash-exp',
+  ADDRESS_VERIFICATION_FALLBACK: 'gemini-2.0-flash-exp',
+
   // Best for simple metadata generation
-  PHOTO_ENRICHMENT: 'gemini-3.0-flash', // Fast and sufficient for photo metadata
-  PHOTO_ENRICHMENT_FALLBACK: 'gemini-1.5-flash',
-  
+  PHOTO_ENRICHMENT: 'gemini-2.0-flash-exp',
+  PHOTO_ENRICHMENT_FALLBACK: 'gemini-2.0-flash-exp',
+
   // For batch operations where speed matters
-  BATCH_PROCESSING: 'gemini-3.0-flash', // Balance of speed and quality
+  BATCH_PROCESSING: 'gemini-2.0-flash-exp',
 } as const;
 
 /**
@@ -34,10 +35,10 @@ export function getModelForTask(
   task: keyof typeof GEMINI_MODELS,
   useFallback = false
 ): string {
-  const modelKey = useFallback 
+  const modelKey = useFallback
     ? `${task}_FALLBACK` as keyof typeof GEMINI_MODELS
     : task;
-  
+
   return GEMINI_MODELS[modelKey] || GEMINI_MODELS.PROPERTY_ENRICHMENT_FALLBACK;
 }
 

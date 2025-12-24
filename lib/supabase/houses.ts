@@ -191,7 +191,7 @@ export interface HouseInput {
  */
 export async function getFeaturedHouses(limitCount: number = 6): Promise<House[]> {
   const supabase = createAdminClient();
-  
+
   // Only show published houses with at least one booking link (verified holiday accommodations)
   const { data, error } = await supabase
     .from('houses')
@@ -207,7 +207,7 @@ export async function getFeaturedHouses(limitCount: number = 6): Promise<House[]
     // If schema cache error, fall back to Drizzle direct database connection
     if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
       console.warn('⚠️  Supabase API cache stale, using direct database connection...');
-      
+
       try {
         const db = getDrizzleDb();
         const result = await db
@@ -227,7 +227,7 @@ export async function getFeaturedHouses(limitCount: number = 6): Promise<House[]
           )
           .orderBy(desc(houses.is_featured), desc(houses.address_verified), asc(houses.title))
           .limit(limitCount);
-        
+
         // Convert Drizzle result to House format (with defaults for missing fields)
         return result.map(row => ({
           ...drizzleRowToHouse(row as any),
@@ -244,7 +244,7 @@ export async function getFeaturedHouses(limitCount: number = 6): Promise<House[]
         return [];
       }
     }
-    
+
     return [];
   }
 
@@ -258,13 +258,13 @@ export async function getFeaturedHouses(limitCount: number = 6): Promise<House[]
  */
 export async function getPublishedHouses(): Promise<House[]> {
   const supabase = createAdminClient();
-  
+
   // Only show published houses with at least one booking link (verified holiday accommodations)
   const { data, error } = await supabase
     .from('houses')
     .select('*')
     .eq('is_published', true)
-    .or('website_url.not.is.null,airbnb_url.not.is.null,booking_com_url.not.is.null,vrbo_url.not.is.null,other_booking_url.not.is.null')
+    // .or('website_url.not.is.null,airbnb_url.not.is.null,booking_com_url.not.is.null,vrbo_url.not.is.null,other_booking_url.not.is.null')
     .order('is_featured', { ascending: false })
     .order('address_verified', { ascending: false }) // Verified first
     .order('title', { ascending: true });
@@ -273,7 +273,7 @@ export async function getPublishedHouses(): Promise<House[]> {
     // If schema cache error, fall back to Drizzle direct database connection
     if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
       console.warn('⚠️  Supabase API cache stale, using direct database connection...');
-      
+
       try {
         const db = getDrizzleDb();
         const result = await db
@@ -292,7 +292,7 @@ export async function getPublishedHouses(): Promise<House[]> {
             )
           )
           .orderBy(desc(houses.is_featured), desc(houses.address_verified), asc(houses.title));
-        
+
         // Convert Drizzle result to House format (with defaults for missing fields)
         return result.map(row => ({
           ...drizzleRowToHouse(row as any),
@@ -307,7 +307,7 @@ export async function getPublishedHouses(): Promise<House[]> {
         return [];
       }
     }
-    
+
     return [];
   }
 
@@ -320,7 +320,7 @@ export async function getPublishedHouses(): Promise<House[]> {
  */
 export async function getPublishedHouseSlugs(): Promise<string[]> {
   const supabase = createAdminClient();
-  
+
   // Only get published houses with booking links (verified holiday accommodations) for sitemap
   const { data, error } = await supabase
     .from('houses')
@@ -337,14 +337,14 @@ export async function getPublishedHouseSlugs(): Promise<string[]> {
           .select({ slug: houses.slug })
           .from(houses)
           .where(and(eq(houses.is_published, true), eq(houses.address_verified, true)));
-        
+
         return result.map(row => row.slug);
       } catch (drizzleError: any) {
         console.error('Drizzle fallback failed:', drizzleError.message);
         return [];
       }
     }
-    
+
     return [];
   }
 
@@ -358,7 +358,7 @@ export async function getPublishedHouseSlugs(): Promise<string[]> {
  */
 export async function getHouseBySlug(slug: string): Promise<House | null> {
   const supabase = createAdminClient();
-  
+
   // Show all published houses (not just verified)
   const { data, error } = await supabase
     .from('houses')
@@ -371,7 +371,7 @@ export async function getHouseBySlug(slug: string): Promise<House | null> {
     // If schema cache error, fall back to Drizzle direct database connection
     if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
       console.warn('⚠️  Supabase API cache stale, using direct database connection...');
-      
+
       try {
         const db = getDrizzleDb();
         const result = await db
@@ -379,11 +379,11 @@ export async function getHouseBySlug(slug: string): Promise<House | null> {
           .from(houses)
           .where(and(eq(houses.slug, slug), eq(houses.is_published, true)))
           .limit(1);
-        
+
         if (result.length === 0) {
           return null;
         }
-        
+
         // Convert with defaults for missing fields
         return {
           ...drizzleRowToHouse(result[0] as any),
@@ -398,7 +398,7 @@ export async function getHouseBySlug(slug: string): Promise<House | null> {
         return null;
       }
     }
-    
+
     console.error('Error fetching house:', error);
     return null;
   }
@@ -412,7 +412,7 @@ export async function getHouseBySlug(slug: string): Promise<House | null> {
  */
 export async function getHousesByRegion(region: string): Promise<House[]> {
   const supabase = createAdminClient();
-  
+
   // Only show published houses in region with at least one booking link (verified holiday accommodations)
   const { data, error } = await supabase
     .from('houses')
@@ -454,7 +454,7 @@ export async function getRegionsWithCounts(): Promise<Array<{ region: string; co
  */
 export async function getAllHouses(): Promise<House[]> {
   const supabase = createAdminClient();
-  
+
   const { data, error } = await supabase
     .from('houses')
     .select('*')
@@ -468,7 +468,7 @@ export async function getAllHouses(): Promise<House[]> {
       console.warn('   Please refresh the schema cache in Supabase Dashboard:');
       console.warn('   Settings → API → Refresh Schema Cache');
       console.warn('   Or wait 1-5 minutes for automatic refresh.');
-      
+
       // Try Drizzle fallback as last resort
       try {
         const db = getDrizzleDb();
@@ -476,9 +476,9 @@ export async function getAllHouses(): Promise<House[]> {
           .select(selectExistingColumns)
           .from(houses)
           .orderBy(desc(houses.created_at));
-        
+
         console.log(`✅ Drizzle fallback successful: Found ${result.length} houses`);
-        
+
         // Convert Drizzle result to House format (with defaults for missing fields)
         return result.map(row => ({
           ...drizzleRowToHouse(row as any),
@@ -494,7 +494,7 @@ export async function getAllHouses(): Promise<House[]> {
         return [];
       }
     }
-    
+
     console.error('Error fetching all houses:', error);
     return [];
   }
@@ -507,7 +507,7 @@ export async function getAllHouses(): Promise<House[]> {
  */
 export async function getHouseById(id: string): Promise<House | null> {
   const supabase = createAdminClient();
-  
+
   const { data, error } = await supabase
     .from('houses')
     .select('*')
@@ -518,7 +518,7 @@ export async function getHouseById(id: string): Promise<House | null> {
     // If schema cache error, fall back to Drizzle direct database connection
     if (error.code === 'PGRST205' || error.message?.includes('schema cache')) {
       console.warn('⚠️  Supabase API cache stale, using direct database connection...');
-      
+
       try {
         const db = getDrizzleDb();
         const result = await db
@@ -526,11 +526,11 @@ export async function getHouseById(id: string): Promise<House | null> {
           .from(houses)
           .where(eq(houses.id, id))
           .limit(1);
-        
+
         if (result.length === 0) {
           return null;
         }
-        
+
         // Convert with defaults for missing fields
         return {
           ...drizzleRowToHouse(result[0] as any),
@@ -545,7 +545,7 @@ export async function getHouseById(id: string): Promise<House | null> {
         return null;
       }
     }
-    
+
     console.error('Error fetching house:', error);
     return null;
   }
@@ -559,10 +559,10 @@ export async function getHouseById(id: string): Promise<House | null> {
  */
 export async function createHouse(input: HouseInput): Promise<House | null> {
   const supabase = createAdminClient();
-  
+
   // Auto-calculate region from postcode
   const region = getRegionFromPostcode(input.postcode);
-  
+
   const { data, error } = await supabase
     .from('houses')
     .insert({
@@ -585,13 +585,13 @@ export async function createHouse(input: HouseInput): Promise<House | null> {
  */
 export async function updateHouse(id: string, input: Partial<HouseInput>): Promise<House | null> {
   const supabase = createAdminClient();
-  
+
   // Auto-update region if postcode changed
   const updateData: any = { ...input };
   if (input.postcode) {
     updateData.region = getRegionFromPostcode(input.postcode);
   }
-  
+
   const { data, error } = await supabase
     .from('houses')
     .update(updateData)
@@ -600,6 +600,44 @@ export async function updateHouse(id: string, input: Partial<HouseInput>): Promi
     .single();
 
   if (error) {
+    // If schema cache error, fall back to Drizzle direct database connection
+    if (error.code === 'PGRST204' || error.code === 'PGRST205' || error.message?.includes('schema cache')) {
+      console.warn('⚠️  Supabase API cache stale during update, using direct database connection...');
+
+      try {
+        const db = getDrizzleDb();
+
+        // Ensure input data matches schema columns
+        // Drizzle ignores undefined values in set(), fortunately
+        const result = await db
+          .update(houses)
+          .set({
+            ...updateData,
+            updated_at: new Date(),
+          })
+          .where(eq(houses.id, id))
+          .returning();
+
+        if (result.length === 0) {
+          return null;
+        }
+
+        // Convert to House format
+        return {
+          ...drizzleRowToHouse(result[0] as any),
+          // Default new fields if they don't exist in return type yet
+          ben_visited_dates: null,
+          has_affiliate_relationship: false,
+          owner_approved: false,
+          owner_contact_info: null,
+          owner_notes: null,
+        };
+      } catch (drizzleError: any) {
+        console.error('Drizzle fallback also failed:', drizzleError.message);
+        return null;
+      }
+    }
+
     console.error('Error updating house:', error);
     return null;
   }
@@ -612,7 +650,7 @@ export async function updateHouse(id: string, input: Partial<HouseInput>): Promi
  */
 export async function deleteHouse(id: string): Promise<boolean> {
   const supabase = createAdminClient();
-  
+
   const { error } = await supabase
     .from('houses')
     .delete()

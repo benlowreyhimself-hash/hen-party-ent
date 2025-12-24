@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="/images/hero.jpg"
+            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-background.jpeg"
             alt="Hen Party Life Drawing Hero"
             fill
             sizes="100vw"
@@ -58,13 +58,13 @@ export default function Home() {
       {/* Main Content */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          
+
           {/* Introduction Card */}
           <div className="max-w-5xl mx-auto mb-16 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2">
               <div className="relative h-[400px] md:h-auto">
                 <Image
-                  src="/wp-content/uploads/2017/07/C3CD1C3E-99D3-4572-BB39-06D19DA36311_1_201_a-1.jpeg"
+                  src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-1.jpeg"
                   alt="Hen Party Life Drawing Session"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -84,8 +84,8 @@ export default function Home() {
                     I make sure the bride is made to feel special, and the whole group enjoys themselves. You will end up with lots of great photos of your fun weekend.
                   </p>
                   <p>
-                    <a 
-                      href="https://share.google/SkTxcIAp7GAgditi0" 
+                    <a
+                      href="https://share.google/SkTxcIAp7GAgditi0"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-primary font-semibold hover:underline inline-flex items-center gap-1"
@@ -104,7 +104,7 @@ export default function Home() {
               <div className="w-48 h-48 md:w-64 md:h-64 relative flex-shrink-0">
                 <div className="absolute inset-0 rounded-full border-4 border-white shadow-lg overflow-hidden">
                   <Image
-                    src="https://henpartyentertainment.co.uk/wp-content/uploads/2020/04/0374AD0B-770A-4F85-B2AF-EC71E410CF05.png"
+                    src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/ben-profile.png"
                     alt="Ben - Professional Life Drawing Model"
                     fill
                     sizes="(max-width: 768px) 200px, 256px"
@@ -161,10 +161,10 @@ export default function Home() {
             <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               {[
-                "https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/11/BA76C206-80F2-421E-9E80-8C8F097EB5D3_1_201_a.jpeg?w=1080&ssl=1",
-                "https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2020/04/Life-Drawing-Best-9-of-98-scaled.jpg?w=1080&ssl=1",
-                "https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2020/04/84101C19-5C36-45B8-94AB-BF1A10F610D3_1_105_c.jpg?w=1080&ssl=1",
-                "https://i0.wp.com/henpartyentertainment.co.uk/wp-content/uploads/2019/11/FAAF3DB4-EF12-4CBE-93FC-8FD1B370CAC2_1_201_a.jpeg?w=1080&ssl=1"
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-1.jpeg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-2.jpeg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-3.jpeg",
+                "https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/session-4.jpeg"
               ].map((src, i) => (
                 <div key={i} className="relative h-48 md:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                   <Image
