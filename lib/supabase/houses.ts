@@ -106,6 +106,8 @@ function drizzleRowToHouse(row: HouseRow): House {
     enrichment_complete: row.enrichment_complete ?? false,
     booking_url: row.other_booking_url || row.airbnb_url || row.booking_com_url || row.vrbo_url || row.website_url,
     google_maps_url: row.google_maps_url,
+    affiliate_link: row.affiliate_link || null,
+    contact_email: row.contact_email || null,
     ben_visited_dates: row.ben_visited_dates || null,
     has_affiliate_relationship: row.has_affiliate_relationship || false,
     owner_approved: row.owner_approved || false,
@@ -152,6 +154,8 @@ export interface House {
   enrichment_complete: boolean;
   booking_url: string | null;
   google_maps_url: string | null;
+  affiliate_link: string | null;
+  contact_email: string | null;
   ben_visited_dates: string[] | null;
   has_affiliate_relationship: boolean;
   owner_approved: boolean;

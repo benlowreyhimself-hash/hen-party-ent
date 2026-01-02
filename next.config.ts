@@ -56,8 +56,39 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'www.beaunash.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thevenuescollection.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'themanorpettyfrance.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'no15greatpulteneystreet.co.uk',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.blenheim-barns.co.uk',
+      },
+      {
+        protocol: 'https',
         hostname: 'xirtgqglzsghphhihrcr.supabase.co',
         pathname: '/storage/v1/object/public/**',
+      },
+      // Catch-all for any HTTPS accommodation images
+      // (Since accommodations come from various booking platforms)
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+      // Support HTTP images (older accommodation listings)
+      {
+        protocol: 'http',
+        hostname: '**',
       },
     ],
     formats: ['image/avif', 'image/webp'],

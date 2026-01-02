@@ -28,30 +28,27 @@ export async function discoverAndEnrichPhotos(slug: string, bookingUrls: string[
     const discoverer = new PhotoDiscoverer();
     const processor = new ImageProcessor();
 
-    // 1. Discover photos from all sources
-    const allCandidates = [];
-    for (const url of bookingUrls) {
-      if (!url) continue;
-      const photos = await discoverer.findPhotos(url);
-      allCandidates.push(...photos);
-
-      // Don't hammer remote servers
-      await new Promise(r => setTimeout(r, 1000));
+    // Fetch house data for fallback search context
+    const house = await getHouseBySlug(slug);
+    if (!house) {
+      return { success: false, message: 'House not found' };
     }
 
-    // Sort by score and deduplicate by URL
-    const uniqueCandidates = Array.from(
-      new Map(allCandidates.map(p => [p.url, p])).values()
-    ).sort((a, b) => b.score - a.score);
+    // 1. Discover photos from all sources (with Google Images fallback)
+    const allCandidates = await discoverer.findPhotosWithFallback(
+      bookingUrls,
+      house.title,
+      house.location || house.region || 'UK'
+    );
 
-    console.log(`[PhotoEnrichment] Found ${uniqueCandidates.length} unique candidates`);
+    console.log(`[PhotoEnrichment] Found ${allCandidates.length} candidate photos`);
 
-    if (uniqueCandidates.length === 0) {
-      return { success: false, message: 'No photos found' };
+    if (allCandidates.length === 0) {
+      return { success: false, message: 'No photos found from any source' };
     }
 
     // 2. Select top 3-4 photos
-    const topPhotos = uniqueCandidates.slice(0, 4);
+    const topPhotos = allCandidates.slice(0, 4);
     const uploadedUrls: string[] = [];
 
     // 3. Process and Upload
@@ -80,16 +77,11 @@ export async function discoverAndEnrichPhotos(slug: string, bookingUrls: string[
     if (uploadedUrls[2]) updateData.photo_2_url = uploadedUrls[2];
     if (uploadedUrls[3]) updateData.photo_3_url = uploadedUrls[3];
 
-    // Get existing house to merge if needed, but updateHouse handles partials
-    const house = await getHouseBySlug(slug);
-    if (house) {
-      await updateHouse(house.id, updateData);
-      console.log(`[PhotoEnrichment] Updated house ${slug} with ${uploadedUrls.length} photos`);
-      return { success: true, count: uploadedUrls.length };
-    } else {
-      console.error(`[PhotoEnrichment] House ${slug} not found for update`);
-      return { success: false, message: 'House not found' };
-    }
+    // Update the house with new photo URLs
+    await updateHouse(house.id, updateData);
+    console.log(`[PhotoEnrichment] Updated house ${slug} with ${uploadedUrls.length} photos`);
+    return { success: true, count: uploadedUrls.length };
+
 
   } catch (error) {
     console.error(`[PhotoEnrichment] Error:`, error);

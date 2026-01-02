@@ -44,6 +44,7 @@ interface AccommodationDetailsContentProps {
     content_generated: boolean;
     enrichment_complete: boolean;
     booking_url: string | null;
+    affiliate_link: string | null;
     ben_visited_dates: string[] | null;
     has_affiliate_relationship: boolean;
     owner_approved: boolean;
@@ -67,6 +68,7 @@ export default function AccommodationDetailsContent({ house }: AccommodationDeta
 
   // Affiliate link precedence: explicit affiliate link > generic booking link
   const primaryBookingLink = house.affiliate_link || (bookingLinks.length > 0 ? bookingLinks[0].url : null);
+
 
 
   return (

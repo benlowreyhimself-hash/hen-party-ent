@@ -131,4 +131,95 @@ export class PhotoDiscoverer {
 
         return true;
     }
+
+    /**
+     * Search Google Images for property photos (fallback method)
+     * Requires: GOOGLE_CUSTOM_SEARCH_API_KEY and GOOGLE_CUSTOM_SEARCH_CX in env
+     */
+    async findPhotosViaGoogleImages(propertyName: string, location: string): Promise<DiscoveredPhoto[]> {
+        try {
+            const apiKey = process.env.GOOGLE_CUSTOM_SEARCH_API_KEY;
+            const cx = process.env.GOOGLE_CUSTOM_SEARCH_CX;
+
+            if (!apiKey || !cx) {
+                console.log('[PhotoDiscoverer] Google Custom Search not configured (GOOGLE_CUSTOM_SEARCH_API_KEY & GOOGLE_CUSTOM_SEARCH_CX required)');
+                return [];
+            }
+
+            // Build search query
+            const query = `${propertyName} ${location} holiday accommodation`;
+            const searchUrl = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}&searchType=image&num=10&imgSize=large`;
+
+            console.log(`[PhotoDiscoverer] Searching Google Images for: "${query}"`);
+
+            const response = await fetch(searchUrl);
+
+            if (!response.ok) {
+                console.error(`[PhotoDiscoverer] Google Images search failed: ${response.status}`);
+                return [];
+            }
+
+            const data = await response.json();
+            const photos: DiscoveredPhoto[] = [];
+
+            if (data.items && Array.isArray(data.items)) {
+                for (const item of data.items) {
+                    if (item.link && this.isHighQualityImage(item.link)) {
+                        photos.push({
+                            url: item.link,
+                            alt: item.title || `${propertyName} image`,
+                            source: 'google_images',
+                            score: 0.85 // High score for Google Images results
+                        });
+                    }
+                }
+            }
+
+            console.log(`[PhotoDiscoverer] Found ${photos.length} images via Google Images`);
+            return photos;
+
+        } catch (error) {
+            console.error('[PhotoDiscoverer] Error searching Google Images:', error);
+            return [];
+        }
+    }
+
+    /**
+     * Find photos with intelligent fallback
+     * 1. Try URL scraping first
+     * 2. Fall back to Google Images if < 3 photos found
+     */
+    async findPhotosWithFallback(urls: string[], propertyName: string, location: string): Promise<DiscoveredPhoto[]> {
+        let allPhotos: DiscoveredPhoto[] = [];
+
+        // Try scraping from provided URLs
+        for (const url of urls) {
+            if (!url) continue;
+            const photos = await this.findPhotos(url);
+            allPhotos.push(...photos);
+        }
+
+        // Remove duplicates
+        const uniquePhotos = Array.from(
+            new Map(allPhotos.map(p => [p.url, p])).values()
+        );
+
+        // If we have enough photos, return them
+        if (uniquePhotos.length >= 3) {
+            console.log(`[PhotoDiscoverer] Found ${uniquePhotos.length} photos from URL scraping`);
+            return uniquePhotos.sort((a, b) => b.score - a.score).slice(0, 10);
+        }
+
+        // Fallback to Google Images
+        console.log(`[PhotoDiscoverer] Only found ${uniquePhotos.length} photos, trying Google Images fallback...`);
+        const googlePhotos = await this.findPhotosViaGoogleImages(propertyName, location);
+
+        // Combine and dedupe
+        allPhotos.push(...googlePhotos);
+        const finalPhotos = Array.from(
+            new Map(allPhotos.map(p => [p.url, p])).values()
+        );
+
+        return finalPhotos.sort((a, b) => b.score - a.score).slice(0, 10);
+    }
 }

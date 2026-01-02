@@ -17,6 +17,7 @@
     "accommodations:import": "tsx scripts/import-accommodations.ts",
     "accommodations:cleanup": "tsx scripts/cleanup-accommodations.ts",
     "accommodations:enrich-all": "tsx scripts/batch-enrich-all.ts",
+    "photos:enrich-all": "tsx scripts/batch-enrich-photos.ts",
     "schema:refresh": "tsx scripts/refresh-schema-cache.ts",
     "addresses:extract": "tsx scripts/extract-addresses.ts",
     "addresses:verify": "tsx scripts/verify-and-enrich-addresses.ts",
