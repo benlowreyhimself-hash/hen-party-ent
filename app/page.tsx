@@ -19,7 +19,7 @@ export default function Home() {
       <section className="relative h-[600px] flex items-center justify-center">
         <div className="absolute inset-0">
           <Image
-            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-background-group-photo.jpg"
+            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-hen-party-group-drawing-class.jpg"
             alt="Hen Party Life Drawing Hero"
             fill
             sizes="100vw"
@@ -241,8 +241,7 @@ export default function Home() {
               <AccordionItem value="item-0" className="border-b-0 mb-2">
                 <AccordionTrigger className="text-left font-semibold px-4 hover:bg-slate-50 rounded-lg">Does Ben come to us?</AccordionTrigger>
                 <AccordionContent className="px-4 text-gray-600">
-                  <p className="mb-2">Yes. If you are staying in a House I will come to the house where you are staying.</p>
-                  <p>If you're staying in a Hotel or just doing a day trip then let me know, a function room can be arranged.</p>
+                  <p>Yes. In most cases I visit people in the AirBnB where they are staying. This keeps things simple and is more relaxed for the group.</p>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-1" className="border-b-0 mb-2">
