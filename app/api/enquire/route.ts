@@ -52,9 +52,10 @@ export async function POST(request: Request) {
         // 4. Dual Notification (If Venue has contact email)
         if (data.houseId) {
             const house = await getHouseById(data.houseId);
-            if (house && house.contact_email) {
-                console.log(`sending venue enquiry to ${house.contact_email}`);
-                await sendVenueEnquiryEmail(emailData, house.contact_email);
+            const contactEmail = (house as any)?.contact_email;
+            if (house && contactEmail) {
+                console.log(`sending venue enquiry to ${contactEmail}`);
+                await sendVenueEnquiryEmail(emailData, contactEmail);
             }
         }
 
