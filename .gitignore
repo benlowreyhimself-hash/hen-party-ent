@@ -53,3 +53,4 @@ test_*.py
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+Google Service Json/
