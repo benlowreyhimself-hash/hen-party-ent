@@ -10,6 +10,7 @@ const isPublicRoute = createRouteMatcher([
   '/about-ben',
   '/contact',
   '/locations(.*)',
+  '/hen-party-life-drawing-(.*)', // SEO location pages
   '/house-archives(.*)',
   '/accommodations', // Public accommodations index
   '/accommodations/(.*)', // Public accommodation details
