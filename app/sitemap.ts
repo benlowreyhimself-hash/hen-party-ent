@@ -2,8 +2,8 @@ import { MetadataRoute } from 'next';
 import { getPublishedHouseSlugs } from '@/lib/supabase/houses';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://hen-party-ent.vercel.app';
-  
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://henpartyentertainment.co.uk';
+
   // Get all published accommodation slugs from Supabase
   const accommodationSlugs = await getPublishedHouseSlugs();
 
