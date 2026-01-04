@@ -19,7 +19,7 @@ type HouseRow = InferSelectModel<typeof houses>;
  * - owner_contact_info: houses.owner_contact_info,
  * - owner_notes: houses.owner_notes,
  */
-const selectExistingColumns = {
+export const selectExistingColumns = {
   id: houses.id,
   created_at: houses.created_at,
   updated_at: houses.updated_at,
@@ -57,17 +57,17 @@ const selectExistingColumns = {
   enrichment_complete: houses.enrichment_complete,
   google_maps_url: houses.google_maps_url,
   // New venue tracking fields (will be added after migration)
-  // ben_visited_dates: houses.ben_visited_dates,
-  // has_affiliate_relationship: houses.has_affiliate_relationship,
-  // owner_approved: houses.owner_approved,
-  // owner_contact_info: houses.owner_contact_info,
-  // owner_notes: houses.owner_notes,
+  ben_visited_dates: houses.ben_visited_dates,
+  has_affiliate_relationship: houses.has_affiliate_relationship,
+  owner_approved: houses.owner_approved,
+  owner_contact_info: houses.owner_contact_info,
+  owner_notes: houses.owner_notes,
 };
 
 /**
  * Helper function to convert Drizzle row to House interface
  */
-function drizzleRowToHouse(row: HouseRow): House {
+export function drizzleRowToHouse(row: HouseRow): House {
   return {
     id: row.id,
     created_at: row.created_at.toISOString(),
@@ -403,7 +403,13 @@ export async function getHouseBySlug(slug: string): Promise<House | null> {
       }
     }
 
-    console.error('Error fetching house:', error);
+    if (error.code === 'PGRST116') {
+      // Normal 404 (0 rows found)
+      console.warn(`House not found for slug: "${slug}"`);
+      return null;
+    }
+
+    console.error(`Error fetching house with slug "${slug}":`, JSON.stringify(error, null, 2));
     return null;
   }
 

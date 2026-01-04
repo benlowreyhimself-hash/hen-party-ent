@@ -6,7 +6,7 @@ import sgMail from '@sendgrid/mail';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const TO_EMAIL = 'ben@henpartyentertainment.co.uk';
+const TO_EMAIL = 'benlowreyhimself@gmail.com';
 
 // Twilio configuration
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
@@ -78,8 +78,8 @@ Method: ${formData.method || 'form'}
       const resend = new Resend(RESEND_API_KEY);
 
       const result = await resend.emails.send({
-        from: 'Website <ben@henpartyentertainment.co.uk>',
-        to: TO_EMAIL,
+        from: 'Hen Party Enquiry <ben@henpartyentertainment.co.uk>',
+        to: 'benlowreyhimself@gmail.com',
         replyTo: formData.email,
         subject: emailSubject,
         text: emailBody,

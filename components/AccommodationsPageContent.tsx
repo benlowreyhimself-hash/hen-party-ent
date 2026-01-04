@@ -26,7 +26,7 @@ export default function AccommodationsPageContent() {
   const [houses, setHouses] = useState<Accommodation[]>([]);
   const [regions, setRegions] = useState<Array<{ region: string; count: number }>>([]);
   const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -113,15 +113,26 @@ export default function AccommodationsPageContent() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-primary text-primary-foreground py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+      <section className="relative h-[400px] flex items-center justify-center">
+        <div className="absolute inset-0">
+          <Image
+            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hero-hen-party-group-drawing-class.jpg"
+            alt="Hen Party Life Drawing Hero"
+            fill
+            sizes="100vw"
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-md">
             Venues Where Ben Has Performed
           </h1>
-          <p className="text-xl md:text-2xl mb-4">
+          <p className="text-xl md:text-2xl mb-4 drop-shadow-md">
             Life Drawing Entertainment at Beautiful Locations Across the UK
           </p>
-          <p className="text-lg opacity-90">
+          <p className="text-lg opacity-90 drop-shadow-sm max-w-2xl mx-auto">
             These are past locations where Ben has provided life drawing services.
             Ben travels to your location - this is a mobile service.
           </p>
@@ -218,8 +229,8 @@ export default function AccommodationsPageContent() {
                     href={`/accommodations/${house.slug}`}
                     className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
                   >
-                    {house.image_url && (
-                      <div className="relative h-48">
+                    <div className="relative h-48 bg-slate-100">
+                      {house.image_url ? (
                         <Image
                           src={house.image_url}
                           alt={house.title}
@@ -227,13 +238,27 @@ export default function AccommodationsPageContent() {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="object-cover"
                         />
-                        {house.has_affiliate_relationship && (
-                          <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
-                            Affiliate
+                      ) : (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                          <Image
+                            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-drawing-ladies-9y7r.jpeg"
+                            alt="Generic House Placeholder"
+                            fill
+                            className="object-cover opacity-50 grayscale"
+                          />
+                          <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
+                            <span className="bg-white/90 px-3 py-1 rounded text-sm font-medium shadow-sm">
+                              Image Coming Soon
+                            </span>
                           </div>
-                        )}
-                      </div>
-                    )}
+                        </div>
+                      )}
+                      {house.has_affiliate_relationship && (
+                        <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded z-10">
+                          Affiliate
+                        </div>
+                      )}
+                    </div>
                     <div className="p-6">
                       {/* Primary Info: Sleeps and Location */}
                       <div className="mb-4">
@@ -303,8 +328,8 @@ export default function AccommodationsPageContent() {
                     href={`/accommodations/${house.slug}`}
                     className="bg-card border border-border rounded-lg overflow-hidden hover:shadow-lg transition-shadow flex flex-col md:flex-row"
                   >
-                    {house.image_url && (
-                      <div className="relative w-full md:w-64 h-48 md:h-auto flex-shrink-0">
+                    <div className="relative w-full md:w-64 h-48 md:h-auto flex-shrink-0 bg-slate-100">
+                      {house.image_url ? (
                         <Image
                           src={house.image_url}
                           alt={house.title}
@@ -312,8 +337,22 @@ export default function AccommodationsPageContent() {
                           sizes="(max-width: 768px) 100vw, 256px"
                           className="object-cover"
                         />
-                      </div>
-                    )}
+                      ) : (
+                        <div className="absolute inset-0 flex flex-col items-center justify-center p-4 text-center">
+                          <Image
+                            src="https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-hen-party-drawing-ladies-9y7r.jpeg"
+                            alt="Generic House Placeholder"
+                            fill
+                            className="object-cover opacity-50 grayscale"
+                          />
+                          <div className="absolute inset-0 bg-primary/10 flex items-center justify-center">
+                            <span className="bg-white/90 px-3 py-1 rounded text-sm font-medium shadow-sm">
+                              Image Coming Soon
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                     <div className="p-6 flex-1">
                       {/* Primary Info: Sleeps and Location */}
                       <div className="mb-3">

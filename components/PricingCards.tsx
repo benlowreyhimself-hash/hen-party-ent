@@ -29,9 +29,7 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
             <div className="space-y-3 mb-8">
               <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-4 flex flex-col items-center justify-center text-center">
                 <p className="text-xs font-bold text-blue-800 uppercase tracking-widest mb-1">Minimum Booking</p>
-                <div className="flex items-center gap-2 text-gray-900 font-bold text-lg">
-                  <span>10 people</span>
-                  <span className="text-blue-300">|</span>
+                <div className="text-gray-900 font-bold text-lg">
                   <span>£250</span>
                 </div>
               </div>
@@ -43,24 +41,45 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
               </div>
             </div>
 
-            <div className="border-t border-slate-100 my-2"></div>
+            {/* Invisible Spacer to match 90 min card - Hidden on Mobile */}
+            <div className="invisible hidden md:flex border border-transparent rounded-xl p-3 mb-6 items-center gap-3" aria-hidden="true">
+              <div className="p-2 rounded-full text-xl border border-transparent">🍾</div>
+              <div>
+                <p className="font-bold text-sm">Spacer</p>
+                <p className="text-xs font-medium">Spacer</p>
+              </div>
+            </div>
+
+            <div className="border-t border-slate-100 mb-2"></div>
 
             <ul className="space-y-4 py-6 text-gray-600 flex-grow">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>All drawing materials included</span>
+                <span>
+                  <strong className="text-gray-900">All Materials Included</strong>
+                  <br /><span className="text-sm">Sketch pads, charcoal & professional supplies</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>60 minute life drawing session</span>
+                <span>
+                  <strong className="text-gray-900">Full 60 Minute Session</strong>
+                  <br /><span className="text-sm">Dedicated drawing time with professional model</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>Fun drawing games & poses</span>
+                <span>
+                  <strong className="text-gray-900">Fun & Tasteful</strong>
+                  <br /><span className="text-sm">Hilarious drawing games & poses (nothing awkward!)</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>Great photo opportunities</span>
+                <span>
+                  <strong className="text-gray-900">Photo Session</strong>
+                  <br /><span className="text-sm">Group photos with the model included</span>
+                </span>
               </li>
             </ul>
           </div>
@@ -90,9 +109,7 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
             <div className="space-y-3 mb-8">
               <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-4 flex flex-col items-center justify-center text-center">
                 <p className="text-xs font-bold text-blue-800 uppercase tracking-widest mb-1">Minimum Booking</p>
-                <div className="flex items-center gap-2 text-gray-900 font-bold text-lg">
-                  <span>10 people</span>
-                  <span className="text-blue-300">|</span>
+                <div className="text-gray-900 font-bold text-lg">
                   <span>£300</span>
                 </div>
               </div>
@@ -115,22 +132,41 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
 
             <div className="border-t border-slate-100 mb-2"></div>
 
-            <ul className="space-y-4 py-6 text-gray-600 flex-grow">
+            <ul className="space-y-3 py-6 text-gray-600 flex-grow text-sm">
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span className="font-medium text-gray-900">Everything in 60 min session</span>
+                <span>
+                  <strong className="text-gray-900">All Materials Provided</strong>
+                  <br /><span className="text-xs">Sketch pads, charcoal & everything you need</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>Extended 90 minute drawing time</span>
+                <span>
+                  <strong className="text-gray-900">Extended 90 Minute Session</strong>
+                  <br /><span className="text-xs">More time for games, detailed drawing & photos</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>More poses & detailed tuition</span>
+                <span>
+                  <strong className="text-gray-900">Bottle of Prosecco Included</strong>
+                  <br /><span className="text-xs">A treat for the bride-to-be!</span>
+                </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
-                <span>More relaxed pace</span>
+                <span>
+                  <strong className="text-gray-900">Payment Flexibility</strong>
+                  <br /><span className="text-xs">Small deposit to book, balance due 1 week prior</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-primary font-bold text-lg mt-[-2px]">✓</span>
+                <span>
+                  <strong className="text-gray-900">Minimum Charge</strong>
+                  <br /><span className="text-xs">Based on 10 people (smaller groups welcome to pay minimum)</span>
+                </span>
               </li>
             </ul>
           </div>

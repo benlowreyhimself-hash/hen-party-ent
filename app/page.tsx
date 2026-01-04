@@ -29,16 +29,41 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-md">Welcome</h1>
-          <h3 className="text-2xl md:text-4xl font-light drop-shadow-md">This is the home of Hen Party Life Drawing</h3>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-md">Hen Party Life Drawing</h1>
+          <h3 className="text-2xl md:text-4xl font-light drop-shadow-md">Fun, Classy & Tasteful Naked Life Drawing Classes</h3>
         </div>
       </section>
 
       {/* Location Bar */}
       <section className="bg-primary text-primary-foreground py-6 shadow-md relative z-20">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-lg md:text-xl font-medium leading-relaxed">
-            Bristol • Bath • Cardiff • Gloucester • Cotswolds • Somerset • Oxford • Swindon • London • Nationwide
+          <p className="text-sm md:text-lg font-medium leading-relaxed flex flex-wrap justify-center gap-x-3 gap-y-1">
+            {[
+              { name: 'Bristol', href: '/hen-party-life-drawing-bristol' },
+              { name: 'Bath', href: '/hen-party-life-drawing-bath' },
+              { name: 'London', href: '/hen-party-life-drawing-london' },
+              { name: 'Cardiff', href: '/hen-party-life-drawing-cardiff' },
+              { name: 'Brighton', href: '/hen-party-life-drawing-brighton' },
+              { name: 'Oxford', href: '/hen-party-life-drawing-oxford' },
+              { name: 'Bournemouth', href: '/hen-party-life-drawing-bournemouth' },
+              { name: 'Southampton', href: '/hen-party-life-drawing-southampton' },
+              { name: 'Cheltenham', href: '/hen-party-life-drawing-cheltenham' },
+              { name: 'Gloucester', href: '/hen-party-life-drawing-gloucester' },
+              { name: 'Swindon', href: '/hen-party-life-drawing-swindon' },
+              { name: 'Exeter', href: '/hen-party-life-drawing-exeter' },
+              { name: 'Newquay', href: '/hen-party-life-drawing-newquay' },
+              { name: 'Portsmouth', href: '/hen-party-life-drawing-portsmouth' },
+              { name: 'Swansea', href: '/hen-party-life-drawing-swansea' },
+              { name: 'Tenby', href: '/hen-party-life-drawing-tenby' },
+              { name: 'Cotswolds', href: '/hen-party-life-drawing-cotswolds' },
+            ].map((link, index, array) => (
+              <span key={link.href}>
+                <Link href={link.href} className="hover:underline hover:text-white/90 transition-colors">
+                  {link.name}
+                </Link>
+                {index < array.length - 1 && <span className="opacity-50 ml-3">•</span>}
+              </span>
+            ))}
           </p>
         </div>
       </section>

@@ -20,8 +20,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hen Party Entertainment | Naked Life Drawing",
-  description: "Hen Party Life Drawing entertainment services across Bristol, Bath, Cardiff, Gloucester, Cotswolds, Somerset, Oxford, Swindon, London and Nationwide",
+  title: "Hen Party Life Drawing | Fun & Classy Entertainment UK | Ben",
+  description: "Looking for classy hen party ideas? Book a fun, tasteful naked life drawing class with Ben. No agency fees. Mobile service covering Bristol, Bath & UK.",
   icons: {
     icon: [
       { url: 'https://xirtgqglzsghphhihrcr.supabase.co/storage/v1/object/public/hen-party-media/originals/hen-party-pink-letter-h-umt2.png', sizes: 'any' },
