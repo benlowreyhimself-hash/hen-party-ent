@@ -40,7 +40,7 @@ export default function ContactOptions() {
         {/* Option 2: Email Directly */}
         <ContactLink
           type="email"
-          value="ben@henpartyentertainment.co.uk"
+          value="benlowreyhimself@gmail.com"
           className="bg-secondary text-secondary-foreground p-6 rounded-lg hover:opacity-90 transition-opacity text-center group block no-underline"
         >
           <div className="flex flex-col items-center">

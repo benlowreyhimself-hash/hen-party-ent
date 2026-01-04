@@ -14,7 +14,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/photos',
     '/prices',
     '/about-ben',
-    '/about-ben',
     '/contact',
     '/accommodations',
     '/hen-party-life-drawing-bristol',
@@ -49,20 +48,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9, // High priority for individual property pages
   }));
 
-  // Region pages (if we have regions)
-  const regionRoutes = [
-    '/regions/south-west',
-    '/regions/south-east',
-    '/regions/london',
-    '/regions/midlands',
-    '/regions/north',
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
-
-  return [...routes, ...accommodationRoutes, ...regionRoutes];
+  return [...routes, ...accommodationRoutes];
 }
 

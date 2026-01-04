@@ -30,10 +30,10 @@ export default function Header() {
             </ContactLink>
             <ContactLink
               type="email"
-              value="ben@henpartyentertainment.co.uk"
+              value="benlowreyhimself@gmail.com"
               className="hover:opacity-80 transition-opacity"
             >
-              ben@henpartyentertainment.co.uk
+              benlowreyhimself@gmail.com
             </ContactLink>
           </div>
           <div className="flex items-center gap-4">

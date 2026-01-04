@@ -11,13 +11,13 @@ interface ContactModuleProps {
   className?: string;
 }
 
-export default function ContactModule({ 
-  variant = "full", 
+export default function ContactModule({
+  variant = "full",
   showFormLink = true,
-  className = "" 
+  className = ""
 }: ContactModuleProps) {
   const phoneNumber = "07747571426";
-  const email = "ben@henpartyentertainment.co.uk";
+  const email = "benlowreyhimself@gmail.com";
 
   if (variant === "compact") {
     return (
