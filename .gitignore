@@ -54,3 +54,5 @@ test_*.py
 *.tsbuildinfo
 next-env.d.ts
 Google Service Json/
+.agent/
+.agent/
