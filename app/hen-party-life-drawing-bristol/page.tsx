@@ -12,14 +12,19 @@ export const metadata: Metadata = {
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
 
+export const metadata: Metadata = {
+    title: `Hen Party Life Drawing ${CITY} | Mobile Model Ben`,
+    description: `Planning a hen party in ${CITY}? The perfect entertainment package for your weekend. Book a fun, classy naked life drawing class with Ben. Mobile service.`,
+};
+
 export default function BristolPage() {
     const introText = (
         <>
             <p className="mb-4">
-                If you're organising a Hen Party in {CITY} for a friend, sister, or family member, you've come to the right place!
+                If you're looking for <strong>hen night organisers</strong> or entertainment in {CITY}, you've come to the right place!
             </p>
             <p className="mb-4">
-                I live in {CITY} and love hosting life drawing classes here. It's a fun and creative activity that sets the tone for a fantastic weekend in this vibrant city.
+                I live in {CITY} and love hosting life drawing classes here. It's a fun and creative activity that sets the tone for a fantastic weekend in this vibrant city. My sessions are often the highlight of many <strong>hen do packages</strong> in Bristol.
             </p>
             <p className="mb-4">
                 I make sure the bride is made to feel special, and the whole group enjoys themselves. It's a great laugh before heading out to the glorious Bristol nightlife!
@@ -32,7 +37,7 @@ export default function BristolPage() {
     const activities = [
         {
             title: "Hen Party Life Drawing",
-            description: "Fun, creative entertainment to start your evening. We come to your accommodation!"
+            description: "The ultimate activity package for your evening."
         },
         {
             title: "Lido Bristol",

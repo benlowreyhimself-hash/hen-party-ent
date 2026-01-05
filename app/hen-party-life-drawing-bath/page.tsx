@@ -12,14 +12,19 @@ export const metadata: Metadata = {
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
 
+export const metadata: Metadata = {
+    title: `Hen Party Life Drawing ${CITY} | Mobile Model Ben`,
+    description: `Planning a hen party in ${CITY}? The perfect addition to your Bath hen do package. Book a fun, tasteful naked life drawing class with Ben. Mobile service.`,
+};
+
 export default function BathPage() {
     const introText = (
         <>
             <p className="mb-4">
-                If you're organising a Hen Party in {CITY} for a friend, sister, or family member, you've come to the right place!
+                If you're looking for <strong>hen party Bath</strong> ideas for a friend, sister, or family member, you've come to the right place!
             </p>
             <p className="mb-4">
-                I travel to {CITY} regularly to host life drawing classes. It's a classy and memorable activity that fits perfectly with the historic and sophisticated vibe of the city.
+                I travel to {CITY} regularly to host life drawing classes. It's a classy and memorable activity that fits perfectly with the historic and sophisticated vibe of the city. A life drawing class is often the highlight of many <strong>hen do packages</strong> in Bath.
             </p>
             <p className="mb-4">
                 I make sure the bride is made to feel special, and the whole group enjoys themselves. It's a great ice-breaker before a nice dinner or night out in {CITY}.
@@ -32,7 +37,7 @@ export default function BathPage() {
     const activities = [
         {
             title: "Mobile Life Drawing (The Classy Choice)",
-            description: "A tasteful art class in your rental property. Friendly, fun, and memorable."
+            description: "A tasteful art class package in your rental property."
         },
         {
             title: "Thermae Bath Spa",
