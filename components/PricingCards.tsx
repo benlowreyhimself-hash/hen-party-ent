@@ -39,6 +39,12 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
                   <span className="font-bold text-purple-700">Deposit: £50</span> to secure date
                 </p>
               </div>
+
+              <div className="bg-green-50/70 border border-green-100 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                <p className="text-sm font-medium text-gray-700">
+                  <span className="font-bold text-green-700">10% Discount</span> when you pay in full
+                </p>
+              </div>
             </div>
 
             {/* Invisible Spacer to match 90 min card - Hidden on Mobile */}
@@ -117,6 +123,12 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
               <div className="bg-purple-50/70 border border-purple-100 rounded-xl p-3 flex flex-col items-center justify-center text-center">
                 <p className="text-sm font-medium text-gray-700">
                   <span className="font-bold text-purple-700">Deposit: £60</span> to secure date
+                </p>
+              </div>
+
+              <div className="bg-green-50/70 border border-green-100 rounded-xl p-3 flex flex-col items-center justify-center text-center">
+                <p className="text-sm font-medium text-gray-700">
+                  <span className="font-bold text-green-700">10% Discount</span> when you pay in full
                 </p>
               </div>
             </div>
