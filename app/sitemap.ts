@@ -16,6 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/about-ben',
     '/contact',
     '/accommodations',
+    '/hen-party-games',
     '/hen-party-life-drawing-bristol',
     '/hen-party-life-drawing-bath',
     '/hen-party-life-drawing-london',
