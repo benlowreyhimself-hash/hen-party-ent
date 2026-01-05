@@ -17,7 +17,7 @@ export default function ContactModule({
   className = ""
 }: ContactModuleProps) {
   const phoneNumber = "07747571426";
-  const email = "benlowreyhimself@gmail.com";
+  const email = "ben@henpartyentertainment.co.uk";
 
   if (variant === "compact") {
     return (

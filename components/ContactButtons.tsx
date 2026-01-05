@@ -16,7 +16,7 @@ export default function ContactButtons() {
       </ContactLink>
       <ContactLink
         type="email"
-        value="benlowreyhimself@gmail.com"
+        value="ben@henpartyentertainment.co.uk"
         className="bg-primary text-primary-foreground px-6 py-3 rounded-md hover:opacity-90 transition-opacity font-semibold"
       >
         Email Us
