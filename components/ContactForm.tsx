@@ -43,7 +43,7 @@ export default function ContactForm() {
 
     try {
       const enquiryDate = new Date().toISOString().split('T')[0];
-      
+
       const submissionData = {
         ...formData,
         enquiryDate,
@@ -64,7 +64,7 @@ export default function ContactForm() {
 
       // Track in GTM
       trackFormSubmission(submissionData);
-      
+
       // Track Google Ads conversion
       trackGoogleAdsConversion();
 
@@ -81,10 +81,12 @@ export default function ContactForm() {
       <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
         <div className="text-green-500 text-5xl mb-4">✓</div>
         <h3 className="text-2xl font-bold text-green-800 mb-2">Thank You!</h3>
-        <p className="text-green-700">
           Your booking enquiry has been sent successfully. We'll get back to you soon!
         </p>
-      </div>
+        <p className="text-sm text-green-600 mt-4 font-medium border-t border-green-200 pt-4">
+          ✨ Special Offer: 10% discount if you choose to pay in full (based on the minimum charge).
+        </p>
+      </div >
     );
   }
 
