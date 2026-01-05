@@ -1,13 +1,13 @@
-// Email sending service using Nodemailer (SMTP) with Twilio for SMS
-import nodemailer from 'nodemailer';
+// Email sending service using Resend with Twilio for SMS
+import { Resend } from 'resend';
 import twilio from 'twilio';
 
-const SMTP_HOST = process.env.SMTP_HOST;
-const SMTP_PORT = process.env.SMTP_PORT;
-const SMTP_USER = process.env.SMTP_USER;
-const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+// Initialize Resend
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
 
 const TO_EMAIL = 'ben@henpartyentertainment.co.uk';
+const FROM_EMAIL = 'notifications@henpartyentertainment.co.uk'; // Must be a verified domain
 
 // Twilio configuration
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
@@ -34,31 +34,18 @@ interface BookingFormData {
 }
 
 /**
- * Helper to create transporter
- */
-function createTransporter() {
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
-    console.error('❌ SMTP configuration missing. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD.');
-    return null;
-  }
-
-  return nodemailer.createTransport({
-    host: SMTP_HOST,
-    port: Number(SMTP_PORT) || 465,
-    secure: Number(SMTP_PORT) === 465, // true for 465, false for other ports
-    auth: {
-      user: SMTP_USER,
-      pass: SMTP_PASSWORD,
-    },
-  });
-}
-
-/**
- * Send booking enquiry email
+ * Send booking enquiry email via Resend
  */
 export async function sendBookingEmail(formData: BookingFormData) {
-  // Format email body
-  const emailBody = `
+  if (!resend) {
+    console.error('❌ Resend API Key missing. Cannot send email.');
+    return;
+  }
+
+  const emailSubject = `New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}`;
+
+  // Text Body
+  const textBody = `
 New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}
 
 BOOKING DETAILS:
@@ -86,43 +73,46 @@ Source: ${formData.source || 'Website Contact Form'}
 Method: ${formData.method || 'form'}
   `.trim();
 
-  const emailSubject = `New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}`;
+  // HTML Body
+  const htmlBody = formatBookingEmailHTML(formData);
 
-  const transporter = createTransporter();
+  try {
+    const data = await resend.emails.send({
+      from: `Hen Party Ent <${FROM_EMAIL}>`,
+      to: [TO_EMAIL],
+      replyTo: formData.email,
+      subject: emailSubject,
+      text: textBody,
+      html: htmlBody,
+    });
 
-  if (transporter) {
-    try {
-      await transporter.sendMail({
-        from: `"Hen Party Entertainment" <${SMTP_USER}>`,
-        to: TO_EMAIL,
-        replyTo: formData.email,
-        subject: emailSubject,
-        text: emailBody,
-        html: formatBookingEmailHTML(formData),
-      });
-
-      console.log('✅ Email sent via Nodemailer to', TO_EMAIL);
-      return;
-    } catch (error: any) {
-      console.error('Nodemailer error:', error);
+    if (data.error) {
+      console.error('❌ Resend API Error:', data.error);
+      throw new Error(data.error.message);
     }
-  }
 
-  // Fallback log
-  console.log('\n📧 BOOKING ENQUIRY EMAIL (Failed to send):');
-  console.log('========================');
-  console.log(`To: ${TO_EMAIL}`);
-  console.log(`Subject: ${emailSubject}`);
-  console.log(`\n${emailBody}\n`);
+    console.log('✅ Email sent via Resend. ID:', data.data?.id);
+  } catch (error: any) {
+    console.error('❌ Error sending email via Resend:', error);
+    // Log intent if failed
+    console.log('\n📧 FAILED EMAIL INTENT:');
+    console.log(`To: ${TO_EMAIL}`);
+    console.log(`Subject: ${emailSubject}`);
+  }
 }
 
 /**
- * Send enquiry email to venue (Dual Notification)
+ * Send enquiry email to venue (Dual Notification) via Resend
  */
 export async function sendVenueEnquiryEmail(formData: BookingFormData, venueEmail: string) {
+  if (!resend) {
+    console.error('❌ Resend API Key missing. Cannot send venue email.');
+    return;
+  }
+
   const emailSubject = `Enquiry from Hen Party Entertainment - ${formData.eventDate || 'Date TBC'}`;
 
-  const emailBody = `
+  const textBody = `
 Hello,
 
 You have received a new enquiry via Hen Party Entertainment.
@@ -141,7 +131,6 @@ Ben Lowrey
 Hen Party Entertainment
   `.trim();
 
-  // HTML Version
   const htmlBody = `
 <!DOCTYPE html>
 <html>
@@ -180,24 +169,24 @@ Hen Party Entertainment
 </html>
   `;
 
-  const transporter = createTransporter();
+  try {
+    const data = await resend.emails.send({
+      from: `Ben Lowrey <${FROM_EMAIL}>`,
+      to: [venueEmail],
+      bcc: [TO_EMAIL], // Copy Ben
+      replyTo: formData.email, // Reply goes to client
+      subject: emailSubject,
+      text: textBody,
+      html: htmlBody,
+    });
 
-  if (transporter) {
-    try {
-      await transporter.sendMail({
-        from: `"Ben Lowrey" <${SMTP_USER}>`,
-        to: venueEmail,
-        bcc: TO_EMAIL, // Copy Ben
-        replyTo: formData.email, // Reply goes to client
-        subject: emailSubject,
-        text: emailBody,
-        html: htmlBody,
-      });
-      console.log('✅ Venue email sent via Nodemailer');
-      return;
-    } catch (error) {
-      console.error('Venue email Nodemailer error:', error);
+    if (data.error) {
+      console.error('❌ Resend API Error (Venue Email):', data.error);
+    } else {
+      console.log('✅ Venue email sent via Resend. ID:', data.data?.id);
     }
+  } catch (error) {
+    console.error('❌ Error sending venue email via Resend:', error);
   }
 }
 
