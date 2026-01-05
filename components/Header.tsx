@@ -56,17 +56,7 @@ export default function Header() {
               <Instagram className="w-5 h-5" />
             </a>
             {/* Clerk Login Button */}
-            {mounted && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY && (
-              <div className="ml-2">
-                <a
-                  href="/sign-in"
-                  className="text-xs hover:opacity-80 transition-opacity"
-                  aria-label="Sign In"
-                >
-                  Sign In
-                </a>
-              </div>
-            )}
+
           </div>
         </div>
       </div>
