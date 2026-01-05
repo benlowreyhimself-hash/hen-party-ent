@@ -4,10 +4,7 @@ import LocationPageTemplate from '@/components/LocationPageTemplate';
 const CITY = 'Bristol';
 const ZONES = 'Clifton • City Centre • Harbourside • Bishopston • Redland • All Bristol Areas';
 
-export const metadata: Metadata = {
-    title: `Hen Party Life Drawing ${CITY} | Mobile Model Ben`,
-    description: `Planning a hen party in ${CITY}? Book a fun, classy, and tasteful naked life drawing class with Ben. Mobile service visiting City Centre and surrounding areas.`,
-};
+
 
 // Force dynamic rendering
 export const dynamic = 'force-dynamic';
