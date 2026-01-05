@@ -146,6 +146,9 @@ export default function Header() {
               <Link href="/photos" className="text-foreground hover:text-primary transition-colors">
                 Photos
               </Link>
+              <Link href="/hen-party-games" className="text-foreground hover:text-primary transition-colors">
+                Games
+              </Link>
               <Link href="/prices" className="text-foreground hover:text-primary transition-colors">
                 Prices
               </Link>
@@ -234,6 +237,13 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Photos
+                </Link>
+                <Link
+                  href="/hen-party-games"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Games
                 </Link>
                 <Link
                   href="/prices"
