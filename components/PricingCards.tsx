@@ -187,7 +187,7 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
 
       {showContact && (
         <div className="mt-12">
-          <h2 className="text-2xl font-semibold mb-6 text-center">Ready to Book?</h2>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Check our availability</h2>
           <ContactModule variant="full" showFormLink={true} />
         </div>
       )}
