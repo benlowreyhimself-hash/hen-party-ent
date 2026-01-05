@@ -101,9 +101,67 @@ const nextConfig: NextConfig = {
   // Enable static optimization
   output: 'standalone',
   // Disable static optimization for pages with client components that have event handlers
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
+  async redirects() {
+    return [
+      // Redirect old WordPress tag/category archives to home
+      {
+        source: '/tag/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/category/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/author/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      // Redirect old date archives
+      {
+        source: '/2020/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/2021/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/2022/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/2023/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/2024/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/2025/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      // Redirect admin to home to prevent access/confusion
+      {
+        source: '/admin/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/wp-admin/:path*',
+        destination: '/',
+        permanent: true,
+      },
+    ];
   },
-};
 
-export default nextConfig;
+  export default nextConfig;
