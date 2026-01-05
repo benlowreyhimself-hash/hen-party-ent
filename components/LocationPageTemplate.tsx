@@ -229,20 +229,8 @@ export default async function LocationPageTemplate({
                                     <div key={house.id} className="bg-white rounded-lg border border-slate-200 p-4 transition-all hover:border-primary/50 hover:shadow-sm group">
                                         <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-2">
                                             <div className="flex items-center gap-2">
-                                                <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors">
-                                                    {house.website_url ? (
-                                                        <a
-                                                            href={house.website_url.startsWith('http') ? house.website_url : `https://${house.website_url}`}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="hover:underline flex items-center gap-1"
-                                                        >
-                                                            {house.title}
-                                                            <span className="text-xs text-muted-foreground font-normal no-underline">(External Link)</span>
-                                                        </a>
-                                                    ) : (
-                                                        house.title
-                                                    )}
+                                                <h3 className="text-base font-bold text-gray-900">
+                                                    {house.title}
                                                 </h3>
                                                 {house.sleeps && (
                                                     <span className="text-xs font-medium bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full border border-slate-200">
