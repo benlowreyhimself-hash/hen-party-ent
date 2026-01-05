@@ -47,6 +47,12 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        <div className="mt-8 text-center">
+          <Link href="/hen-party-games" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+            Top 10 Hen Party Games
+          </Link>
+        </div>
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Hen Party Entertainment. All rights reserved.</p>
         </div>
