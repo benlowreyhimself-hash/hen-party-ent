@@ -87,6 +87,7 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
             <div className="mt-8 mb-4 bg-green-50 p-4 rounded-xl border border-green-100 text-center">
               <p className="text-green-800 font-bold mb-1">10% Discount when you pay in full</p>
               <p className="text-green-700 font-medium">£22.50 / person</p>
+              <p className="text-green-600 text-sm mt-1">Total (Min): £225</p>
             </div>
           </div>
         </div>
@@ -180,6 +181,7 @@ export default function PricingCards({ showContact = false }: { showContact?: bo
             <div className="mt-8 mb-4 bg-green-50 p-4 rounded-xl border border-green-100 text-center">
               <p className="text-green-800 font-bold mb-1">10% Discount when you pay in full</p>
               <p className="text-green-700 font-medium">£27.00 / person</p>
+              <p className="text-green-600 text-sm mt-1">Total (Min): £270</p>
             </div>
           </div>
         </div>
