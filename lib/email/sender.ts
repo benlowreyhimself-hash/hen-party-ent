@@ -1,22 +1,18 @@
-// Email sending service using SendGrid (preferred) or Resend (fallback), SMS using Twilio
-
-import { Resend } from 'resend';
+// Email sending service using Nodemailer (SMTP) with Twilio for SMS
+import nodemailer from 'nodemailer';
 import twilio from 'twilio';
-import sgMail from '@sendgrid/mail';
 
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = process.env.SMTP_PORT;
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
+
 const TO_EMAIL = 'ben@henpartyentertainment.co.uk';
 
 // Twilio configuration
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN;
-const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER; // Format: +447747571426
-
-// Initialize SendGrid if API key is available
-if (SENDGRID_API_KEY) {
-  sgMail.setApiKey(SENDGRID_API_KEY);
-}
+const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
 interface BookingFormData {
   name: string;
@@ -38,10 +34,30 @@ interface BookingFormData {
 }
 
 /**
+ * Helper to create transporter
+ */
+function createTransporter() {
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASSWORD) {
+    console.error('❌ SMTP configuration missing. Please set SMTP_HOST, SMTP_USER, and SMTP_PASSWORD.');
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: Number(SMTP_PORT) || 465,
+    secure: Number(SMTP_PORT) === 465, // true for 465, false for other ports
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASSWORD,
+    },
+  });
+}
+
+/**
  * Send booking enquiry email
  */
 export async function sendBookingEmail(formData: BookingFormData) {
-  // Format email body to match Google Sheets structure
+  // Format email body
   const emailBody = `
 New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}
 
@@ -72,13 +88,12 @@ Method: ${formData.method || 'form'}
 
   const emailSubject = `New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}`;
 
-  // Prefer Resend (better free tier, simpler setup)
-  if (RESEND_API_KEY) {
-    try {
-      const resend = new Resend(RESEND_API_KEY);
+  const transporter = createTransporter();
 
-      const result = await resend.emails.send({
-        from: 'Hen Party Enquiry <ben@henpartyentertainment.co.uk>',
+  if (transporter) {
+    try {
+      await transporter.sendMail({
+        from: `"Hen Party Entertainment" <${SMTP_USER}>`,
         to: TO_EMAIL,
         replyTo: formData.email,
         subject: emailSubject,
@@ -86,46 +101,19 @@ Method: ${formData.method || 'form'}
         html: formatBookingEmailHTML(formData),
       });
 
-      if (result.error) {
-        throw new Error(result.error.message || 'Failed to send email');
-      }
-
-      console.log('✅ Email sent via Resend');
+      console.log('✅ Email sent via Nodemailer to', TO_EMAIL);
       return;
     } catch (error: any) {
-      console.error('Resend error:', error);
-      // Fall through to SendGrid or console log
+      console.error('Nodemailer error:', error);
     }
   }
 
-  // Fallback to SendGrid if Resend fails or is not configured
-  if (SENDGRID_API_KEY) {
-    try {
-      await sgMail.send({
-        from: 'Website <ben@henpartyentertainment.co.uk>', // Using verified domain
-        to: TO_EMAIL,
-        replyTo: formData.email,
-        subject: emailSubject,
-        text: emailBody,
-        html: formatBookingEmailHTML(formData),
-      });
-
-      console.log('✅ Email sent via SendGrid');
-      return;
-    } catch (error: any) {
-      console.error('SendGrid error:', error);
-      // Fall through to console log
-    }
-  }
-
-  // Fallback: Log to console (for development)
-  console.log('\n📧 BOOKING ENQUIRY EMAIL:');
+  // Fallback log
+  console.log('\n📧 BOOKING ENQUIRY EMAIL (Failed to send):');
   console.log('========================');
   console.log(`To: ${TO_EMAIL}`);
   console.log(`Subject: ${emailSubject}`);
   console.log(`\n${emailBody}\n`);
-  console.log('========================\n');
-
 }
 
 /**
@@ -192,12 +180,12 @@ Hen Party Entertainment
 </html>
   `;
 
-  // Prefer Resend
-  if (RESEND_API_KEY) {
+  const transporter = createTransporter();
+
+  if (transporter) {
     try {
-      const resend = new Resend(RESEND_API_KEY);
-      await resend.emails.send({
-        from: 'Ben <ben@henpartyentertainment.co.uk>',
+      await transporter.sendMail({
+        from: `"Ben Lowrey" <${SMTP_USER}>`,
         to: venueEmail,
         bcc: TO_EMAIL, // Copy Ben
         replyTo: formData.email, // Reply goes to client
@@ -205,118 +193,14 @@ Hen Party Entertainment
         text: emailBody,
         html: htmlBody,
       });
-      console.log('✅ Venue email sent via Resend');
+      console.log('✅ Venue email sent via Nodemailer');
       return;
     } catch (error) {
-      console.error('Venue email Resend error:', error);
+      console.error('Venue email Nodemailer error:', error);
     }
   }
-
-  // Fallback SendGrid
-  if (SENDGRID_API_KEY) {
-    try {
-      await sgMail.send({
-        from: 'Ben <ben@henpartyentertainment.co.uk>',
-        to: venueEmail,
-        bcc: TO_EMAIL,
-        replyTo: formData.email,
-        subject: emailSubject,
-        text: emailBody,
-        html: htmlBody,
-      });
-      console.log('✅ Venue email sent via SendGrid');
-      return;
-    } catch (error) {
-      console.error('Venue email SendGrid error:', error);
-    }
-  }
-
-  console.log('⚠️ Email service not configured. Logging venue email:');
-  console.log(`To: ${venueEmail}`);
-  console.log(`Subject: ${emailSubject}`);
 }
 
-
-/**
- * Send template email
- */
-export async function sendTemplateEmail(email: string) {
-  const templateBody = `
-HEN PARTY LIFE DRAWING - BOOKING TEMPLATE
-
-Please fill in the following details and send back:
-
-Name: _________________________
-Email: _________________________
-Phone: _________________________
-Relation: _________________________
-Occasion: _________________________
-Region: _________________________
-Group Size: _________________________
-Duration: (60 mins / 90 mins / TBC): _________________________
-Start Time: _________________________
-Event Date: _________________________
-Venue: _________________________
-Full Address: _________________________
-
-Message/Notes:
-_____________________________________________
-_____________________________________________
-_____________________________________________
-
-Thank you!
-Ben - Hen Party Entertainment
-  `.trim();
-
-  const emailSubject = 'Hen Party Life Drawing - Booking Template';
-
-  // Prefer Resend (better free tier, simpler setup)
-  if (RESEND_API_KEY) {
-    try {
-      const resend = new Resend(RESEND_API_KEY);
-
-      const result = await resend.emails.send({
-        from: 'Ben <ben@henpartyentertainment.co.uk>',
-        to: email,
-        subject: emailSubject,
-        text: templateBody,
-      });
-
-      if (result.error) {
-        throw new Error(result.error.message || 'Failed to send email');
-      }
-
-      console.log('✅ Template email sent via Resend');
-      return;
-    } catch (error: any) {
-      console.error('Resend error:', error);
-      // Fall through to SendGrid or console log
-    }
-  }
-
-  // Fallback to SendGrid if Resend fails or is not configured
-  if (SENDGRID_API_KEY) {
-    try {
-      await sgMail.send({
-        from: 'Ben <ben@henpartyentertainment.co.uk>', // Using verified domain
-        to: email,
-        subject: emailSubject,
-        text: templateBody,
-      });
-
-      console.log('✅ Template email sent via SendGrid');
-      return;
-    } catch (error: any) {
-      console.error('SendGrid error:', error);
-      // Fall through to console log
-    }
-  }
-
-  // Fallback
-  console.log(`\n📧 TEMPLATE EMAIL TO: ${email}`);
-  console.log(`Subject: ${emailSubject}`);
-  console.log(`\n${templateBody}\n`);
-}
 
 /**
  * Send template SMS via Twilio
@@ -333,7 +217,6 @@ export async function sendTemplateSMS(phone: string) {
     }
   }
 
-  // Shortened template (SMS has 160 char limit per message, but can be longer)
   const templateText = `Hen Party Life Drawing - Booking Template:
 
 Name: ___
@@ -351,7 +234,6 @@ Full Address: ___
 
 Fill in and send back. Thanks! Ben`;
 
-  // If Twilio is configured, use it
   if (TWILIO_ACCOUNT_SID && TWILIO_AUTH_TOKEN && TWILIO_PHONE_NUMBER) {
     try {
       const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
@@ -370,7 +252,7 @@ Fill in and send back. Thanks! Ben`;
     }
   }
 
-  // Fallback: Log to console and suggest email
+  // Fallback
   console.log(`\n📱 SMS TEMPLATE TO: ${formattedPhone}`);
   console.log(`\n${templateText}\n`);
   console.log('⚠️  Twilio not configured. SMS not sent.');
@@ -437,4 +319,3 @@ function formatBookingEmailHTML(formData: BookingFormData): string {
 </html>
   `.trim();
 }
-
