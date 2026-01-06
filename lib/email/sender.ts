@@ -42,7 +42,11 @@ export async function sendBookingEmail(formData: BookingFormData) {
     return;
   }
 
-  const emailSubject = `New Booking Enquiry - ${formData.name} - ${formData.eventDate || 'TBC'}`;
+  // Build subject: Name + Date + Location (if provided)
+  const subjectParts = [formData.name];
+  if (formData.eventDate) subjectParts.push(formData.eventDate);
+  if (formData.region) subjectParts.push(formData.region);
+  const emailSubject = subjectParts.join(' - ');
 
   // Text Body
   const textBody = `
