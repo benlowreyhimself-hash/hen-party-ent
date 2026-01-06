@@ -17,8 +17,25 @@ export async function POST(req: NextRequest) {
         // Initialize the new Google GenAI client
         const ai = new GoogleGenAI({ apiKey });
 
-        // Create a marketing-focused prompt
-        const imagePrompt = `${style || 'Professional, modern, elegant'} marketing image for hen party life drawing: ${prompt}. Pink and purple color palette, celebratory atmosphere, Instagram-worthy, no text in image.`;
+        // Create a marketing-focused prompt for hen party life drawing
+        // IMPORTANT: Male model in scene but tastefully handled - focus on women, model blurred/background
+        const imagePrompt = `${style || 'Professional, modern, elegant'} marketing image for hen party life drawing class: ${prompt}.
+
+Scene setup:
+- Group of happy women (the hen party) drawing at easels, laughing and having fun
+- A tasteful male model posing in the background, artistically positioned
+- Model shown from behind, side angle, or partially obscured - never frontal nudity
+- Use creative angles: model in soft focus or partially out of frame
+- FOCUS is on the women enjoying themselves, not the model
+- Model wearing minimal clothing but strategically positioned/cropped
+
+Style:
+- Pink and purple color palette with champagne gold accents
+- Bright, airy, celebratory atmosphere
+- Instagram-worthy, professional photography style
+- Soft lighting, elegant setting
+- No text in the image
+- Tasteful and classy, never explicit`;
 
         // Generate image using Imagen 4
         const response = await ai.models.generateImages({

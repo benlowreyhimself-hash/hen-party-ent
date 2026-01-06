@@ -69,29 +69,47 @@ export default function MarketingConsolePage() {
     const [isGeneratingImage, setIsGeneratingImage] = useState(false);
     const [isGeneratingVoice, setIsGeneratingVoice] = useState(false);
     const [isGeneratingVideo, setIsGeneratingVideo] = useState(false);
+    const [isSavingToDrive, setIsSavingToDrive] = useState(false);
+    const [driveLink, setDriveLink] = useState<string | null>(null);
 
     const [error, setError] = useState('');
     const [copySuccess, setCopySuccess] = useState<string | null>(null);
 
-    // Load saved data from localStorage
+    // Load saved data from localStorage (fast, persistent in browser)
     useEffect(() => {
         const saved = sessionStorage.getItem('marketing_auth');
         if (saved === 'true') setIsAuthenticated(true);
 
-        const savedData = localStorage.getItem('marketing_headline_data');
-        if (savedData) {
-            try {
-                setHeadlineData(JSON.parse(savedData));
-            } catch (e) {
-                console.error('Failed to load saved data');
+        // Load from localStorage
+        try {
+            const savedData = localStorage.getItem('marketing_headline_data');
+            if (savedData) {
+                const parsed = JSON.parse(savedData);
+                setHeadlineData(parsed);
+                console.log('Loaded', Object.keys(parsed).length, 'headlines from local storage');
             }
+        } catch (e) {
+            console.error('Failed to load:', e);
         }
     }, []);
 
-    // Save data to localStorage when it changes
+    // Auto-save to localStorage when data changes
     useEffect(() => {
         if (Object.keys(headlineData).length > 0) {
-            localStorage.setItem('marketing_headline_data', JSON.stringify(headlineData));
+            try {
+                // Save text content only (images/audio too large for localStorage)
+                const dataToSave: Record<string, HeadlineData> = {};
+                for (const [key, value] of Object.entries(headlineData)) {
+                    dataToSave[key] = {
+                        ...value,
+                        imageBase64: null, // Skip large binaries
+                        voiceBase64: null,
+                    };
+                }
+                localStorage.setItem('marketing_headline_data', JSON.stringify(dataToSave));
+            } catch (e) {
+                console.error('Failed to save:', e);
+            }
         }
     }, [headlineData]);
 
@@ -243,6 +261,44 @@ export default function MarketingConsolePage() {
         }
     };
 
+    const handleSaveToDrive = async () => {
+        if (!selectedHeadline) return;
+        const data = headlineData[selectedHeadline];
+        if (!data?.text && !data?.imageBase64 && !data?.voiceBase64) {
+            setError('Generate some content first');
+            return;
+        }
+
+        setIsSavingToDrive(true);
+        setError('');
+        setDriveLink(null);
+
+        try {
+            const response = await fetch('/api/marketing/save-to-drive', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    headline: selectedHeadline,
+                    text: data.text,
+                    imageBase64: data.imageBase64,
+                    voiceBase64: data.voiceBase64,
+                    videoUri: data.videoUri,
+                }),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                setDriveLink(result.folderLink);
+            } else {
+                setError(result.error || 'Failed to save to Drive');
+            }
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setIsSavingToDrive(false);
+        }
+    };
+
     const currentData = selectedHeadline ? headlineData[selectedHeadline] : null;
 
     const downloadImage = () => {
@@ -346,21 +402,26 @@ export default function MarketingConsolePage() {
                             {HEADLINES.map((headline) => {
                                 const data = headlineData[headline];
                                 const isSelected = selectedHeadline === headline;
+                                const hasSavedContent = data?.text || data?.imageBase64 || data?.voiceBase64;
                                 return (
                                     <button
                                         key={headline}
                                         onClick={() => selectHeadline(headline)}
-                                        className={`w-full text-left p-3 rounded-xl transition flex items-center justify-between gap-3 ${isSelected
-                                                ? 'bg-white/10 border border-white/20'
+                                        className={`w-full text-left p-3 rounded-xl transition flex items-center justify-between gap-2 ${isSelected
+                                            ? 'bg-white/10 border border-white/20'
+                                            : hasSavedContent
+                                                ? 'bg-white/5 border border-white/10'
                                                 : 'hover:bg-white/5 border border-transparent'
                                             }`}
                                     >
-                                        <span className="text-sm text-white/80">{headline}</span>
-                                        <div className="flex gap-1">
-                                            {data?.text && <span className="w-4 h-4 rounded-full bg-emerald-500/30 text-emerald-400 flex items-center justify-center text-[10px]">✓</span>}
-                                            {data?.imageBase64 && <span className="w-4 h-4 rounded-full bg-blue-500/30 text-blue-400 flex items-center justify-center text-[10px]">🖼</span>}
-                                            {data?.voiceBase64 && <span className="w-4 h-4 rounded-full bg-purple-500/30 text-purple-400 flex items-center justify-center text-[10px]">🎙</span>}
-                                            {data?.videoUri && <span className="w-4 h-4 rounded-full bg-orange-500/30 text-orange-400 flex items-center justify-center text-[10px]">🎬</span>}
+                                        <span className={`text-sm ${hasSavedContent ? 'text-white' : 'text-white/70'}`}>{headline}</span>
+                                        <div className="flex items-center gap-1 shrink-0">
+                                            {hasSavedContent && (
+                                                <span className="text-[9px] px-1.5 py-0.5 rounded bg-white/10 text-white/50 font-medium uppercase">saved</span>
+                                            )}
+                                            {data?.text && <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>}
+                                            {data?.imageBase64 && <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>}
+                                            {data?.voiceBase64 && <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>}
                                         </div>
                                     </button>
                                 );
@@ -375,34 +436,23 @@ export default function MarketingConsolePage() {
                                 {/* Selected Headline & Actions */}
                                 <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6">
                                     <div className="flex items-center justify-between mb-6">
-                                        <div>
-                                            <p className="text-white/40 text-xs uppercase tracking-wider mb-1">Selected Topic</p>
+                                        <div className="flex-1">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <p className="text-white/40 text-xs uppercase tracking-wider">Folder Name</p>
+                                                <button
+                                                    onClick={() => copyToClipboard(selectedHeadline.replace(/\s+/g, '-').toLowerCase(), 'folder')}
+                                                    className={`text-[10px] px-1.5 py-0.5 rounded transition ${copySuccess === 'folder' ? 'text-emerald-400' : 'text-white/30 hover:text-white/50'}`}
+                                                >
+                                                    {copySuccess === 'folder' ? '✓' : 'copy'}
+                                                </button>
+                                            </div>
                                             <h3 className="text-xl font-light">{selectedHeadline}</h3>
+                                            <code className="text-xs text-white/30 font-mono">{selectedHeadline.replace(/\s+/g, '-').toLowerCase()}</code>
                                         </div>
                                         <div className="flex gap-1 flex-wrap justify-end">
-                                            {currentData?.text && <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 text-[10px] border border-emerald-500/20">Text</span>}
-                                            {currentData?.imageBase64 && <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-[10px] border border-blue-500/20">Image</span>}
-                                            {currentData?.voiceBase64 && <span className="px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 text-[10px] border border-purple-500/20">Voice</span>}
-                                            {currentData?.videoUri && <span className="px-2 py-0.5 rounded-full bg-orange-500/10 text-orange-400 text-[10px] border border-orange-500/20">Video</span>}
-                                        </div>
-                                    </div>
-
-                                    {/* Voice Selection */}
-                                    <div className="mb-4">
-                                        <label className="text-xs text-white/40 block mb-2">Voice</label>
-                                        <div className="flex flex-wrap gap-2">
-                                            {VOICES.map(v => (
-                                                <button
-                                                    key={v.id}
-                                                    onClick={() => setSelectedVoice(v.id)}
-                                                    className={`text-xs px-3 py-1.5 rounded-lg transition ${selectedVoice === v.id
-                                                            ? 'bg-purple-500/20 border border-purple-500/30 text-purple-300'
-                                                            : 'bg-white/5 border border-white/10 text-white/50 hover:text-white/70'
-                                                        }`}
-                                                >
-                                                    {v.name}
-                                                </button>
-                                            ))}
+                                            {currentData?.text && <span className="px-2 py-0.5 rounded-full bg-white/5 text-white/50 text-[10px] border border-white/10">text</span>}
+                                            {currentData?.imageBase64 && <span className="px-2 py-0.5 rounded-full bg-white/5 text-white/50 text-[10px] border border-white/10">image</span>}
+                                            {currentData?.voiceBase64 && <span className="px-2 py-0.5 rounded-full bg-white/5 text-white/50 text-[10px] border border-white/10">voice</span>}
                                         </div>
                                     </div>
 
@@ -410,31 +460,54 @@ export default function MarketingConsolePage() {
                                         <button
                                             onClick={handleGenerateText}
                                             disabled={isGeneratingText}
-                                            className="bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-emerald-300"
+                                            className="bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-white/70"
                                         >
-                                            {isGeneratingText ? '...' : currentData?.text ? '🔄 Text' : '📝 Text'}
+                                            {isGeneratingText ? 'generating...' : currentData?.text ? 'Regenerate Text' : 'Generate Text'}
                                         </button>
                                         <button
                                             onClick={handleGenerateImage}
                                             disabled={isGeneratingImage}
-                                            className="bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/20 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-blue-300"
+                                            className="bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-white/70"
                                         >
-                                            {isGeneratingImage ? '...' : currentData?.imageBase64 ? '🔄 Image' : '🖼 Image'}
+                                            {isGeneratingImage ? 'generating...' : currentData?.imageBase64 ? 'Regenerate Image' : 'Generate Image'}
                                         </button>
                                         <button
                                             onClick={handleGenerateVoice}
                                             disabled={isGeneratingVoice || !currentData?.text?.caption}
-                                            className="bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-purple-300"
+                                            className="bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-white/70"
                                         >
-                                            {isGeneratingVoice ? '...' : currentData?.voiceBase64 ? '🔄 Voice' : '🎙 Voice'}
+                                            {isGeneratingVoice ? 'generating...' : currentData?.voiceBase64 ? 'Regenerate Voice' : 'Generate Voice'}
                                         </button>
                                         <button
                                             onClick={handleGenerateVideo}
                                             disabled={isGeneratingVideo}
-                                            className="bg-orange-500/10 hover:bg-orange-500/20 border border-orange-500/20 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-orange-300"
+                                            className="bg-white/5 hover:bg-white/10 border border-white/10 py-3 rounded-xl text-xs font-medium transition disabled:opacity-50 text-white/70"
                                         >
-                                            {isGeneratingVideo ? '...' : currentData?.videoUri ? '🔄 Video' : '🎬 Video'}
+                                            {isGeneratingVideo ? 'generating...' : currentData?.videoUri ? 'Regenerate Video' : 'Generate Video'}
                                         </button>
+                                    </div>
+
+                                    {/* Save to Google Drive */}
+                                    <div className="mt-4 pt-4 border-t border-white/10">
+                                        <div className="flex items-center justify-between">
+                                            <button
+                                                onClick={handleSaveToDrive}
+                                                disabled={isSavingToDrive || (!currentData?.text && !currentData?.imageBase64 && !currentData?.voiceBase64)}
+                                                className="bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-xl text-xs font-medium transition disabled:opacity-50 text-white/70"
+                                            >
+                                                {isSavingToDrive ? 'Saving to Drive...' : 'Save All to Google Drive'}
+                                            </button>
+                                            {driveLink && (
+                                                <a
+                                                    href={driveLink}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-xs text-white/50 hover:text-white/70 underline"
+                                                >
+                                                    Open folder →
+                                                </a>
+                                            )}
+                                        </div>
                                     </div>
 
                                     {error && (
@@ -521,15 +594,44 @@ export default function MarketingConsolePage() {
                                     <div className="backdrop-blur-xl bg-white/5 border border-white/10 rounded-2xl p-6">
                                         <div className="flex items-center justify-between mb-4">
                                             <h4 className="text-sm font-medium text-white/60 uppercase tracking-wider">
-                                                Voice Over {currentData.voiceName && <span className="text-purple-400">({currentData.voiceName})</span>}
+                                                Voice Over <span className="text-white/40">({currentData.voiceName || 'Charlotte'})</span>
                                             </h4>
-                                            <button
-                                                onClick={downloadVoice}
-                                                className="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded-lg transition"
-                                            >
-                                                Download MP3
-                                            </button>
+                                            <div className="flex gap-2">
+                                                <button
+                                                    onClick={handleGenerateVoice}
+                                                    disabled={isGeneratingVoice}
+                                                    className="text-xs text-white/40 hover:text-white/60 transition disabled:opacity-50"
+                                                >
+                                                    {isGeneratingVoice ? 'regenerating...' : 'regenerate'}
+                                                </button>
+                                                <button
+                                                    onClick={downloadVoice}
+                                                    className="text-xs bg-white/10 hover:bg-white/20 px-3 py-1 rounded-lg transition"
+                                                >
+                                                    Download MP3
+                                                </button>
+                                            </div>
                                         </div>
+
+                                        {/* Voice Selection */}
+                                        <div className="mb-4">
+                                            <label className="text-xs text-white/30 block mb-2">Change voice</label>
+                                            <div className="flex flex-wrap gap-2">
+                                                {VOICES.map(v => (
+                                                    <button
+                                                        key={v.id}
+                                                        onClick={() => setSelectedVoice(v.id)}
+                                                        className={`text-xs px-3 py-1.5 rounded-lg transition ${selectedVoice === v.id
+                                                            ? 'bg-white/15 border border-white/20 text-white'
+                                                            : 'bg-white/5 border border-white/10 text-white/40 hover:text-white/60'
+                                                            }`}
+                                                    >
+                                                        {v.name}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+
                                         <audio
                                             controls
                                             className="w-full"
