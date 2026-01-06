@@ -74,41 +74,80 @@ export default function MarketingConsolePage() {
 
     const [error, setError] = useState('');
     const [copySuccess, setCopySuccess] = useState<string | null>(null);
+    const [isLoadingContent, setIsLoadingContent] = useState(false);
 
-    // Load saved data from localStorage (fast, persistent in browser)
+    // Load saved data from Google Drive on mount (cross-device sync)
     useEffect(() => {
         const saved = sessionStorage.getItem('marketing_auth');
         if (saved === 'true') setIsAuthenticated(true);
 
-        // Load from localStorage
+        // First load from localStorage (fast)
         try {
             const savedData = localStorage.getItem('marketing_headline_data');
             if (savedData) {
                 const parsed = JSON.parse(savedData);
                 setHeadlineData(parsed);
-                console.log('Loaded', Object.keys(parsed).length, 'headlines from local storage');
+                console.log('Loaded', Object.keys(parsed).length, 'headlines from local cache');
             }
         } catch (e) {
-            console.error('Failed to load:', e);
+            console.error('Failed to load from cache:', e);
         }
+
+        // Then sync from Google Drive (cross-device)
+        const loadFromDrive = async () => {
+            setIsLoadingContent(true);
+            try {
+                const response = await fetch('/api/marketing/save-to-drive');
+                const result = await response.json();
+                if (result.success && result.data) {
+                    const mapped: Record<string, HeadlineData> = {};
+                    for (const [headline, data] of Object.entries(result.data as Record<string, any>)) {
+                        const matchingHeadline = HEADLINES.find(h =>
+                            h.toLowerCase().replace(/[^a-z0-9]/g, '') ===
+                            headline.toLowerCase().replace(/[^a-z0-9]/g, '')
+                        );
+                        if (matchingHeadline && data) {
+                            mapped[matchingHeadline] = {
+                                text: (data as any).text || null,
+                                textPrompt: null,
+                                imageBase64: null,
+                                imagePrompt: null,
+                                voiceBase64: null,
+                                voiceName: null,
+                                videoUri: null,
+                            };
+                        }
+                    }
+                    if (Object.keys(mapped).length > 0) {
+                        setHeadlineData(prev => ({ ...prev, ...mapped }));
+                        console.log('Synced', Object.keys(mapped).length, 'headlines from Drive');
+                    }
+                }
+            } catch (e) {
+                console.error('Failed to sync from Drive:', e);
+            } finally {
+                setIsLoadingContent(false);
+            }
+        };
+
+        loadFromDrive();
     }, []);
 
-    // Auto-save to localStorage when data changes
+    // Auto-save to localStorage when data changes (fast cache)
     useEffect(() => {
         if (Object.keys(headlineData).length > 0) {
             try {
-                // Save text content only (images/audio too large for localStorage)
                 const dataToSave: Record<string, HeadlineData> = {};
                 for (const [key, value] of Object.entries(headlineData)) {
                     dataToSave[key] = {
                         ...value,
-                        imageBase64: null, // Skip large binaries
+                        imageBase64: null,
                         voiceBase64: null,
                     };
                 }
                 localStorage.setItem('marketing_headline_data', JSON.stringify(dataToSave));
             } catch (e) {
-                console.error('Failed to save:', e);
+                console.error('Failed to cache:', e);
             }
         }
     }, [headlineData]);

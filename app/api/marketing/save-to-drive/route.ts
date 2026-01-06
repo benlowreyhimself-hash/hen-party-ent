@@ -22,14 +22,14 @@ function getAuth() {
     });
 }
 
-// Get or create folder
-async function getOrCreateFolder(drive: any, folderName: string): Promise<string> {
+// Get existing folder or create new one
+async function getOrCreateFolder(drive: any, folderName: string, parentId: string): Promise<string> {
     const searchResponse = await drive.files.list({
-        q: `name='${folderName}' and '${MARKETING_FOLDER_ID}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
+        q: `name='${folderName}' and '${parentId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
         fields: 'files(id, name)',
     });
 
-    if (searchResponse.data.files?.length > 0) {
+    if (searchResponse.data.files && searchResponse.data.files.length > 0) {
         return searchResponse.data.files[0].id;
     }
 
@@ -37,7 +37,7 @@ async function getOrCreateFolder(drive: any, folderName: string): Promise<string
         requestBody: {
             name: folderName,
             mimeType: 'application/vnd.google-apps.folder',
-            parents: [MARKETING_FOLDER_ID],
+            parents: [parentId],
         },
         fields: 'id',
     });
@@ -45,19 +45,43 @@ async function getOrCreateFolder(drive: any, folderName: string): Promise<string
     return folder.data.id;
 }
 
-// Upload file
-async function uploadFile(drive: any, folderId: string, fileName: string, mimeType: string, content: Buffer | string) {
-    const buffer = typeof content === 'string' ? Buffer.from(content, 'base64') : content;
+// Get next version folder (v2, v3, etc)
+async function getNextVersionFolder(drive: any, parentFolderId: string): Promise<{ folderId: string; version: number }> {
+    // Check for existing version folders
+    const versionsResponse = await drive.files.list({
+        q: `'${parentFolderId}' in parents and mimeType='application/vnd.google-apps.folder' and name contains 'v' and trashed=false`,
+        fields: 'files(id, name)',
+        orderBy: 'name desc',
+    });
 
-    // Check if file exists and delete it first
-    const existingFiles = await drive.files.list({
-        q: `name='${fileName}' and '${folderId}' in parents and trashed=false`,
+    let maxVersion = 1;
+    for (const folder of versionsResponse.data.files || []) {
+        const match = folder.name?.match(/^v(\d+)$/);
+        if (match) {
+            maxVersion = Math.max(maxVersion, parseInt(match[1]));
+        }
+    }
+
+    // Check if v1 content already exists (files in root of segment folder)
+    const rootFilesResponse = await drive.files.list({
+        q: `'${parentFolderId}' in parents and mimeType!='application/vnd.google-apps.folder' and trashed=false`,
         fields: 'files(id)',
     });
 
-    for (const file of existingFiles.data.files || []) {
-        await drive.files.delete({ fileId: file.id });
+    if (rootFilesResponse.data.files && rootFilesResponse.data.files.length > 0) {
+        // Content exists, create next version folder
+        const nextVersion = maxVersion + 1;
+        const versionFolderId = await getOrCreateFolder(drive, `v${nextVersion}`, parentFolderId);
+        return { folderId: versionFolderId, version: nextVersion };
     }
+
+    // No existing content, use root folder (v1)
+    return { folderId: parentFolderId, version: 1 };
+}
+
+// Upload file
+async function uploadFile(drive: any, folderId: string, fileName: string, mimeType: string, content: Buffer | string) {
+    const buffer = typeof content === 'string' ? Buffer.from(content, 'base64') : content;
 
     const response = await drive.files.create({
         requestBody: { name: fileName, parents: [folderId] },
@@ -83,9 +107,26 @@ export async function GET() {
         const contentData: Record<string, any> = {};
 
         for (const folder of foldersResponse.data.files || []) {
-            // Look for content.json in each folder
+            if (!folder.name || !folder.id) continue;
+
+            // Look for content.json in the folder (or latest version subfolder)
+            let targetFolderId = folder.id;
+
+            // Check for version subfolders, use latest
+            const versionsResponse = await drive.files.list({
+                q: `'${folder.id}' in parents and mimeType='application/vnd.google-apps.folder' and name contains 'v' and trashed=false`,
+                fields: 'files(id, name)',
+                orderBy: 'name desc',
+            });
+
+            if (versionsResponse.data.files && versionsResponse.data.files.length > 0 && versionsResponse.data.files[0].id) {
+                // Use latest version folder
+                targetFolderId = versionsResponse.data.files[0].id;
+            }
+
+            // Get content.json
             const filesResponse = await drive.files.list({
-                q: `name='content.json' and '${folder.id}' in parents and trashed=false`,
+                q: `name='content.json' and '${targetFolderId}' in parents and trashed=false`,
                 fields: 'files(id)',
             });
 
@@ -97,12 +138,15 @@ export async function GET() {
                 });
 
                 // Map folder name back to headline
-                if (!folder.name) continue;
                 const headline = folder.name
                     .replace(/-/g, ' ')
                     .replace(/\b\w/g, (c: string) => c.toUpperCase());
 
-                contentData[headline] = fileContent.data;
+                contentData[headline] = {
+                    ...(fileContent.data as any),
+                    folderId: folder.id,
+                    folderLink: `https://drive.google.com/drive/folders/${folder.id}`,
+                };
             }
         }
 
@@ -114,7 +158,7 @@ export async function GET() {
     }
 }
 
-// POST - Save marketing content to Drive
+// POST - Save marketing content to Drive with versioning
 export async function POST(req: NextRequest) {
     try {
         const { headline, text, imageBase64, voiceBase64, videoUri } = await req.json();
@@ -133,26 +177,33 @@ export async function POST(req: NextRequest) {
             .replace(/\s+/g, '-')
             .slice(0, 50);
 
-        const folderId = await getOrCreateFolder(drive, folderName);
+        // Get or create the main segment folder
+        const segmentFolderId = await getOrCreateFolder(drive, folderName, MARKETING_FOLDER_ID);
+
+        // Get the target folder (root for new, or next version for updates)
+        const { folderId: targetFolderId, version } = await getNextVersionFolder(drive, segmentFolderId);
+
         const uploadedFiles: { type: string; link?: string }[] = [];
 
-        // Save JSON metadata (text content without large binaries)
+        // Save JSON metadata
         const contentJson = {
             headline,
             text,
             hasImage: !!imageBase64,
             hasVoice: !!voiceBase64,
             hasVideo: !!videoUri,
+            version,
             savedAt: new Date().toISOString(),
         };
 
-        await uploadFile(drive, folderId, 'content.json', 'application/json', Buffer.from(JSON.stringify(contentJson, null, 2)));
+        await uploadFile(drive, targetFolderId, 'content.json', 'application/json', Buffer.from(JSON.stringify(contentJson, null, 2)));
         uploadedFiles.push({ type: 'metadata' });
 
         // Upload text content as markdown
         if (text) {
             const textContent = [
                 `# ${headline}`,
+                version > 1 ? `\n_Version ${version}_\n` : '',
                 '',
                 '## Caption',
                 text.caption || '',
@@ -164,28 +215,29 @@ export async function POST(req: NextRequest) {
                 text.bestTimeToPost || '',
             ].join('\n');
 
-            const textFile = await uploadFile(drive, folderId, 'content.md', 'text/markdown', Buffer.from(textContent));
+            const textFile = await uploadFile(drive, targetFolderId, 'content.md', 'text/markdown', Buffer.from(textContent));
             uploadedFiles.push({ type: 'text', link: textFile.webViewLink });
         }
 
         // Upload image
         if (imageBase64) {
-            const imageFile = await uploadFile(drive, folderId, 'image.png', 'image/png', imageBase64);
+            const imageFile = await uploadFile(drive, targetFolderId, 'image.png', 'image/png', imageBase64);
             uploadedFiles.push({ type: 'image', link: imageFile.webViewLink });
         }
 
         // Upload voice
         if (voiceBase64) {
-            const voiceFile = await uploadFile(drive, folderId, 'voiceover.mp3', 'audio/mpeg', voiceBase64);
+            const voiceFile = await uploadFile(drive, targetFolderId, 'voiceover.mp3', 'audio/mpeg', voiceBase64);
             uploadedFiles.push({ type: 'voice', link: voiceFile.webViewLink });
         }
 
         return NextResponse.json({
             success: true,
-            folderId,
+            folderId: segmentFolderId,
             folderName,
+            version,
             uploadedFiles,
-            folderLink: `https://drive.google.com/drive/folders/${folderId}`,
+            folderLink: `https://drive.google.com/drive/folders/${segmentFolderId}`,
         });
 
     } catch (error: any) {
