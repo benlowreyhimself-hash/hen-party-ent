@@ -27,6 +27,8 @@ async function getOrCreateFolder(drive: any, folderName: string, parentId: strin
     const searchResponse = await drive.files.list({
         q: `name='${folderName}' and '${parentId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
         fields: 'files(id, name)',
+        supportsAllDrives: true,
+        includeItemsFromAllDrives: true,
     });
 
     if (searchResponse.data.files && searchResponse.data.files.length > 0) {
@@ -40,6 +42,7 @@ async function getOrCreateFolder(drive: any, folderName: string, parentId: strin
             parents: [parentId],
         },
         fields: 'id',
+        supportsAllDrives: true,
     });
 
     return folder.data.id;
@@ -52,6 +55,8 @@ async function getNextVersionFolder(drive: any, parentFolderId: string): Promise
         q: `'${parentFolderId}' in parents and mimeType='application/vnd.google-apps.folder' and name contains 'v' and trashed=false`,
         fields: 'files(id, name)',
         orderBy: 'name desc',
+        supportsAllDrives: true,
+        includeItemsFromAllDrives: true,
     });
 
     let maxVersion = 1;
@@ -66,6 +71,8 @@ async function getNextVersionFolder(drive: any, parentFolderId: string): Promise
     const rootFilesResponse = await drive.files.list({
         q: `'${parentFolderId}' in parents and mimeType!='application/vnd.google-apps.folder' and trashed=false`,
         fields: 'files(id)',
+        supportsAllDrives: true,
+        includeItemsFromAllDrives: true,
     });
 
     if (rootFilesResponse.data.files && rootFilesResponse.data.files.length > 0) {
@@ -87,6 +94,7 @@ async function uploadFile(drive: any, folderId: string, fileName: string, mimeTy
         requestBody: { name: fileName, parents: [folderId] },
         media: { mimeType, body: Readable.from(buffer) },
         fields: 'id, webViewLink',
+        supportsAllDrives: true,
     });
 
     return response.data;
@@ -102,6 +110,8 @@ export async function GET() {
         const foldersResponse = await drive.files.list({
             q: `'${MARKETING_FOLDER_ID}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`,
             fields: 'files(id, name)',
+            supportsAllDrives: true,
+            includeItemsFromAllDrives: true,
         });
 
         const contentData: Record<string, any> = {};
@@ -117,6 +127,8 @@ export async function GET() {
                 q: `'${folder.id}' in parents and mimeType='application/vnd.google-apps.folder' and name contains 'v' and trashed=false`,
                 fields: 'files(id, name)',
                 orderBy: 'name desc',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
             });
 
             if (versionsResponse.data.files && versionsResponse.data.files.length > 0 && versionsResponse.data.files[0].id) {
@@ -128,6 +140,8 @@ export async function GET() {
             const filesResponse = await drive.files.list({
                 q: `name='content.json' and '${targetFolderId}' in parents and trashed=false`,
                 fields: 'files(id)',
+                supportsAllDrives: true,
+                includeItemsFromAllDrives: true,
             });
 
             if (filesResponse.data.files && filesResponse.data.files.length > 0) {
@@ -135,6 +149,7 @@ export async function GET() {
                 const fileContent = await drive.files.get({
                     fileId,
                     alt: 'media',
+                    supportsAllDrives: true,
                 });
 
                 // Map folder name back to headline

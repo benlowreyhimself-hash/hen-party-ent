@@ -64,6 +64,14 @@ export default function MarketingConsolePage() {
     const [headlineData, setHeadlineData] = useState<Record<string, HeadlineData>>({});
     const [selectedVoice, setSelectedVoice] = useState('charlotte');
 
+    // Voice settings
+    const [voiceSettings, setVoiceSettings] = useState({
+        stability: 0.5,
+        similarity_boost: 0.75,
+        style: 0.5,
+        speed: 1.0,
+    });
+
     // Loading states
     const [isGeneratingText, setIsGeneratingText] = useState(false);
     const [isGeneratingImage, setIsGeneratingImage] = useState(false);
@@ -251,6 +259,7 @@ export default function MarketingConsolePage() {
                 body: JSON.stringify({
                     text: currentData.text.caption,
                     voice: selectedVoice,
+                    settings: voiceSettings,
                 }),
             });
 
@@ -670,6 +679,73 @@ export default function MarketingConsolePage() {
                                                 ))}
                                             </div>
                                         </div>
+
+                                        {/* Voice Settings */}
+                                        <details className="mb-4">
+                                            <summary className="text-xs text-white/40 cursor-pointer hover:text-white/60 mb-3">Voice Settings</summary>
+                                            <div className="grid grid-cols-2 gap-4 mt-3">
+                                                <div>
+                                                    <label className="text-xs text-white/30 block mb-1">
+                                                        Stability: {voiceSettings.stability.toFixed(1)}
+                                                    </label>
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="1"
+                                                        step="0.1"
+                                                        value={voiceSettings.stability}
+                                                        onChange={(e) => setVoiceSettings(s => ({ ...s, stability: parseFloat(e.target.value) }))}
+                                                        className="w-full accent-white/50"
+                                                    />
+                                                    <p className="text-[10px] text-white/20">Low=expressive, High=consistent</p>
+                                                </div>
+                                                <div>
+                                                    <label className="text-xs text-white/30 block mb-1">
+                                                        Similarity: {voiceSettings.similarity_boost.toFixed(1)}
+                                                    </label>
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="1"
+                                                        step="0.1"
+                                                        value={voiceSettings.similarity_boost}
+                                                        onChange={(e) => setVoiceSettings(s => ({ ...s, similarity_boost: parseFloat(e.target.value) }))}
+                                                        className="w-full accent-white/50"
+                                                    />
+                                                    <p className="text-[10px] text-white/20">How close to original voice</p>
+                                                </div>
+                                                <div>
+                                                    <label className="text-xs text-white/30 block mb-1">
+                                                        Style: {voiceSettings.style.toFixed(1)}
+                                                    </label>
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="1"
+                                                        step="0.1"
+                                                        value={voiceSettings.style}
+                                                        onChange={(e) => setVoiceSettings(s => ({ ...s, style: parseFloat(e.target.value) }))}
+                                                        className="w-full accent-white/50"
+                                                    />
+                                                    <p className="text-[10px] text-white/20">Style exaggeration</p>
+                                                </div>
+                                                <div>
+                                                    <label className="text-xs text-white/30 block mb-1">
+                                                        Speed: {voiceSettings.speed.toFixed(1)}x
+                                                    </label>
+                                                    <input
+                                                        type="range"
+                                                        min="0.5"
+                                                        max="2"
+                                                        step="0.1"
+                                                        value={voiceSettings.speed}
+                                                        onChange={(e) => setVoiceSettings(s => ({ ...s, speed: parseFloat(e.target.value) }))}
+                                                        className="w-full accent-white/50"
+                                                    />
+                                                    <p className="text-[10px] text-white/20">1.0 = normal speed</p>
+                                                </div>
+                                            </div>
+                                        </details>
 
                                         <audio
                                             controls

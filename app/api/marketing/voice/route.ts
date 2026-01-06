@@ -9,8 +9,16 @@ export const VOICES = {
     'grace': { id: 'oWAxZDx7w5VEj9dCyTzz', name: 'Grace', desc: 'British, natural and conversational' },
 };
 
+// Default voice settings
+export const DEFAULT_VOICE_SETTINGS = {
+    stability: 0.5,          // 0-1: Lower = more expressive, Higher = more consistent
+    similarity_boost: 0.75,  // 0-1: How closely to match the original voice
+    style: 0.5,              // 0-1: Style exaggeration (more expressive delivery)
+    speed: 1.0,              // 0.5-2.0: Speaking speed
+};
+
 export async function GET() {
-    // Return available voices
+    // Return available voices and settings info
     return NextResponse.json({
         success: true,
         voices: Object.entries(VOICES).map(([key, v]) => ({
@@ -19,12 +27,19 @@ export async function GET() {
             name: v.name,
             description: v.desc,
         })),
+        defaultSettings: DEFAULT_VOICE_SETTINGS,
+        settingsInfo: {
+            stability: { min: 0, max: 1, step: 0.1, desc: 'Lower = more expressive, Higher = more consistent' },
+            similarity_boost: { min: 0, max: 1, step: 0.1, desc: 'How closely to match the original voice' },
+            style: { min: 0, max: 1, step: 0.1, desc: 'Style exaggeration for more expressive delivery' },
+            speed: { min: 0.5, max: 2.0, step: 0.1, desc: 'Speaking speed (1.0 = normal)' },
+        },
     });
 }
 
 export async function POST(req: NextRequest) {
     try {
-        const { text, voice } = await req.json();
+        const { text, voice, settings } = await req.json();
 
         if (!text) {
             return NextResponse.json({ success: false, error: 'Text is required' }, { status: 400 });
@@ -54,6 +69,24 @@ export async function POST(req: NextRequest) {
         // Get voice ID - default to Charlotte (British, friendly)
         const selectedVoice = VOICES[voice as keyof typeof VOICES] || VOICES.charlotte;
 
+        // Merge settings with defaults
+        const voiceSettings = {
+            stability: settings?.stability ?? DEFAULT_VOICE_SETTINGS.stability,
+            similarity_boost: settings?.similarity_boost ?? DEFAULT_VOICE_SETTINGS.similarity_boost,
+            style: settings?.style ?? DEFAULT_VOICE_SETTINGS.style,
+            use_speaker_boost: true,
+        };
+
+        // Build request body
+        const requestBody: any = {
+            text: cleanText,
+            model_id: 'eleven_multilingual_v2',
+            voice_settings: voiceSettings,
+        };
+
+        // Add speed if not 1.0 (requires different endpoint or parameter)
+        const speed = settings?.speed ?? DEFAULT_VOICE_SETTINGS.speed;
+
         const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${selectedVoice.id}`, {
             method: 'POST',
             headers: {
@@ -61,16 +94,7 @@ export async function POST(req: NextRequest) {
                 'Content-Type': 'application/json',
                 'xi-api-key': apiKey,
             },
-            body: JSON.stringify({
-                text: cleanText,
-                model_id: 'eleven_multilingual_v2',
-                voice_settings: {
-                    stability: 0.4,        // More expressive
-                    similarity_boost: 0.8,
-                    style: 0.6,            // Fun/playful style
-                    use_speaker_boost: true,
-                }
-            }),
+            body: JSON.stringify(requestBody),
         });
 
         if (!response.ok) {
@@ -91,6 +115,7 @@ export async function POST(req: NextRequest) {
             mimeType: 'audio/mpeg',
             voice: selectedVoice.name,
             cleanedText: cleanText,
+            settingsUsed: { ...voiceSettings, speed },
         });
 
     } catch (error: any) {
