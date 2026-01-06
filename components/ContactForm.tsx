@@ -459,7 +459,7 @@ export default function ContactForm() {
       {/* Full Address */}
       <div>
         <label htmlFor="fullAddress" className="block text-sm font-medium mb-2">
-          Full Address
+          Full Address for the event
         </label>
         <textarea
           id="fullAddress"
