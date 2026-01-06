@@ -118,9 +118,9 @@ export default function MarketingConsolePage() {
                             mapped[matchingHeadline] = {
                                 text: (data as any).text || null,
                                 textPrompt: null,
-                                imageBase64: null,
+                                imageBase64: (data as any).imageBase64 || null,
                                 imagePrompt: null,
-                                voiceBase64: null,
+                                voiceBase64: (data as any).voiceBase64 || null,
                                 voiceName: null,
                                 videoUri: null,
                             };

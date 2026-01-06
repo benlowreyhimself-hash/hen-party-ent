@@ -152,13 +152,47 @@ export async function GET() {
                     supportsAllDrives: true,
                 });
 
+                const content = fileContent.data as any;
+
+                // Fetch image if we have a fileId
+                let imageBase64 = null;
+                if (content.imageFileId) {
+                    try {
+                        const imageResponse = await drive.files.get({
+                            fileId: content.imageFileId,
+                            alt: 'media',
+                            supportsAllDrives: true,
+                        }, { responseType: 'arraybuffer' });
+                        imageBase64 = Buffer.from(imageResponse.data as ArrayBuffer).toString('base64');
+                    } catch (e) {
+                        console.error('Failed to fetch image:', e);
+                    }
+                }
+
+                // Fetch voice if we have a fileId
+                let voiceBase64 = null;
+                if (content.voiceFileId) {
+                    try {
+                        const voiceResponse = await drive.files.get({
+                            fileId: content.voiceFileId,
+                            alt: 'media',
+                            supportsAllDrives: true,
+                        }, { responseType: 'arraybuffer' });
+                        voiceBase64 = Buffer.from(voiceResponse.data as ArrayBuffer).toString('base64');
+                    } catch (e) {
+                        console.error('Failed to fetch voice:', e);
+                    }
+                }
+
                 // Map folder name back to headline
                 const headline = folder.name
                     .replace(/-/g, ' ')
                     .replace(/\b\w/g, (c: string) => c.toUpperCase());
 
                 contentData[headline] = {
-                    ...(fileContent.data as any),
+                    ...content,
+                    imageBase64,
+                    voiceBase64,
                     folderId: folder.id,
                     folderLink: `https://drive.google.com/drive/folders/${folder.id}`,
                 };
@@ -198,15 +232,33 @@ export async function POST(req: NextRequest) {
         // Get the target folder (root for new, or next version for updates)
         const { folderId: targetFolderId, version } = await getNextVersionFolder(drive, segmentFolderId);
 
-        const uploadedFiles: { type: string; link?: string }[] = [];
+        const uploadedFiles: { type: string; link?: string; fileId?: string }[] = [];
+        let imageFileId: string | null = null;
+        let voiceFileId: string | null = null;
 
-        // Save JSON metadata
+        // Upload image first to get fileId
+        if (imageBase64) {
+            const imageFile = await uploadFile(drive, targetFolderId, 'image.png', 'image/png', imageBase64);
+            imageFileId = imageFile.id;
+            uploadedFiles.push({ type: 'image', link: imageFile.webViewLink, fileId: imageFile.id });
+        }
+
+        // Upload voice
+        if (voiceBase64) {
+            const voiceFile = await uploadFile(drive, targetFolderId, 'voiceover.mp3', 'audio/mpeg', voiceBase64);
+            voiceFileId = voiceFile.id;
+            uploadedFiles.push({ type: 'voice', link: voiceFile.webViewLink, fileId: voiceFile.id });
+        }
+
+        // Save JSON metadata with file IDs
         const contentJson = {
             headline,
             text,
             hasImage: !!imageBase64,
             hasVoice: !!voiceBase64,
             hasVideo: !!videoUri,
+            imageFileId,
+            voiceFileId,
             version,
             savedAt: new Date().toISOString(),
         };
@@ -232,18 +284,6 @@ export async function POST(req: NextRequest) {
 
             const textFile = await uploadFile(drive, targetFolderId, 'content.md', 'text/markdown', Buffer.from(textContent));
             uploadedFiles.push({ type: 'text', link: textFile.webViewLink });
-        }
-
-        // Upload image
-        if (imageBase64) {
-            const imageFile = await uploadFile(drive, targetFolderId, 'image.png', 'image/png', imageBase64);
-            uploadedFiles.push({ type: 'image', link: imageFile.webViewLink });
-        }
-
-        // Upload voice
-        if (voiceBase64) {
-            const voiceFile = await uploadFile(drive, targetFolderId, 'voiceover.mp3', 'audio/mpeg', voiceBase64);
-            uploadedFiles.push({ type: 'voice', link: voiceFile.webViewLink });
         }
 
         return NextResponse.json({
