@@ -83,6 +83,31 @@ export default function Header() {
                 Homepage
               </Link>
 
+              <Link href="/reviews" className="text-foreground hover:text-primary transition-colors">
+                Reviews
+              </Link>
+              <Link href="/photos" className="text-foreground hover:text-primary transition-colors">
+                Photos
+              </Link>
+              <Link href="/hen-party-games" className="text-foreground hover:text-primary transition-colors">
+                Games
+              </Link>
+              <Link href="/popular" className="text-foreground hover:text-primary transition-colors">
+                Popular
+              </Link>
+              <Link href="/prices" className="text-foreground hover:text-primary transition-colors">
+                Prices
+              </Link>
+              <Link href="/about-ben" className="text-foreground hover:text-primary transition-colors">
+                About Ben
+              </Link>
+              <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
+                Contact
+              </Link>
+              <Link href="/accommodations" className="text-foreground hover:text-primary transition-colors">
+                Accommodations
+              </Link>
+
               {/* Locations Dropdown */}
               <div
                 className="relative group h-full flex items-center"
@@ -97,7 +122,7 @@ export default function Header() {
                 </button>
 
                 {locationsOpen && (
-                  <div className="absolute top-full left-0 w-64 bg-white shadow-lg rounded-b-lg border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[60vh] overflow-y-auto">
+                  <div className="absolute top-full right-0 w-64 bg-white shadow-lg rounded-b-lg border border-slate-100 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200 max-h-[60vh] overflow-y-auto">
                     {[
                       { name: 'Bristol', href: '/hen-party-life-drawing-bristol' },
                       { name: 'Bath', href: '/hen-party-life-drawing-bath' },
@@ -129,28 +154,6 @@ export default function Header() {
                   </div>
                 )}
               </div>
-
-              <Link href="/reviews" className="text-foreground hover:text-primary transition-colors">
-                Reviews
-              </Link>
-              <Link href="/photos" className="text-foreground hover:text-primary transition-colors">
-                Photos
-              </Link>
-              <Link href="/hen-party-games" className="text-foreground hover:text-primary transition-colors">
-                Games
-              </Link>
-              <Link href="/prices" className="text-foreground hover:text-primary transition-colors">
-                Prices
-              </Link>
-              <Link href="/about-ben" className="text-foreground hover:text-primary transition-colors">
-                About Ben
-              </Link>
-              <Link href="/contact" className="text-foreground hover:text-primary transition-colors">
-                Contact
-              </Link>
-              <Link href="/accommodations" className="text-foreground hover:text-primary transition-colors">
-                Accommodations
-              </Link>
               {/* Admin link removed for public view */}
             </div>
 
@@ -179,6 +182,63 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Homepage
+                </Link>
+
+                <Link
+                  href="/reviews"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Reviews
+                </Link>
+                <Link
+                  href="/photos"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Photos
+                </Link>
+                <Link
+                  href="/hen-party-games"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Games
+                </Link>
+                <Link
+                  href="/popular"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Popular
+                </Link>
+                <Link
+                  href="/prices"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Prices
+                </Link>
+                <Link
+                  href="/about-ben"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About Ben
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+                <Link
+                  href="/accommodations"
+                  className="text-foreground hover:text-primary transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Accommodations
                 </Link>
 
                 <div className="py-2 border-y border-border/50 my-2">
@@ -214,55 +274,6 @@ export default function Header() {
                     ))}
                   </div>
                 </div>
-                <Link
-                  href="/reviews"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Reviews
-                </Link>
-                <Link
-                  href="/photos"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Photos
-                </Link>
-                <Link
-                  href="/hen-party-games"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Games
-                </Link>
-                <Link
-                  href="/prices"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Prices
-                </Link>
-                <Link
-                  href="/about-ben"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About Ben
-                </Link>
-                <Link
-                  href="/contact"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact
-                </Link>
-                <Link
-                  href="/accommodations"
-                  className="text-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Accommodations
-                </Link>
               </div>
             </div>
           )}

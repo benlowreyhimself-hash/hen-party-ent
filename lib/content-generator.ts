@@ -12,7 +12,7 @@ export async function generateTopicContent(topic: string) {
         };
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
     const prompt = `
     You are Ben, a friendly and professional hen party model and entertainer from "Hen Party Entertainment".

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GTM from "@/components/GTM";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GlobalStructuredData from "@/components/GlobalStructuredData";
 
 const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -22,6 +23,34 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Hen Party Life Drawing | Fun & Classy Entertainment UK | Ben",
   description: "Looking for classy hen party ideas? Book a fun, tasteful naked life drawing class with Ben. No agency fees. Mobile service covering Bristol, Bath & UK.",
+  keywords: ["hen party life drawing", "hen do ideas", "nude life drawing", "hen party entertainment", "life drawing Bristol", "life drawing Bath", "unique hen party"],
+  authors: [{ name: "Ben" }],
+  openGraph: {
+    title: "Hen Party Life Drawing | Fun & Classy Entertainment UK",
+    description: "Book a fun, tasteful naked life drawing class with Ben. Mobile service covering Bristol, Bath & across the UK. From £30pp.",
+    url: "https://henpartyentertainment.co.uk",
+    siteName: "Hen Party Entertainment",
+    locale: "en_GB",
+    type: "website",
+    images: [
+      {
+        url: "https://henpartyentertainment.co.uk/hero-background.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Hen Party Life Drawing Entertainment",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hen Party Life Drawing | Fun & Classy Entertainment UK",
+    description: "Book a fun, tasteful naked life drawing class with Ben. Mobile service covering Bristol, Bath & across the UK.",
+    images: ["https://henpartyentertainment.co.uk/hero-background.jpeg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: '/favicon.png',
     shortcut: '/favicon.png',
@@ -42,6 +71,7 @@ export default function RootLayout({
       >
         <GTM />
         <GoogleAnalytics />
+        <GlobalStructuredData />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
