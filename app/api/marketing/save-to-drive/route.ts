@@ -2,8 +2,8 @@ import { google } from 'googleapis';
 import { NextRequest, NextResponse } from 'next/server';
 import { Readable } from 'stream';
 
-// Parent folder for all marketing content
-const MARKETING_FOLDER_ID = '1WXBgYqcqQs5yodiaxl0DYSsfFoZ9Sy40';
+// Parent folder in Shared Drive for all marketing content
+const MARKETING_FOLDER_ID = '18QZcGzeLVkUif1S52LwotAhiMeL4VfhL';
 
 function getAuth() {
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
