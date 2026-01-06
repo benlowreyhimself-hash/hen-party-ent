@@ -61,6 +61,11 @@ export default async function LocationPageTemplate({
         { name: 'Swansea', href: '/hen-party-life-drawing-swansea' },
         { name: 'Tenby', href: '/hen-party-life-drawing-tenby' },
         { name: 'Cotswolds', href: '/hen-party-life-drawing-cotswolds' },
+        { name: 'Newport', href: '/hen-party-life-drawing-newport' },
+        { name: 'Taunton', href: '/hen-party-life-drawing-taunton' },
+        { name: 'Glastonbury', href: '/hen-party-life-drawing-glastonbury' },
+        { name: 'Frome', href: '/hen-party-life-drawing-frome' },
+        { name: 'Wells', href: '/hen-party-life-drawing-wells' },
     ];
 
     return (
