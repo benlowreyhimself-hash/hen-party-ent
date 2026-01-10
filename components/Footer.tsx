@@ -55,9 +55,11 @@ export default function Footer() {
         </div>
         <div className="mt-8 pt-8 border-t border-border text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Hen Party Entertainment. All rights reserved.</p>
-          <Link href="/marketing-console" className="text-xs text-muted-foreground/50 hover:text-muted-foreground mt-2 inline-block">
-            Admin
-          </Link>
+          <p className="mt-2">
+            <Link href="/about-software" className="text-muted-foreground/70 hover:text-muted-foreground transition-colors">
+              About This Software
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
