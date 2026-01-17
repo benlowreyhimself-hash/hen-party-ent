@@ -19,6 +19,12 @@ export default function ContactForm() {
     venue: '',
     fullAddress: '',
     message: '',
+    gclid: '',
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
   });
 
   const [loading, setLoading] = useState(false);
@@ -28,7 +34,24 @@ export default function ContactForm() {
   // Auto-fill enquiry date
   useEffect(() => {
     const today = new Date().toISOString().split('T')[0];
-    // This will be set when form is submitted
+
+    // Check for GCLID in URL
+    const params = new URLSearchParams(window.location.search);
+    const gclidParam = params.get('gclid');
+    if (gclidParam) {
+      setFormData(prev => ({ ...prev, gclid: gclidParam }));
+      console.log('✅ GCLID captured:', gclidParam);
+    }
+
+    // Capture UTM parameters
+    const utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+    utmFields.forEach(field => {
+      const value = params.get(field);
+      if (value) {
+        setFormData(prev => ({ ...prev, [field]: value }));
+        console.log(`✅ ${field} captured:`, value);
+      }
+    });
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -47,7 +70,7 @@ export default function ContactForm() {
       const submissionData = {
         ...formData,
         enquiryDate,
-        source: 'Website Contact Form',
+        source: formData.gclid ? 'Google Ads' : 'Website Contact Form',
         method: 'form',
       };
 

@@ -95,6 +95,13 @@ export const formSubmissions = pgTable('form_submissions', {
   source: text('source'), // 'form', 'email', 'sms'
   method: text('method'), // 'form_submission', 'template_request'
   enquiry_date: text('enquiry_date'),
+
+  // Tracking Data (Added Jan 2026)
+  ip_address: text('ip_address'),
+  country: text('country'),
+  city: text('city'),
+  user_agent: text('user_agent'),
+  gclid: text('gclid'), // Google Click ID for ad tracking
 });
 
 // Export types

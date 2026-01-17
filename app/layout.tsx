@@ -5,7 +5,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import GTM from "@/components/GTM";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+// NOTE: GoogleAnalytics component removed - GTM already loads GA4 via its configuration tag.
+// Having both caused duplicate page views. All GA4 tracking now flows through GTM.
 import GlobalStructuredData from "@/components/GlobalStructuredData";
 
 const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
@@ -70,7 +71,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <GTM />
-        <GoogleAnalytics />
+        {/* GoogleAnalytics removed - GTM handles GA4 loading */}
         <GlobalStructuredData />
         <Header />
         <main className="flex-1">{children}</main>

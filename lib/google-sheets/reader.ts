@@ -17,40 +17,54 @@ export async function readGoogleSheet(
   try {
     // Option 1: Using API Key (for public sheets)
     const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
-    
+
     if (apiKey) {
       const sheets = google.sheets({ version: 'v4', auth: apiKey });
-      
+
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range,
       });
-      
+
       return response.data.values || [];
     }
-    
+
     // Option 2: Using Service Account (for private sheets)
     const serviceAccountEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
-    
+
     if (serviceAccountEmail && serviceAccountKey) {
+      let credentials;
+      try {
+        credentials = JSON.parse(serviceAccountKey);
+      } catch (e) {
+        if (serviceAccountKey.startsWith('-----BEGIN PRIVATE KEY') && serviceAccountEmail) {
+          credentials = {
+            client_email: serviceAccountEmail,
+            private_key: serviceAccountKey.replace(/\\n/g, '\n'),
+          };
+        } else {
+          throw e; // Re-throw if it's not the case we can handle
+        }
+      }
+
       const auth = new google.auth.GoogleAuth({
-        credentials: JSON.parse(serviceAccountKey),
+        credentials,
         scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
       });
-      
+
       const sheets = google.sheets({ version: 'v4', auth });
-      
+
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range,
       });
-      
+
       return response.data.values || [];
     }
-    
+
     throw new Error('No Google Sheets authentication configured. Add GOOGLE_SHEETS_API_KEY or GOOGLE_SERVICE_ACCOUNT_KEY to .env.local');
-    
+
   } catch (error: any) {
     console.error('Error reading Google Sheet:', error.message);
     throw error;
@@ -63,35 +77,50 @@ export async function readGoogleSheet(
 export async function listSheets(spreadsheetId: string): Promise<string[]> {
   try {
     const apiKey = process.env.GOOGLE_SHEETS_API_KEY;
-    
+
     if (apiKey) {
       const sheets = google.sheets({ version: 'v4', auth: apiKey });
-      
+
       const response = await sheets.spreadsheets.get({
         spreadsheetId,
       });
-      
+
       return response.data.sheets?.map(sheet => sheet.properties?.title || '') || [];
     }
-    
+
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
     if (serviceAccountKey) {
+      const serviceAccountEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+      let credentials;
+      try {
+        credentials = JSON.parse(serviceAccountKey);
+      } catch (e) {
+        if (serviceAccountKey.startsWith('-----BEGIN PRIVATE KEY') && serviceAccountEmail) {
+          credentials = {
+            client_email: serviceAccountEmail,
+            private_key: serviceAccountKey.replace(/\\n/g, '\n'),
+          };
+        } else {
+          throw e;
+        }
+      }
+
       const auth = new google.auth.GoogleAuth({
-        credentials: JSON.parse(serviceAccountKey),
+        credentials,
         scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
       });
-      
+
       const sheets = google.sheets({ version: 'v4', auth });
-      
+
       const response = await sheets.spreadsheets.get({
         spreadsheetId,
       });
-      
+
       return response.data.sheets?.map(sheet => sheet.properties?.title || '') || [];
     }
-    
+
     throw new Error('No Google Sheets authentication configured');
-    
+
   } catch (error: any) {
     console.error('Error listing sheets:', error.message);
     throw error;

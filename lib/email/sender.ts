@@ -31,6 +31,11 @@ interface BookingFormData {
   enquiryDate?: string;
   source?: string;
   method?: string;
+  // Tracking
+  ipAddress?: string;
+  country?: string;
+  city?: string;
+  gclid?: string;
 }
 
 /**
@@ -75,6 +80,12 @@ METADATA:
 Enquiry Date: ${formData.enquiryDate || new Date().toISOString().split('T')[0]}
 Source: ${formData.source || 'Website Contact Form'}
 Method: ${formData.method || 'form'}
+
+TRACKING:
+=========
+Location: ${formData.city || 'Unknown'}, ${formData.country || 'Unknown'}
+IP: ${formData.ipAddress || 'Unknown'}
+GCLID: ${formData.gclid || 'None'}
   `.trim();
 
   // HTML Body
@@ -306,6 +317,12 @@ function formatBookingEmailHTML(formData: BookingFormData): string {
       <div class="field"><span class="label">Enquiry Date:</span> <span class="value">${formData.enquiryDate || new Date().toISOString().split('T')[0]}</span></div>
       <div class="field"><span class="label">Source:</span> <span class="value">${formData.source || 'Website Contact Form'}</span></div>
       <div class="field"><span class="label">Method:</span> <span class="value">${formData.method || 'form'}</span></div>
+      
+      <div style="margin-top: 15px; pt-top: 15px; border-top: 1px dashed #ccc;">
+        <div class="field"><span class="label">Location:</span> <span class="value">${formData.city || 'Unknown'}, ${formData.country || 'Unknown'}</span></div>
+        <div class="field"><span class="label">IP Address:</span> <span class="value">${formData.ipAddress || 'Unknown'}</span></div>
+        <div class="field"><span class="label">Ad Click ID (GCLID):</span> <span class="value">${formData.gclid || 'None'}</span></div>
+      </div>
     </div>
   </div>
 </body>

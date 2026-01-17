@@ -23,6 +23,11 @@ export async function saveFormSubmission(data: {
   enquiryDate?: string;
   houseId?: string;
   trackingId?: string;
+  ipAddress?: string;
+  country?: string;
+  city?: string;
+  userAgent?: string;
+  gclid?: string;
 }): Promise<string | null> {
   try {
     const supabase = createAdminClient();
@@ -46,6 +51,11 @@ export async function saveFormSubmission(data: {
       enquiry_date: data.enquiryDate || new Date().toISOString().split('T')[0],
       house_id: data.houseId || null,
       tracking_id: data.trackingId || null,
+      ip_address: data.ipAddress || null,
+      country: data.country || null,
+      city: data.city || null,
+      user_agent: data.userAgent || null,
+      gclid: data.gclid || null,
     };
 
     const { data: result, error } = await supabase

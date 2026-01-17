@@ -139,6 +139,15 @@ export default function AccommodationsPageContent() {
         </div>
       </section>
 
+      {/* Insider Tip Banner */}
+      <section className="bg-emerald-50 border-b border-emerald-100 py-4 relative z-20">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-emerald-900 text-sm md:text-base font-medium">
+            💰 <span className="font-bold">Ben&apos;s Insider Tip:</span> Don&apos;t pay Agency fees. I am the actual model who visits these houses. Book the house direct + Book me direct = <span className="font-bold underline">Save ~£150</span>
+          </p>
+        </div>
+      </section>
+
       {/* Filters & View Toggle */}
       <section className="bg-white py-6 border-b border-gray-200 sticky top-20 z-40">
         <div className="container mx-auto px-4">
